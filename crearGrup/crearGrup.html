@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="utf-8" /> 
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="../baseT-css/bootstrap/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
+        <link rel="stylesheet" type="text/css" href="crearGrup.css">
+        <title>Crear grup</title>
+    </head>
+    <body style="display: none"> 
+        <div class="miniHeader">
+            <div class="miniHeaderLeft">
+                 <button type="button" class="btnBack buttonNoStyle" id="btnBackToIndex">
+                        <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </button>
+                <p class="miniHeaderLeftTitle translate">
+                    {{stringCrearGrup}}
+                </p>
+            </div>
+        </div>
+        
+        <div class="body">
+            <div class="seleccionarContactesDiv ocult">
+                <div class="seleccionarContactesTop">
+                    <div class="translate">{{stringAfegirContactes}}</div>
+                    <div>
+                        <button type="button" class="buttonNoStyle" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="contactesGrup">
+
+                </div>
+                <div class="contactesUsuari">
+
+                </div>
+                <div class="buttonNextDiv">
+                    <button class="buttonNoStyle buttonNext" type="button" >
+                        <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="seleccionarTemasDiv ocult">
+                <div class="seleccionarContactesTop">
+                    <div class="translate">{{stringAfegirTemas}}</div>
+                    <div>
+                        <button type="button" class="buttonNoStyle" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                 <div class="temasGrup">
+
+                </div>
+                <div class="temasUsuari">
+
+                </div>
+                <div class="buttonNextDiv">
+                    <button class="buttonNoStyle buttonNext" type="button" >
+                        <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="crearGrup">
+                <div class="form-group" style="margin-top: 10px">
+                    <label for="inputNomGrup" class="translate">{{stringNomGrup}}</label>
+                    <input type="text" class="form-control" id="inputNomGrup" required>
+                </div>
+                <div class="form-group">
+                    <label class="translate">
+                        {{stringTipusGrup}} 
+                        <button type="button" class="buttonNoStyle buttonInfo" aria-label="Left Align" data-id="1">
+                            <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                        </button>
+                    </label>
+                    <div class="radio">
+                        <label class="translate"><input type="radio" name="optradio" id="radioButtonPrivat" checked >{{stringPrivat}}</label>
+                    </div>
+                    <div class="radio">
+                        <label class="translate"><input type="radio" name="optradio" id="radioButtonPublic" >{{stringPublic}}</label>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <button type="button" class="btn btn-default translate" id="btnTemasGrup">{{stringAfegirTemas}}</button>
+                </div> 
+
+                <div style="margin-bottom: 10px;">
+                    <button type="button" class="btn btn-default translate" id="btnContactesGrup">{{stringAfegirContactes}}</button>
+                </div> 
+                
+                <div>
+                    <button type="submit" class="btn btn-danger translate" id="btnCrearGrup">{{stringCrearGrup}}</button>
+                </div>
+                <div class="loadingImg ocult"> <!-- Imatge de cargan -->
+                        <img src="../baseT-css/img/loading_icon.gif" width="70px" height="70px">
+                </div>
+                <div class="errorLogin" style="margin-top: 10px"></div>
+            </div>
+        </div> <!-- Final div body -->
+        
+        <!-- Modal (per mostrar les infos) -->
+        <div class="modal fade" id="modalInfo" tabindex="-1" role="dialog" style="text-align: center">
+            <div class="modal-dialog modal-sm modalImg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="text-align: center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
+        <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
+        <script type="text/javascript" src="../baseT-js/baseT.js"></script>
+        <script type="text/javascript" src="crearGrup.js"></script>
+    </body>
+</html>

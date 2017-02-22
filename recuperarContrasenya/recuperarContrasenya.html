@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="utf-8" /> 
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="../baseT-css/bootstrap/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
+    </head>
+    
+    
+    <body>
+        
+        <!-- div del titul -->
+        <div class="miniHeader">
+            <div class="miniHeaderLeft">
+                <button type="button" class="btnBack buttonNoStyle" onclick="cambiPag('login_reg.html')">
+                        <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </button>
+                <p class="miniHeaderLeftTitle translate">
+                    {{stringRecuperarContrasenya}}
+                </p>
+            </div>
+        </div>
+        
+        <!-- div del body -->
+        <div class="body">
+            <div style="margin: 10px">
+                <div class="form-group">
+                    <!-- div del nombre de usuario -->
+                    <div id="divNomUsuari">
+                        <label for="inputUsuario" class="translate">{{stringIntroduceUsuario}}</label>
+                        <input type="text" class="form-control" id="inputUsuario" placeholder="Usuario">
+                        <button type="button" class="btn btn-danger translate" id="buttonAceptarUsuari" style="margin-top: 10px">{{stringContinuar}}</button>
+                    </div>
+    
+                        
+                    <!-- div de la pregunta secreta -->
+                    <div class="form-group ocult" id="divPregunta">
+                        <label for="inputPregunta" id="textPregunta" class="translate">{{stringPreguntaDeRecuperacio}}</label>
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle translate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{stringPreguntaDeRecuperacio}} <span class="caret"></span>
+                            </button>
+                                <ul class="dropdown-menu">
+                                    <li class="preguntaSecreta translate"><a href="#">{{stringNomPrimerMascota}}</a></li>
+                                    <li class="preguntaSecreta translate"><a href="#">{{stringCiutatMare}}</a></li>
+                                    <li class="preguntaSecreta translate"><a href="#">{{stringMarcaVehicle}}</a></li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                            <input type="text" class="form-control" id="inputPregunta" aria-label="...">
+                        </div>
+                        <button type="button" class="btn btn-danger translate" id="buttonAceptarPregunta" style="margin-top: 10px">{{stringContinuar}}</button>
+                    </div>
+                        
+                    <!-- div de la nova contrasenya-->
+                    <div class="form-group ocult" id="divNovaContrasenya">
+                        <label for="inputPasswordNueva" class="translate">{{stringIntroduirNovaContrasenya}}</label>
+                        <input type="password" class="form-control" id="inputPasswordNueva" placeholder="Contrasenya">
+                        
+                        <label for="inputPasswordNueva2" class="translate">{{stringTornarIntroduirNovaContrasenya}}</label>
+                        <input type="password" class="form-control" id="inputPasswordNueva2" placeholder="Contrasenya">
+                        
+                        <button type="button" class="btn btn-danger translate" id="buttonAceptarNovaContrasenya" style="margin-top: 10px">{{stringContinuar}}</button>
+                        
+                    </div>
+                
+                </div>       
+            </div>
+            <div class="loadingImg ocult">
+                    <img src="baseT-css/img/loading_icon.gif" width="70px" height="70px">
+            </div>
+            <div class="errorShow" style="margin-top: 10px;  margin-left: 15px;    "></div> <!-- En cas de que hi hagi un error es mostra en aquest div -->
+        </div>
+        
+        <!-- scriptsssss -->
+        <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
+        <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
+        <script type="text/javascript" src="../baseT-js/baseT.js"></script>   
+        <script type="text/javascript" src="recuperarContrasenya.js"></script>
+    </body>
+    
+</html>
+    
+    

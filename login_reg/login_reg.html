@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="utf-8" /> 
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="../baseT-css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
+    <link rel="stylesheet" type="text/css" href="login_reg.css">
+</head>
+
+<body>
+    <div class="logoImg">
+        <img src="../baseT-css/img/logo.PNG" width="200px" height="200px">
+    </div>
+    <div class="buttons">
+        <!-- Div on estan els dos butons -->
+        <button id="btnRegistrarDiv" class="btn btn-default animated slideInUp translate " style="width: 130px;"> {{stringRegistrarse}}</button></br>
+        <button id="btnLoginDiv" class="btn btn-danger animated slideInUp translate" style="margin-top: 10px; width: 130px;"> {{stringEntrar}}</button></br>
+        <button class="buttonNoStyle idioma animated slideInUp" style="margin-top: 10px;" data-id="cat"><img src="../baseT-css/img/flags/cat.png"></button>
+        <button class="buttonNoStyle idioma animated slideInUp" style="margin-top: 10px;" data-id="es"><img src="../baseT-css/img/flags/es.png"></button>
+        <button class="buttonNoStyle idioma animated slideInUp" style="margin-top: 10px;" data-id="en"><img src="../baseT-css/img/flags/en.png"></button>
+    </div>
+
+    <div class="reg ocult">
+        <!-- Div on estan les opcions de registrar-se -->
+        <button type="button" class="btnBack buttonNoStyle" style="float: none; margin: 0px; margin-bottom: 10px;">
+                <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+            </button>
+        <div class="form-group" id="divNom">
+            <label for="inputNomUsuari" class="translate">{{stringNomUsuari}}</label>
+            <input type="text" class="form-control" id="inputNomUsuari" placeholder="Nom usuari" required>
+        </div>
+        <div class="form-group" id="divPass">
+            <label for="inputPassword" class="translate">{{stringPassword}}</label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+        </div>
+
+        <div class="form-group" id="divPregunta">
+            <label for="inputPregunta" id="textPregunta" class="translate">{{stringPreguntaDeRecuperacio}}</label>
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle translate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{stringPreguntaDeRecuperacio}} <span class="caret"></span>
+                        </button>
+                    <ul class="dropdown-menu">
+                        <li class="preguntaSecreta translate"><a href="#">{{stringNomPrimerMascota}}</a></li>
+                        <li class="preguntaSecreta translate"><a href="#">{{stringCiutatMare}}</a></li>
+                        <li class="preguntaSecreta translate"><a href="#">{{stringMarcaVehicle}}</a></li>
+                    </ul>
+                </div>
+                <!-- /btn-group -->
+                <input type="text" class="form-control" id="inputPregunta" aria-label="...">
+            </div>
+            <!-- /input-group -->
+        </div>
+
+
+
+
+
+        <div style="margin-top: 10px">
+            <button type="submit" class="btn btn-default translate" id="btnRegistrar">{{stringRegistrarse}}</button>
+        </div>
+        <div class="loadingImg ocult">
+            <!-- Imatge de cargan -->
+            <img src="../baseT-css/img/loading_icon.gif" width="70px" height="70px">
+        </div>
+        <div class="errorLogin" style="margin-top: 10px"></div>
+    </div>
+    <!-- Final registrar-se -->
+
+    <div class="log ocult">
+        <!-- Div on estan les opcions de log-in -->
+        <button type="button" class="btnBack buttonNostyle" style="float: none; margin: 0px; margin-bottom: 10px;">
+                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </button>
+        <div class="form-group">
+            <label for="inputEmailLogin" class="translate">{{stringNomUsuari}}</label>
+            <input type="text" class="form-control" id="inputEmailLogin" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="inputPasswordLogin" class="translate">{{stringPassword}}</label>
+            <input type="password" class="form-control" id="inputPasswordLogin" placeholder="Password">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-default translate" id="btnEntrar">{{stringEntrar}}</button>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-danger translate" onclick="cambiPag('recuperarContrasenya.html')" style="margin-top: 10px;">{{stringContrasenyaOlvidada}}</button>
+        </div>
+        <div class="loadingImg ocult">
+            <img src="../baseT-css/img/loading_icon.gif" width="70px" height="70px">
+        </div>
+        <div class="errorLogin" style="margin-top: 10px"></div>
+        <!-- En cas de que hi hagi un error es mostra en aquest div -->
+    </div>
+    <!-- Final login -->
+
+    <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
+    <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
+    <script type="text/javascript" src="../baseT-js/baseT.js"></script>
+    <script type="text/javascript" src="login_reg.js"></script>
+</body>
+
+</html>

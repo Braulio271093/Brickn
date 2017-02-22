@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta charset="utf-8" /> 
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="../baseT-css/bootstrap/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
+        <link rel="stylesheet" type="text/css" href="perfil.css">
+        <title>Perfil</title>
+    </head>
+    <body>
+        <div class="miniHeader">
+            <div class="miniHeaderLeft">
+                <button type="button" class="btnBack buttonNoStyle" id="btnBackToIndex">
+                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </button>
+                <p class="miniHeaderLeftTitle translate">
+                    {{stringPerfil}}
+                </p>
+            </div>
+            <div class="miniHeaderRight">
+                 <p class="miniHeaderLeftTitle" style="float:right"><button class="buttonNoStyle" ><span class="glyphicon glyphicon-question-sign"></button></p>
+            </div>
+        </div>
+        
+        <div class="body">
+            <div class="perfilTop">
+                <div class="fotoPerfilDiv">
+                    <img src="../baseT-css/img/nofoto.jpg" class="img-circle fotoPerfil" width="95px" height="95px">
+                </div>
+                <div class="nomPerfil">
+                    <p id="nomUsuari"></p>
+                </div>
+
+            </div>
+            <div class="perfilBottom">
+                <div style="font-size: 20px; margin-top: 5px; border-bottom: 1px solid #E2E2E2; height: 33px" class="tabNav">
+                    <p style="float: left; margin-left: 25px; " class="tabButton translate selected" data-id="mostrarContactes" data-buscar="contacte" >{{stringContactes}}</p>
+                    <p style="float: right; margin-right: 25px;" class="tabButton translate" data-id="mostrarLikes" data-buscar="tema">{{stringTemas}}</p>
+                </div>
+                <div class="buscador">
+                    <input data-toggle="dropdown" type="text" placeholder="Buscar..." class="form-control" id="inputBuscador">
+                </div>
+                <div class="dropdown">
+                    <ul class="dropdown-menu resultatBuscar" id="resBuscador" aria-labelledby="inputBuscador">
+
+                    </ul>
+                </div>
+                <ul class="mostrar" id="mostrarContactes" >
+                           
+                </ul>
+                <ul class="mostrar ocult" id="mostrarLikes">
+
+                </ul>
+            </div> 
+
+        </div> <!-- Final div body -->
+
+         <!-- Modal (per mostrar la foto en gran) -->
+        <div class="modal fade" id="modalImg" tabindex="-1" role="dialog" style="text-align: center">
+            <div class="modal-dialog modal-sm modalImg" role="document">
+                <div class="modal-content">
+                    <!--<div class="modal-header">
+                        <h4 class="modal-title" id="modalImgLabel">Nom del grup</h4>
+                    </div> -->
+                    <div class="modal-body" style="text-align: center">
+                        <img src="../baseT-css/img/nofoto.png" width="160px" height="160px" id="modalImgGrup" alt="Processan...">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="buttonNoStyle" id="buttonCambiFoto">
+                            <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="buttonNoStyle">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
+        <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+        <script src="../baseT-js/jquery/jquery.hammer.js"></script>
+        <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
+        <script type="text/javascript" src="../baseT-js/baseT.js"></script>
+        <script type="text/javascript" src="perfil.js"></script>
+    </body>
+</html>

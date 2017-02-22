@@ -1,0 +1,68 @@
+.perfilTop {
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.perfilBottom {
+    width: 100%;
+}
+
+.fotoPerfilDiv {
+    float: left;
+    margin: 20px 0px 15px 20px;
+}
+
+.nomPerfil{
+    float: left;
+    margin: 25px 20px 20px 10px;
+    font-size: 24px;
+}
+
+.box {
+    width: 100%; 
+    padding: 10px;
+}
+
+.topBox {
+    border-bottom: 1px solid #F2F2F2;
+    font-size: 20px;
+    float: left;
+    width: 100%;
+}
+
+.titolBox{
+    float: left;
+}
+
+.buttonsBox {
+    float: right;
+}
+.contingutBox {
+    margin-top: 70px;
+}
+
+.resultatBuscar, .mostrar {
+    font-size: 18px;
+    list-style: none;
+    margin-left: 15px;
+}
+
+.addNewLike{
+    color: red;
+}
+.addLike{
+    color: green;
+}
+
+.mostrar{
+    margin-top: 10px;
+}
+
+.buscador{
+    margin: 0px 10px 0px 10px;
+}
+
+.selected {
+    color: #D01E1E;
+}

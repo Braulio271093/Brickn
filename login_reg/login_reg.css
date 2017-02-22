@@ -1,0 +1,37 @@
+
+/* Buttons de la pag */
+#btnRegistrar {
+    margin-bottom: 10px;
+}
+
+#btnLogin {
+
+}
+
+.btnBack {
+    margin-bottom: 10px;
+}
+body {
+    text-align: center;
+}
+/* div de la pagina */
+.log {
+    padding: 10px;
+}
+ 
+.reg {
+     padding: 10px;
+}
+
+.buttons {
+    padding: 0px;
+}
+
+.logoImg {
+    text-align: center;
+
+}
+
+.loadingImg{
+    text-align: center;
+}

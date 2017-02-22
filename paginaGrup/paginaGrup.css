@@ -1,0 +1,119 @@
+body {
+    background-color: #F0F0F0;
+}
+
+
+.bottomBar {
+    position: fixed;
+    bottom: 0; 
+    overflow: hidden;
+    margin: 0px 5px 5px 5px; 
+    z-index: 1;
+}
+
+
+.publicacio { 
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    margin: 0px 5px 0px 5px;
+    border-bottom: 0px;
+    background-color: white;
+    width: 97.5%;
+    box-sizing: border-box;
+}
+
+.publicacio:first-child { 
+    margin-top: 5px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.publicacio:last-child { 
+    margin-bottom: 5px;
+    border-radius: 0px 0px 5px 5px;
+    margin-bottom: 80px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.withBorderBottom {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.titolPublicacio {
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 15px;
+    margin-top: 5px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+.titolPublicacio p:first-child { 
+    float: left;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+.titolPublicacio p:last-child {
+    float: right;
+    color: gray;
+    font-weight: 100;
+    font-size: 14px;
+    margin: 0px;
+    padding-right: 10px;    
+}
+
+.bodyPublicacio {
+    font-size: 16px;
+}
+
+.buttonComentaris {
+    padding: 0px 0px 5px 15px;
+}
+
+.inputPublicarComentariDiv {
+    margin: 0px 10px 0px 10px;
+    border-bottom: 0px;
+}
+.comentarisPublicacio {
+    margin: 0px 10px 0px 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.comentariPublicacio {
+    margin: 5px 0px 5px 15px;
+}
+.comentariPublicacio div:first-child {
+    font-weight: 700;
+}
+.comentariPublicacio div:last-child{
+    margin-left: 10px;
+}
+
+
+.bodyPublicacio img {
+    margin-top: 10px;
+    margin-left: 3%;
+    margin-right: 3%;
+    width: 94%;
+    height: 50%;
+    box-sizing: border-box;
+}
+
+.fotoPublicador {
+    float: left;
+    margin: 10px;
+}
+.fotoPublicador img {
+    width: 60px;
+    height: 60px;
+
+}
+
+.buttonMesComentarisDiv {
+    font-size: 16px;
+    margin-left: 160px;
+}
+
+.buttonMesPublicacionsDiv {
+    font-size: 20px;
+    margin-bottom: 80px;
+    margin-left: 47.5%;
+}
