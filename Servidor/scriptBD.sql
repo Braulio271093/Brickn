@@ -39,7 +39,7 @@ create table usuari_contacte (
 create table grup (
     id INT(6) unsigned primary key auto_increment,
     nom VARCHAR(50) not null,
-    tipus BOOLEAN not null default 1 /* 1 = privat, 0 = public */
+    tipus BOOLEAN not null default 1, /* 1 = privat, 0 = public */
     /* foto VARCHAR(50) */
     );
 

@@ -18,9 +18,14 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils'], functi
             }
         });
 
+
+
+        var buttonPressed = false; //per prevenir que el dropdown es tanqui;
         $(document).on('click', '.buttonAcceptarContacte', function() {
             var idContacte = $(this).parent().data('id');
+            buttonPressed = true;
             usuari.acceptarContacte(idContacte, function() {
+                usuari.afegirContacteAcceptat(idContacte);
                 $('.acceptarUsuarisUl').find('li').remove();
                 usuari.getSolicitutsContacte(function(data) {
                     if (data.length > 0) {
@@ -33,14 +38,38 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils'], functi
                         $('#numSolicitutsContacte').hide();
                         $('.acceptarUsuarisUl').append('<li><div style="float: left; font-size: 20px;">' + __('stringNoSolicitut') + '</div></li>')
                     }
+                    buttonPressed = false;
                 })
             });
         });
 
         $(document).on('click', '.buttonDeclineContacte', function() {
-            
+            var idContacte = $(this).parent().data('id');
+            buttonPressed = true;
+            usuari.declinarContacte(idContacte, function() {
+                $('.acceptarUsuarisUl').find('li').remove();
+                usuari.getSolicitutsContacte(function(data) {
+                    if (data.length > 0) {
+                        $('#numSolicitutsContacte').text(data.length);
+                        for (var i = 0; i < data.length; i++) {
+                            $('.acceptarUsuarisUl').append(Utils.solicitutContacteToHtml(data[i].idUsuari, data[i].nomUsuari));
+                        }
+                    }
+                    else {
+                        $('#numSolicitutsContacte').hide();
+                        $('.acceptarUsuarisUl').append('<li><div style="float: left; font-size: 20px;">' + __('stringNoSolicitut') + '</div></li>')
+                    }
+                    buttonPressed = false;
+                })
+            });
+        });
+        
+        $('#testDrop').on('hide.bs.dropdown', function(e) {
+            if (buttonPressed) e.preventDefault();
         });
     
+
+
         $(".body").hammer().on("swiperight", function () { //funcio per quan mous el dit cap a la dreta es canvii la tab;
             var x = $('.headerBottom').find('.SelectedTab').data('id'); //tab on estas;
             switch (x) {

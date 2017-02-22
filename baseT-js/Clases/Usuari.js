@@ -120,13 +120,31 @@ class Usuari {
     afegirContacte(idContacte) {
         $.ajax({
             type: "POST",
-            url: urlServer + "/insert/afegirContacte.php?idUsuari=" + this.idUsuari + "&idUsuari2=" + idContacte,
+            url: urlServer + "/insert/afegirContacte.php?idUsuari=" + this.idUsuari + "&idUsuari2=" + idContacte + "&acceptat=0",
             dataType: 'json',
             cache: false,
             success: function (data) {
                 usuari.getContactes(function() {
                     usuari.actualitzarContactes('mostrarContactes', 'removeContacte')
                 });
+            },
+            error: function () {
+                Error.showError(__("{{errorServerOut}}"));
+            }
+        });
+    }
+
+    /**
+     * Afegir al usuari un contacte amb el cap acceptat a 1;
+     */
+    afegirContacteAcceptat(idContacte) {
+         $.ajax({
+            type: "POST",
+            url: urlServer + "/insert/afegirContacte.php?idUsuari=" + this.idUsuari + "&idUsuari2=" + idContacte + "&acceptat=1",
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                
             },
             error: function () {
                 Error.showError(__("{{errorServerOut}}"));
@@ -377,6 +395,28 @@ class Usuari {
          $.ajax({
             type: "POST",
             url: urlServer + "/update/acceptarContacte.php?idUsuari=" + this.idUsuari + "&idContacte=" + idContacte,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                if (data == 1) {
+                    onSucces();
+                }
+            },
+            error: function (xhr, status, error) {
+                Error.showError(error);
+            }
+        });
+    }
+
+    /**
+     * Declinar un contacte, es a dir, de la taula usuari_contacte borrar el registre;
+     * @param idContacte
+     * @param onSucces
+     */
+    declinarContacte(idContacte, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/delete/declinarContacte.php?idUsuari=" + this.idUsuari + "&idContacte=" + idContacte,
             dataType: 'json',
             cache: false,
             success: function (data) {
