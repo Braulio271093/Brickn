@@ -1,0 +1,103 @@
+/* CSS comú en totes la pagines */
+body {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    display: none;
+}
+
+.body {
+    min-height: 85vh;
+    width: 100%;
+}
+
+.btn-danger {
+    background-color: #D51C1C;
+}
+
+.invisible { /* clase que oculta al cargar la pàgina, diferent que la classe ocult, que es fa servir en el javascript */
+    display: none;
+}
+
+.buttonNoStyle { /*^clase per els bottons del header i altres */
+    border: none;
+    outline: none;
+    background: none;
+    border-radius: 100px;
+}
+
+@keyframes buttonClick {
+    0%   {background-color: #D51C1C;}
+    25%  {background-color: #DA2424;}
+    50%  {background-color: #C62121;}
+    100% {background-color: #D51C1C;}
+}
+
+.buttonNoStyleAnimated:active { /* per quan pretes un boto el fons mes negre */
+    animation-name: buttonClick;
+    animation-duration: 0.7s;
+}
+
+.miniHeader { /*mini header*/
+    width: 100%;
+    max-height: 42px;
+    min-height: 42px;
+    background-color: #D51C1C;
+    color: white;
+    box-sizing: border-box;
+    border-bottom: 2px solid #E2E2E2;
+}
+.form-control:focus{
+    border-color: #D51C1C;
+    box-shadow: none;
+}
+
+.miniHeaderLeft {
+    min-height: 42px;
+    max-height: 42px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.miniHeaderLeftTitle {
+    margin: 5.25px 0px 5.25px 15px; 
+    font-size: 20px; 
+    font-weight: 400px;
+    float: left;
+}
+
+.miniHeaderRight {
+    min-width: 50%;
+    max-width: 50%;
+    min-height: 42px;
+    max-height: 42px;
+    box-sizing: border-box;
+    float: right;
+}
+
+.miniHeaderRight button {
+    float: right;
+    margin: 10px 5px 10px 5px;
+    font-size: 16px;
+}
+
+.btnBack{
+    float: left;
+    margin: 10px 0px 10px 10px;
+}
+
+.modalImg {
+    width: 200px; 
+    height: 180px;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    right: 25%;
+}
+
+.dropdown-menu li {
+    padding: 5px;
+}
