@@ -55,7 +55,7 @@ Història 2: (**25/01/2017**)
 
 
 Història 3: (**15/03/2017**)
-- [ ] ~~Buscar grup public~~ i unir-se;
+- [ ] ~~Buscar grup publici unir-se~~ -> falta fer que en buscar un grup no es mostrin en els qu ja estas agregat.;
 - [x] Sistema multi idioma
 - [x] Recuperar contrasenya
 - [x] Veure les seves publicacions;
