@@ -28,7 +28,7 @@
 - [X] ~~Crear recuperació de contrasenya~~
 - [ ] Mostrar publicacions en la tab resum
 - [ ] Notificacions push
-- [ ] Guardar localment temas, contactes i grups;
+- [X] Guardar localment temas, contactes i grups --> DE MOMENT NO;
 - [ ] Afegir data als grups i al arribar una data que es borri;
 - [ ] Afegir contrasenya als grups publics;
 - [ ] Afegir events en el grup (Com un tipus de publicacio) --> lluc;
@@ -36,7 +36,7 @@
 - [X] ~~Millorar contadors (fer que en buscar o mostrar algo només es mostrin N i al apretar un boto es mostrin N més)~~;
 - [ ] Mostrar el nombre de persones que hi ha en els grups públics;
 - [X] ~~Notificacions en cada grup~~
-- [ ] Afegir acceptar contacte;
+- [X] ~~Afegir acceptar contacte~~;
 - [ ] permetre ' a les publicacions i comentaris;
 - [X] ~~solucionar error nom grups~~ 
 
