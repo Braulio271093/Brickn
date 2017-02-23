@@ -10,8 +10,8 @@
     $q = $_GET['q'];
 	$idUsuari = $_GET['idUsuari'];
 
-    $sql = "SELECT grup.id, grup.nom, grup.pass FROM grup JOIN usuari_grup ON usuari_grup.idGrup = grup.id WHERE grup.tipus = 0 
-            AND grup.nom LIKE '%$q%' AND usuari_grup.idUsuari != $idUsuari ";
+    $sql = "SELECT grup.id, grup.nom, grup.pass FROM grup WHERE grup.tipus = 0 
+            AND grup.nom LIKE '%$q%' AND grup.id NOT IN (SELECT idGrup FROM usuari_grup WHERE idUsuari = $idUsuari) ";
     $resultat = mysqli_query($conn, $sql);
 	$res = [];
 	$i = 0;

@@ -3,9 +3,11 @@
     header("Access-Control-Allow-Origin: *");
 
     $q = $_GET['q'];
+	$idUsuari = $_GET['idUsuari'];
+	
     $sql = "SELECT grup.id, grup.nom, grup.pass FROM grup JOIN grup_tema
             ON grup.id = grup_tema.idGrup JOIN tema ON grup_tema.idTema = tema.id WHERE grup.tipus = 0 
-            AND tema.nom LIKE '%$q%'";
+            AND tema.nom LIKE '%$q%' AND grup.id NOT IN (SELECT idGrup FROM usuari_grup WHERE idUsuari = $idUsuari)";
     $resultat = mysqli_query($conn, $sql);
 	$res = [];
 	$i = 0;
