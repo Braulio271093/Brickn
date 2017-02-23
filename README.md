@@ -36,7 +36,7 @@
 - [X] ~~Afegir acceptar contacte~~;
 - [ ] permetre ' a les publicacions i comentaris;
 - [X] ~~solucionar error nom grups~~ 
-
+- [ ] opcions admin dintre del grup;
 
 **Històries verticals**:
 
@@ -61,5 +61,6 @@ Història 3: (**15/03/2017**)
 Història 4: (**15/04/2017**)
 - [ ] Xat
 - [ ] Crear i mostrar grups públics per proximitat;
+- [ ] albums
 
 Història 5: (**1/05/2017) --> Entrega Projecte**
