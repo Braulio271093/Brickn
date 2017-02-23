@@ -27,7 +27,7 @@
 - [X] ~~Crear recuperació de contrasenya~~
 - [ ] Mostrar publicacions en la tab resum
 - [ ] Afegir data als grups i al arribar una data que es borri;
-- [ ] Afegir contrasenya als grups publics;
+- [X] ~~Afegir contrasenya als grups publics~~
 - [ ] Afegir events en el grup (Com un tipus de publicacio) --> lluc;
 - [X] ~~Cambiar html de les publicacions i els comentaris~~
 - [X] ~~Millorar contadors (fer que en buscar o mostrar algo només es mostrin N i al apretar un boto es mostrin N més)~~;
