@@ -18,7 +18,6 @@
 - [X] ~~Poder eliminar contactes al crear un grup~~;
 - [ ] Pensar un millor nom;
 - [ ] Documentació del projecte;
-- [ ] Afegir informació en crear grup;
 - [X] ~~Cambiar foto usuari~~;
 - [ ] pagina web del projecte (acabar-la); 
 - [ ] Tractar data de la publicacio;
@@ -27,8 +26,6 @@
 - [ ] Revisar traducció
 - [X] ~~Crear recuperació de contrasenya~~
 - [ ] Mostrar publicacions en la tab resum
-- [ ] Notificacions push
-- [X] Guardar localment temas, contactes i grups --> DE MOMENT NO;
 - [ ] Afegir data als grups i al arribar una data que es borri;
 - [ ] Afegir contrasenya als grups publics;
 - [ ] Afegir events en el grup (Com un tipus de publicacio) --> lluc;
