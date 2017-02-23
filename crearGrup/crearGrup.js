@@ -71,10 +71,13 @@ require(['Clases/Error', 'Clases/Grup', 'Clases/Usuari'], function () {
 
         $("#radioButtonPrivat").click(function () {
             $('#btnContactesGrup').fadeIn();
+            $('#passGrupPublicDiv').hide();
         });
 
         $("#radioButtonPublic").click(function () {
             $('#btnContactesGrup').hide();
+            $('#passGrupPublicDiv').fadeIn();
+            $('#inputPassGrupPublic').val('');
             usuarisGrup = [];
             usuarisGrup[0] = usuari.idUsuari;
         });
@@ -97,15 +100,27 @@ require(['Clases/Error', 'Clases/Grup', 'Clases/Usuari'], function () {
             $('#modalInfo').modal('show');
         });
 
+        $('#checkboxGrupWithPass').click(function() {
+            if ($(this).is(':checked')) {
+                $('.passFormDiv').fadeIn();
+            }
+            else {
+                $('.passFormDiv').hide();
+                $('#inputPassGrupPublic').val('');
+            }
+        });
+
         $('#btnCrearGrup').click(function () {
             var nomGrup = document.getElementById("inputNomGrup").value;;
             if (nomGrup == "") {
                 //Error.showError("Error al conectar-se al servidor."); xxxx;
-            } else {
+            } 
+            else {
                 var tipus = 0;
                 if ($("#radioButtonPrivat").is(':checked')) {
                     tipus = 1; //grup privat
                 }
+
                 if (temesGrup.length == 0 && tipus == 0) {
                     Error.showError(__("temesLength"));
                 } 
@@ -118,18 +133,18 @@ require(['Clases/Error', 'Clases/Grup', 'Clases/Usuari'], function () {
                             cache: false,
                             success: function (data) {
                                 if(data == 0) {  //no existeix, crear-lo;
-                                    $.ajax({
-                                        type: "POST",
-                                        url: urlServer + "/insert/afegirGrup.php?nomGrup=" + nomGrup + "&tipus=" + tipus + "&usuarisGrup=" + usuarisGrup + "&temesGrup=" + temesGrup,
-                                        dataType: 'json',
-                                        cache: false,
-                                        success: function (data) {
-                                            cambiPag('index.html');
-                                        },
-                                        error: function (xhr, status, error) {
-                                            Error.showError(__("errorServerOut"));
+                                    if ($("#checkboxGrupWithPass").is(':checked')) {
+                                        var pass = $('#inputPassGrupPublic').val();
+                                        if (pass == '') {
+                                            alert("No password");
                                         }
-                                    });
+                                        else {
+                                            Grup.crearGrup(nomGrup, tipus, usuarisGrup, temesGrup, pass);
+                                        }
+                                    }
+                                    else {
+                                        Grup.crearGrup(nomGrup, tipus, usuarisGrup, temesGrup, 0);
+                                    }
                                 }
                                 else {
                                     $('.errorLogin').text(__("errorGrupExist"));
@@ -141,21 +156,7 @@ require(['Clases/Error', 'Clases/Grup', 'Clases/Usuari'], function () {
                         });
                     }
                     else { //grup privat;
-                       $.ajax({
-                            type: "POST",
-                            url: urlServer + "/insert/afegirGrup.php?nomGrup=" + nomGrup + "&tipus=" + tipus + "&usuarisGrup=" + usuarisGrup + "&temesGrup=" + temesGrup,
-                            dataType: 'json',
-                            cache: false,
-                            success: function (data) {
-                                if (data == 3) {
-                                   alert(__('stringUsuarisNoAfegits')); 
-                                }
-                                cambiPag('index.html');
-                            },
-                            error: function (xhr, status, error) {
-                                Error.showError(__("errorServerOut"));
-                            }
-                        }); 
+                       Grup.crearGrup(nomGrup, tipus, usuarisGrup, temesGrup, 0); 
                     }
                 }
             }

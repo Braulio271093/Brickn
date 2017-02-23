@@ -46,6 +46,24 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="modalPassword" tabindex="-1" role="dialog" data-pass="" data-grup="">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title translate" id="modalPassTitle">{{stringIntroduirPasswordGrup}}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" placeholder="Password..." id="inputPassword">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default translate" data-dismiss="modal">{{stringTancar}}</button>
+                        <button type="button" class="btn btn-danger translate" id="buttonAcceptarPasswordGrup">{{stringAcceptar}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
         <script src="../baseT-js/jquery/hammer.js"></script>

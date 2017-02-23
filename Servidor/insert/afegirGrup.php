@@ -6,8 +6,9 @@
     $tipus = $_GET['tipus'];
     $usuarisGrup = $_GET['usuarisGrup'];
     $temesGrup = $_GET['temesGrup'];
+    $pass = $_GET['pass'];
 
-    $sql = "INSERT INTO grup (nom, tipus) VALUES ('$nomGrup', $tipus)"; //crear el grup
+    $sql = "INSERT INTO grup (nom, tipus, pass) VALUES ('$nomGrup', $tipus, '$pass')"; //crear el grup
 	if (mysqli_query($conn, $sql)) {
 		$sql = "SELECT id FROM grup WHERE nom = '$nomGrup' AND tipus = $tipus"; //obtenir la id del nou grup;
         $result = mysqli_query($conn, $sql);

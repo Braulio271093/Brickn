@@ -91,9 +91,14 @@ class Grup {
      * @param idGrup
      * @param nomGrup
      */
-    static toHtmlForBuscar(idGrup, nomGrup) {
-        var str = '<div class="grup grupBuscar" data-id="' + idGrup + '">';
-        str += '<div class="grupPhoto">';
+    static toHtmlForBuscar(idGrup, nomGrup, pass) {
+        var str = '<div class="grup grupBuscar" data-id="' + idGrup + '" data-pass="' + pass + '">';
+        str += '<div class="grupPhoto" style="position: relative">';
+        if (pass != 0) {
+            str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C; height: 20px;">' ;
+            str += '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>';
+            str += '</span>';
+        }
         str += '<img src="../baseT-css/img/nofoto.png" alt="..." class="img-circle imgGrup" height="60px" width="60px">';
         str += '</div>';
         str += '<div class="grupNom">';
@@ -239,6 +244,29 @@ class Grup {
             '<button type="button" class="buttonNoStyle buttonMesPublicacions" aria-label="Left Align">' +
                 '<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>' +
             '</button></div>'
+    }
+
+    /**
+     * Afegir un grup a la base de dades;
+     * @param nomGrup
+     * @param tipus
+     * @param usuarisGrup
+     * @param temesGrup
+     * @param pass
+     */
+    static crearGrup(nomGrup, tipus, usuarisGrup, temesGrup, pass) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/insert/afegirGrup.php?nomGrup=" + nomGrup + "&tipus=" + tipus + "&usuarisGrup=" + usuarisGrup + "&temesGrup=" + temesGrup + "&pass=" + pass,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                cambiPag('index.html');
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
     }
  }
 

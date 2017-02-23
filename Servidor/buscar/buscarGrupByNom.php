@@ -10,7 +10,7 @@
     $q = $_GET['q'];
 	$idUsuari = $_GET['idUsuari'];
 
-    $sql = "SELECT grup.id, grup.nom FROM grup JOIN usuari_grup ON usuari_grup.idGrup = grup.id WHERE grup.tipus = 0 
+    $sql = "SELECT grup.id, grup.nom, grup.pass FROM grup JOIN usuari_grup ON usuari_grup.idGrup = grup.id WHERE grup.tipus = 0 
             AND grup.nom LIKE '%$q%' AND usuari_grup.idUsuari != $idUsuari ";
     $resultat = mysqli_query($conn, $sql);
 	$res = [];
@@ -18,7 +18,7 @@
 
 	if (mysqli_num_rows($resultat) > 0) {
 		while ($row = mysqli_fetch_row($resultat)) {
-            $str[$i] = ["idGrup" => $row[0], "nomGrup" => $row[1]];
+            $str[$i] = ["idGrup" => $row[0], "nomGrup" => $row[1], "pass" => $row[2]];
 			$i++; 
 		}
 		echo json_encode($str);

@@ -408,6 +408,21 @@
  	'{ "cat" : "Cap sol·licitut" },' + 
  	'{ "es"  : "Ninguna solicitud" },' + 
 	'{ "en"  : "Any X"}' + 
+ '],' +
+  '"stringAcceptar" : [' + 
+ 	'{ "cat" : "Acceptar" },' + 
+ 	'{ "es"  : "Aceptar" },' + 
+	'{ "en"  : "Accept"}' + 
+ '],' +
+  '"stringTancar" : [' + 
+ 	'{ "cat" : "Tancar" },' + 
+ 	'{ "es"  : "Cerrar" },' + 
+	'{ "en"  : "Close"}' + 
+ '],' +
+  '"stringIntroduirPasswordGrup" : [' + 
+ 	'{ "cat" : "Introdueix la contrasenya daquest grup: " },' + 
+ 	'{ "es"  : "Introduce la contraseña de este grupo:  " },' + 
+	'{ "en"  : "Enter the password of the group: "}' + 
  ']' +
 '}';
 
