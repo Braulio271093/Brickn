@@ -2,26 +2,59 @@ require(['Clases/Grup'], function() {
     $(document).ready(function() {
 
         var grups = []; //ids dels grups al que l'usuari es vol unir;
+        var buscarPerNom = true;
+
+        $('.tabSelector').click(function() {
+            $('.tabSelector').removeClass('selected');
+            $(this).addClass('selected');
+            var tab = $(this).data('tab');
+            if (tab == 'resultatsNom') {
+                $('#resultatsTema').hide();
+                $('#' + tab).fadeIn();
+                buscarPerNom = true;
+            }
+            else {
+                $('#resultatsNom').hide();
+                $('#' + tab).fadeIn();
+                buscarPerNom = false;
+            }
+        });
+
+        $('.body').hammer().on("swipeleft", function () {
+            $('.tabNav').find('p').toggleClass('selected');
+            $('#resultatsNom').hide();
+            $('#resultatsTema').fadeIn();
+            buscarPerNom = false;
+        });
+
+        $('.body').hammer().on("swiperight", function () {
+            $('.tabNav').find('p').toggleClass('selected');
+            $('#resultatsTema').hide();
+            $('#resultatsNom').fadeIn();
+            buscarPerNom = true;
+        });
 
         $('#buttonBuscar').click(function() {
-            $('#resultats').empty();
-            var nom = $('#inputNomGrup').val();
-            var tema = $('#inputTemaGrup').val();
-            if (nom != '') {
-                Grup.buscarGrupByNom(nom, usuari.idUsuari, function(data) {
-                    for (var i = 0; i < data.length && i < 5; i++) {
-                        var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
-                        $('#resultats').append(g);
-                    }
-                });
-            }
-            if (tema != '') {
-               Grup.buscarGrupByTema(tema, usuari.idUsuari, function(data) {
-                   for (var i = 0; i < data.length && i < 5; i++) {
-                       var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
-                       $('#resultats').append(g);
-                   }
-               }) 
+            var buscar = $('#inputBuscar').val();
+            if (buscar != '') {
+                if (buscarPerNom) {
+                    $('#resultatsNom').empty();
+                    Grup.buscarGrupByNom(buscar, usuari.idUsuari, function(data) {
+                        for (var i = 0; i < data.length && i < 5; i++) {
+                            var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
+                            $('#resultatsNom').append(g);
+                        }
+                    });
+                }
+                else {
+                    $('#resultatsTema').empty();
+                    Grup.buscarGrupByTema(buscar, usuari.idUsuari, function (data) {
+                        for (var i = 0; i < data.length && i < 5; i++) {
+                            var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
+                            $('#resultatsTema').append(g);
+                        }
+                    });
+                }
             }
         });
 

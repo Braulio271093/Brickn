@@ -24,10 +24,11 @@
         <div class="body">
             <div style="margin: 10px">
                 <div class="form-group">
-                    <label for="inputNomGrup" class="translate">{{stringBuscarPerNom}}</label>
-                    <input type="text" class="form-control" id="inputNomGrup" placeholder="">
-                    <label for="inputTemaGrup" class="translate">{{stringBuscarPerTema}}</label>
-                    <input type="text" class="form-control" id="inputTemaGrup" placeholder="">
+                    <div for="inputNomGrup" class="tabNav" style="font-size: 16px;">
+                        <p style="float: left" class="tabSelector selected translate" data-tab="resultatsNom">{{stringBuscarPerNom}}</p>
+                        <p style="float: right" class="tabSelector translate" data-tab="resultatsTema">{{stringBuscarPerTema}}</p>
+                    </div>
+                    <input type="text" class="form-control" id="inputBuscar" placeholder="Buscar...">
                 </div>
 
                 <button type="button" class="btn btn-danger translate" id="buttonBuscar">{{stringBuscar}}</button>
@@ -37,8 +38,13 @@
                     </div>
                 <div class="errorShow" style="margin-top: 10px"></div> <!-- En cas de que hi hagi un error es mostra en aquest div -->
             </div>
-            <div style="margin: 10px; border-top: 1px solid rgba(0,0,0,0.125)" id="resultats">
 
+            <div style="margin: 10px; border-top: 1px solid rgba(0,0,0,0.125)" id="resultatsNom">
+
+            </div>
+
+            <div style="margin: 10px; border-top: 1px solid rgba(0,0,0,0.125)" class="ocult" id="resultatsTema">
+                
             </div>
 
             <div class="input-group bottomBar">
