@@ -13,7 +13,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
      * Quan s'han cargat les publicacions, exevutar aquesta funcio;
      */
     function mostrarPagina() {
-
+        
         //Afegir les publicacions en pantalla
         for (var i = 0; i < publicacions.length && i < 5; i++) {
             var p = publicacions[i];

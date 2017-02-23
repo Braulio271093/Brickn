@@ -117,3 +117,18 @@ body {
     margin-bottom: 80px;
     margin-left: 47.5%;
 }
+
+.miniHeaderRight button {
+    position: fixed;
+    margin: 0px;
+    z-index: 1;
+    font-size: 20px;
+    top: 6px;
+}
+.miniHeaderRight button:first-child {
+    right: 2.5px;
+}
+
+.miniHeaderRight button:nth-child(2) {
+    right: 40px;
+}
