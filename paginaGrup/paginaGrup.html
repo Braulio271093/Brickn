@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
         <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
         <link rel="stylesheet" type="text/css" href="paginaGrup.css">
+        <link href="../baseT-css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
         <title>paginaGrup</title>
     </head>
     <body style="display: none"> 
@@ -31,14 +32,14 @@
                             <li class="buttonMenuOpcions" data-id="1">Info. del grup</li>
                         </ul>
                     </div>
-                    <button type="button" class="buttonNoStyle" aria-label="Left Align">
+                    <button type="button" class="buttonNoStyle" aria-label="Left Align" data-toggle="modal" data-target="#modalEvento">
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                     </button>
                 </div>
             </div>
 
             <div class="publicacions">
-
+                
             </div><!-- final publicacions -->
 
 
@@ -99,13 +100,80 @@
         </div>
 
 
+    <!-- Modal dels events -->
+<div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Nuevo evento</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" class="form-horizontal" role="form">
+                    <div class="form-group" style="margin-left: 15%;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="InputName" style="margin-left: 60px">Fecha inicio</label>
+                                <div id="startDate"></div>
+                            </div>
+                            <hr>
+                            <div class="col-md-6">
+                                <label for="InputName" style="margin-left: 60px">Fecha final</label>
+                                <div id="endDAte"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="InputName" style="margin-left: 5%;">Nombre del evento</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="inputName" placeholder="Nombre">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="InputName" style="margin-left: 5%;">Descripción</label>
+                        <br/>
+                        <div class="col-md-6">
+                            <textarea id="descripcion" class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default translate" data-dismiss="modal">{{stringTancar}}</button>
+                <button type="button" class="btn btn-danger">Crear evento</button>
+            </div>
+        </div>
+    </div>
+</div>
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
         <script src="https://hammerjs.github.io/dist/hammer.js"></script>
         <script src="../baseT-js/jquery/jquery.hammer.js"></script>
+        <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="../baseT-js/bootstrap/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
         <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
         <script type="text/javascript" src="../baseT-js/baseT.js"></script>
         <script type="text/javascript" src="paginaGrup.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('#startDate').datetimepicker({
+                    language:  'es',
+                    inline: true,
+                    todayBtn:  1,
+                    weekStart: 1,
+                    todayHighlight: 1,
+                });
+                $('#endDAte').datetimepicker({
+                    language:  'es',
+                    inline: true,
+                    weekStart: 1,
+                    todayHighlight: 1,
+                });
+                });
+        </script>
     </body>
 </html>
