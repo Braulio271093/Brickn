@@ -79,7 +79,7 @@ create table event (
     nom VARCHAR(50) not null,
     descripcio VARCHAR(120) not null,
     dateStart DATETIME not null,
-    dateEnd DATETIME not null,
+    dateEnd DATETIME not null
 );
 
 create table usuari_event(
