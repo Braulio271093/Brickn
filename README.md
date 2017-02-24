@@ -36,7 +36,7 @@
 - [X] ~~Afegir acceptar contacte~~;
 - [ ] permetre ' a les publicacions i comentaris;
 - [X] ~~solucionar error nom grups~~ 
-- [ ] opcions admin dintre del grup;
+- [ ] opcions dintre del grup;
 
 **Històries verticals**:
 
