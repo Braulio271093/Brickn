@@ -8,12 +8,22 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
 
     
     Grup.getDadesGrup(idGrup, publicacions, mostrarPagina); //obtenir les publicacions del grup i altres;
+    Grup.getMembresGrup(idGrup, function(membres) {
+        for (var i = 0; i < membres.length; i++) {
+            $('#participantsGrupDiv').find('ul').append('<li>' +
+                '<img src="../baseT-css/img/nofoto.png" class="img-circle" width="50px" height="50px" style="margin-right: 10px">' +
+                    membres[i].nomUsuari +
+                '</li>');
+        }
+    });
 
     /**
      * Quan s'han cargat les publicacions, exevutar aquesta funcio;
      */
     function mostrarPagina() {
-        
+         
+
+
         //Afegir les publicacions en pantalla
         for (var i = 0; i < publicacions.length && i < 5; i++) {
             var p = publicacions[i];
@@ -163,6 +173,25 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                         $('body').find('[data-id="' + idPublicacio + '"]').find('.comentarisPublicacio').append(html);
                     }
                 });
+            });
+
+            $('#buttonBackToGrup').click(function() {
+                $('#infoGrup').hide();
+                $('#grup').fadeIn();
+            });
+
+            $('.buttonMenuOpcions').click(function() {
+                var opcio = $(this).data('id');
+                switch (opcio) {
+                    case 1: //info del grup;
+                        $('#grup').hide();
+                        $('#infoGrup').fadeIn();
+                        break;
+                }
+            });
+
+            $('#buttonSortirGrup').click(function() {
+                usuari.eliminarseGrup(idGrup);
             });
         });
     }

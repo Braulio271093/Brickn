@@ -268,5 +268,20 @@ class Grup {
             }
         });
     }
+
+    static getMembresGrup(idGrup, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/get/getMembresGrup.php?idGrup=" + idGrup,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
+    }
  }
 

@@ -12,64 +12,92 @@
         <title>paginaGrup</title>
     </head>
     <body style="display: none"> 
-        <div class="miniHeader">
-            <div class="miniHeaderLeft">
-                <button type="button" class="btnBack buttonNoStyle" id="btnBackToIndex">
+        <div id="grup">
+            <div class="miniHeader">
+                <div class="miniHeaderLeft">
+                    <button type="button" class="btnBack buttonNoStyle" id="btnBackToIndex">
+                        <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                    </button>
+                    <p class="miniHeaderLeftTitle">
+                        Nom del grup
+                    </p>
+                </div>
+                <div class="miniHeaderRight">
+                    <div class="dropdown">
+                        <button type="button" class="buttonNoStyle" aria-label="Left Align" id="buttonOpcionsGrup" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+                        </button>
+                        <ul class="dropdown-menu pull-right" aria-labelledby="buttonOpcionsGrup" style="color: black">
+                            <li class="buttonMenuOpcions" data-id="1">Info. del grup</li>
+                        </ul>
+                    </div>
+                    <button type="button" class="buttonNoStyle" aria-label="Left Align">
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="publicacions">
+
+            </div><!-- final publicacions -->
+
+
+            <div class="input-group bottomBar">
+                <input type="text" class="form-control" id="inputPublicar" placeholder="Escriu algo...">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-danger" id="buttonPublicarFoto" data-toggle="popover" data-placement="left">
+                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-danger" type="button" id="buttonPublicar">Publicar</button>
+                </span>
+            </div>
+
+            <div class="modal fade" id="modalLoading" tabindex="-1" role="dialog" style="text-align: center;">
+                <div class="modal-dialog modal-sm modalImg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body" style="text-align: center; ">
+                            <img src="../baseT-css/img/loading_icon.gif" width="120px" height="120px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal (per mostrar la foto en gran) -->
+            <div class="modal fade" id="modalImg" tabindex="-1" role="dialog" style="text-align: center">
+                <div class="modal-dialog modal-sm modalImg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body" style="text-align: center">
+                            <img src="../baseT-css/img/nofoto.png" width="160px" height="160px" id="modalImgSrc" alt="Processan...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info del grup -->
+        <div id="infoGrup" style="display: none">
+            <div id="imgGrupDiv">
+                <button type="button" class="btnBack buttonNoStyle" id="buttonBackToGrup">
                     <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
                 </button>
-                <p class="miniHeaderLeftTitle">
-                    Nom del grup
-                </p>
+                <img src="../baseT-css/img/nofoto.png">
             </div>
-            <div class="miniHeaderRight">
-                <button type="button" class="buttonNoStyle" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
+
+            <div id="participantsGrupDiv">
+                <p>Participants</p>
+                <ul>
+                    
+                </ul>
+            </div>
+
+            <div id="eliminarseGrup">
+                <button type="button" class="buttonNoStyle" id="buttonSortirGrup" aria-label="Left Align" style="font-size: 24px">
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    Sortir del grup
                 </button>
-                <button type="button" class="buttonNoStyle" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                </button>
             </div>
         </div>
 
-        <div class="publicacions">
-
-        </div><!-- final publicacions -->
-
-        <div class="xat ocult">
-
-        </div>
-
-
-        <div class="input-group bottomBar">
-            <input type="text" class="form-control" id="inputPublicar" placeholder="Escriu algo...">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-danger" id="buttonPublicarFoto" data-toggle="popover" data-placement="left">
-                        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-                </button>
-                <button class="btn btn-danger" type="button" id="buttonPublicar">Publicar</button>
-            </span>
-        </div>
-
-        <div class="modal fade" id="modalLoading" tabindex="-1" role="dialog" style="text-align: center;">
-            <div class="modal-dialog modal-sm modalImg" role="document">
-                <div class="modal-content">
-                    <div class="modal-body" style="text-align: center; ">
-                        <img src="../baseT-css/img/loading_icon.gif" width="120px" height="120px">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-         <!-- Modal (per mostrar la foto en gran) -->
-        <div class="modal fade" id="modalImg" tabindex="-1" role="dialog" style="text-align: center">
-            <div class="modal-dialog modal-sm modalImg" role="document">
-                <div class="modal-content">
-                    <div class="modal-body" style="text-align: center">
-                        <img src="../baseT-css/img/nofoto.png" width="160px" height="160px" id="modalImgSrc" alt="Processan...">
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>

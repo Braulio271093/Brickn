@@ -133,4 +133,14 @@ class Utils {
                     '</button>'+
                ' </li>'
     }
+
+    /**
+     * Opcions d'un administrador dintre un grup;
+     */
+    static opcionsAdmin() {
+        var opcions = [
+            ''
+        ]
+        return opcions;
+    }
 }

@@ -132,3 +132,52 @@ body {
 .miniHeaderRight button:nth-child(2) {
     right: 40px;
 }
+
+#buttonBackToGrup {
+    float: left; 
+    z-index: 1; 
+    position: absolute; 
+    margin-top: 5px; 
+    font-size: 24px;
+    margin-left: 0px;
+}
+
+#imgGrupDiv img{
+    height: 40%;
+    width: 100%;  
+    position: relative;  
+}
+
+#participantsGrupDiv {
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#participantsGrupDiv p {
+    color: #D51C1C;
+    font-size: 20px;
+}
+
+#participantsGrupDiv ul {
+    list-style: none;
+    margin-left: 0px;
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+#participantsGrupDiv ul li {
+    font-size: 16px;
+    padding: 10px;
+    margin-left: 0px;
+}
+
+#eliminarseGrup {
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#infoGrup div {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
