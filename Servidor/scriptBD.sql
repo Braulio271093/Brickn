@@ -73,6 +73,22 @@ create table publicacio (
     FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE
 );
 
+create table event (
+    id INT(6) unsigned PRIMARY KEY auto_increment,
+    idGrup INT(6) unsigned not null,
+    nom VARCHAR(50) not null,
+    descripcio VARCHAR(120) not null,
+    dateStart DATETIME not null,
+    dateEnd DATETIME not null,
+);
+
+create table usuari_event(
+    idUsuari INT(6) unsigned,
+    idEvent INT(6) unsigned,
+    FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE,
+    FOREIGN KEY (idEvent) REFERENCES event(id) ON DELETE CASCADE
+);
+
 create table comentari (
     idPublicacio INT(6) unsigned,
     idUsuari INT(6) unsigned not null,
@@ -81,3 +97,4 @@ create table comentari (
     FOREIGN KEY (idPublicacio) REFERENCES publicacio(id) ON DELETE CASCADE, 
     FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE
 );
+
