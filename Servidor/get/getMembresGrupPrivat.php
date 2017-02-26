@@ -9,7 +9,7 @@
             FROM usuari 
             JOIN usuari_grup 
 			ON usuari.id = usuari_grup.idUsuari
-            WHERE usuari_grup.idGrup = $idGrup;";
+            WHERE usuari_grup.idGrup = $idGrup";
             
 	$resultat = mysqli_query($conn, $sql);
 	$res = array();
@@ -19,7 +19,6 @@
     {
 		while ($row = mysqli_fetch_row($resultat)) 
         {
-			//$res[$i] = $row[0];
             $str[$i] = array("nomUsuari" => $row[0]);
 			$i++; 
 		}
@@ -28,4 +27,5 @@
 	else {
 		echo 0;
 	}
+	mysqli_close($conn);
 ?>

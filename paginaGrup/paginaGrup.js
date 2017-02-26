@@ -4,14 +4,22 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
     var idGrup = $_GET['idGrup'];
     var publicacions = [];
 
-    usuari.actualitzarUltimAcces(idGrup);
+    usuari.actualitzarUltimAcces(idGrup); //set ultim access al grup del usuari;
 
-    
+    //Cargar les opcions del admin si ho és;
+    usuari.isAdmin(idGrup, function(isAdmin) {
+        if (isAdmin) {
+            $('.opcioAdmin').show();
+        }
+    });
+
+    //obtenir les publicacions del grup; al obtenir-les executar mostrarPagina;
     Grup.getDadesGrup(idGrup, publicacions, mostrarPagina); //obtenir les publicacions del grup i altres;
+    //obtenir els membres del grup;
     Grup.getMembresGrup(idGrup, function(membres) {
         for (var i = 0; i < membres.length; i++) {
             $('#participantsGrupDiv').find('ul').append('<li>' +
-                '<img src="../baseT-css/img/nofoto.png" class="img-circle" width="50px" height="50px" style="margin-right: 10px">' +
+                '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
                     membres[i].nomUsuari +
                 '</li>');
         }
@@ -22,16 +30,13 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
      */
     function mostrarPagina() {
          
-
-
         //Afegir les publicacions en pantalla
         for (var i = 0; i < publicacions.length && i < 5; i++) {
             var p = publicacions[i];
             $('.publicacions').append(p.publicacioToHtml());
         }
-        if (publicacions.length >= 5) {
-            var p = publicacions[4];
-            $('div').find('[data-id="' + p.id + '"]').css('margin-bottom', '0px');
+        if (publicacions.length >= 5) { //afegir boto mostrar mes publicacions;
+            $('.publicacions .publicacio').last().css('margin-bottom', '0px');
             $('body').append(Grup.buttonMesToHtml());
         }        
         $('body').fadeIn();

@@ -14,7 +14,7 @@
     </head>
     <body style="display: none"> 
         <div id="grup">
-            <div class="miniHeader">
+            <div class="miniHeader navbar navbar-fixed-top">
                 <div class="miniHeaderLeft">
                     <button type="button" class="btnBack buttonNoStyle" id="btnBackToIndex">
                         <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
@@ -28,7 +28,7 @@
                         <button type="button" class="buttonNoStyle" aria-label="Left Align" id="buttonOpcionsGrup" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
                         </button>
-                        <ul class="dropdown-menu pull-right" aria-labelledby="buttonOpcionsGrup" style="color: black">
+                        <ul class="dropdown-menu pull-right" aria-labelledby="buttonOpcionsGrup" style="color: black; margin-top: 40px; padding: 10px; font-size: 16px; ">
                             <li class="buttonMenuOpcions" data-id="1">Info. del grup</li>
                         </ul>
                     </div>
@@ -63,16 +63,6 @@
                 </div>
             </div>
 
-            <!-- Modal (per mostrar la foto en gran) -->
-            <div class="modal fade" id="modalImg" tabindex="-1" role="dialog" style="text-align: center">
-                <div class="modal-dialog modal-sm modalImg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body" style="text-align: center">
-                            <img src="../baseT-css/img/nofoto.png" width="160px" height="160px" id="modalImgSrc" alt="Processan...">
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Info del grup -->
@@ -91,7 +81,14 @@
                 </ul>
             </div>
 
-            <div id="eliminarseGrup">
+            <div id="afegirAlGrup" class="boxOpcions ocult opcioAdmin">
+                <button type="button" class="buttonNoStyle" id="buttonAddUsuariGrup" aria-label="Left Align" style="font-size: 24px">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    Afegir contacte
+                </button>
+            </div>
+
+            <div class="boxOpcions" id="eliminarseGrup">
                 <button type="button" class="buttonNoStyle" id="buttonSortirGrup" aria-label="Left Align" style="font-size: 24px">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                     Sortir del grup
@@ -99,8 +96,18 @@
             </div>
         </div>
 
+<!-- Modal (per mostrar la foto en gran) -->
+<div class="modal fade" id="modalImg" tabindex="-1" role="dialog" style="text-align: center">
+    <div class="modal-dialog modal-sm modalImg" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+                <img src="../baseT-css/img/nofoto.png" width="160px" height="160px" id="modalImgSrc" alt="Processan...">
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- Modal dels events -->
+<!-- Modal dels events -->
 <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -148,7 +155,7 @@
     </div>
 </div>
 
-        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="../cordova.js"></script>
         <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
         <script src="https://hammerjs.github.io/dist/hammer.js"></script>
