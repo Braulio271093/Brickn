@@ -125,19 +125,19 @@
 	'{ "en"  : "Log Out"}' + 
  '],' + 
 '"stringResum" : [' + 
- 	'{ "cat" : "Resum" },' + 
- 	'{ "es"  : "Resumen" },' + 
-	'{ "en"  : "Summary"}' + 
+ 	'{ "cat" : "MUR" },' + 
+ 	'{ "es"  : "MURO" },' + 
+	'{ "en"  : "WALL"}' + 
  '],' + 
 '"stringGrups" : [' + 
- 	'{ "cat" : "Grups" },' + 
- 	'{ "es"  : "Grupos" },' + 
-	'{ "en"  : "Groups"}' + 
+ 	'{ "cat" : "GRUPS" },' + 
+ 	'{ "es"  : "GRUPOS" },' + 
+	'{ "en"  : "GROUPS"}' + 
  '],' + 
 '"stringMon" : [' + 
- 	'{ "cat" : "Mon" },' + 
- 	'{ "es"  : "Mundo" },' + 
-	'{ "en"  : "World"}' + 
+ 	'{ "cat" : "MÓN" },' + 
+ 	'{ "es"  : "MUNDO" },' + 
+	'{ "en"  : "WORLD"}' + 
  '],' + 
 '"stringRegistrarse" : [' + 
  	'{ "cat" : "Registrar-se" },' + 
