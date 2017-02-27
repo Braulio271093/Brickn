@@ -5,12 +5,13 @@
 }
 .header { /*header de la aplicacio, amb clase i no fen servir la tag,*/
     width: 100%;
-    max-height: 85px;
-    min-height: 85px;
+    max-height: 100px;
+    min-height: 100px;
     box-sizing: border-box;
     background-color: #D51C1C;
     color: white;
     border-bottom: 2px solid #E2E2E2;
+    font-size: 16px;
 }
 
 .headerTop { /*part superior del header; */
@@ -45,18 +46,18 @@
 
 .headerBottom { /*part inferior */
     width: 100%;
-    max-height: 42px;
-    min-height: 42px;
+    max-height: 62px;
+    min-height: 62px;
 }
 
 .headerBottomPart { /* la part inferior es divideix en 3 parts */
     float: left;
     min-width: 33.33%;
     max-width: 33.33%;
-    min-height: 42px;
-    max-height: 42px;
+    min-height: 56px;
+    max-height: 56px;
     box-sizing: border-box;
-    padding: 10px 10px 10px 10px;
+    padding: 23.5px 10px 10px 10px;
     text-align: center;
     color: #9F1515;
     font-weight: 800;
