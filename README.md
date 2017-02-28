@@ -27,7 +27,6 @@
 - [X] ~~Afegir acceptar contacte~~;
 - [X] ~~solucionar error nom grups~~ 
 
-
 - [ ] Pensar un millor nom;
 - [ ] Documentació del projecte;
 - [ ] pagina web del projecte (acabar-la); 
