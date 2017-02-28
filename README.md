@@ -62,5 +62,6 @@ Història 4: (**15/04/2017**)
 - [ ] Xat
 - [ ] Crear i mostrar grups públics per proximitat;
 - [ ] albums
+- [ ] Filtre de temas
 
 Història 5: (**1/05/2017) --> Entrega Projecte**
