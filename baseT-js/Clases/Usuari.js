@@ -454,4 +454,42 @@ class Usuari {
             }
         });
     }
+
+    /**
+     * Comprovar si l'usuari es admin d'un grup;
+     * @param idGrup
+     */
+    isAdmin(idGrup, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/get/usuariIsAdmin.php?idUsuari=" + this.idUsuari + "&idGrup=" + idGrup,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(error);
+            }
+        });
+    }
+
+    /**
+     * Obtenir tots els grups dels temes que te selecionat el usuari; es fa servir en el buscador;
+     * @param onSucces
+     */
+    getGrupsTema(onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/get/getGrupsByTemasUsuari.php?idUsuari=" + this.idUsuari,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(error);
+            }
+        });
+    }
 }
