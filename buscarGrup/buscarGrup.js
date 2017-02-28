@@ -10,11 +10,13 @@ require(['Clases/Grup'], function() {
             var tab = $(this).data('tab');
             if (tab == 'resultatsNom') {
                 $('#resultatsTema').hide();
+                $('#buttonBuscarTeusTemas').hide();
                 $('#' + tab).fadeIn();
                 buscarPerNom = true;
             }
             else {
                 $('#resultatsNom').hide();
+                $('#buttonBuscarTeusTemas').fadeIn();
                 $('#' + tab).fadeIn();
                 buscarPerNom = false;
             }
@@ -24,6 +26,7 @@ require(['Clases/Grup'], function() {
             $('.tabNav').find('p').toggleClass('selected');
             $('#resultatsNom').hide();
             $('#resultatsTema').fadeIn();
+            $('#buttonBuscarTeusTemas').fadeIn();
             buscarPerNom = false;
         });
 
@@ -31,6 +34,7 @@ require(['Clases/Grup'], function() {
             $('.tabNav').find('p').toggleClass('selected');
             $('#resultatsTema').hide();
             $('#resultatsNom').fadeIn();
+            $('#buttonBuscarTeusTemas').hide();
             buscarPerNom = true;
         });
 
@@ -44,6 +48,9 @@ require(['Clases/Grup'], function() {
                             var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
                             $('#resultatsNom').append(g);
                         }
+                        if (data == 0) {
+                            noResultats('resultatsNom');
+                        }
                     });
                 }
                 else {
@@ -53,9 +60,25 @@ require(['Clases/Grup'], function() {
                             var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
                             $('#resultatsTema').append(g);
                         }
+                        if (data == 0) {
+                            noResultats('resultatsTema');
+                        }
                     });
                 }
             }
+        });
+
+        $('#buttonBuscarTeusTemas').click(function() {
+            usuari.getGrupsTema(function(data) {
+                $('#resultatsTema').empty();
+               for (var i = 0; i < data.length && i < 5; i++) {
+                   var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
+                   $('#resultatsTema').append(g);
+               }
+               if (data == 0) {
+                   noResultats('resultatsTema');
+               }
+            });
         });
 
         $(document).on('click', '.grup', function() {
@@ -102,3 +125,8 @@ require(['Clases/Grup'], function() {
         });
     });
 });
+
+
+function noResultats(tag) {
+    $('#' + tag).append('<p style="font-size 14px; margin-top: 5px">' + __('stringNoResultats') + '<p>')
+}
