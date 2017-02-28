@@ -8,8 +8,9 @@
     header("Access-Control-Allow-Origin: *");
 
     $q = $_GET['nom']; //nom que busques;
+	$idUsuari = $_GET['idUsuari'];
 
-    $sql = "SELECT nomUsuari FROM usuari WHERE nomUsuari LIKE '%$q%'";
+    $sql = "SELECT nomUsuari FROM usuari WHERE nomUsuari LIKE '%$q%' AND id != $idUsuari";
 	$resultat = mysqli_query($conn, $sql);
     $res = array();
     $i = 0;
