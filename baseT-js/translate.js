@@ -423,6 +423,11 @@
  	'{ "cat" : "Introdueix la contrasenya daquest grup: " },' + 
  	'{ "es"  : "Introduce la contraseña de este grupo:  " },' + 
 	'{ "en"  : "Enter the password of the group: "}' + 
+ '],' +
+'"stringBuscarTeusTemas" : [' + 
+	'{ "cat" : "Mostrar per temes seleccionats" },' + 
+ 	'{ "es"  : "Mostrar por temas seleccionados" },' + 
+	'{ "en"  : "Show groups by selected topics"}' + 
  ']' +
 '}';
 
