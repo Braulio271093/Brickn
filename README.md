@@ -25,7 +25,7 @@
 - [X] ~~Millorar contadors (fer que en buscar o mostrar algo només es mostrin N i al apretar un boto es mostrin N més)~~;
 - [X] ~~Notificacions en cada grup~~
 - [X] ~~Afegir acceptar contacte~~;
-- [X] ~~solucionar error nom grups~~ 
+- [X] ~~solucionar error nom grups~~;
 
 - [ ] Pensar un millor nom;
 - [ ] Documentació del projecte;
