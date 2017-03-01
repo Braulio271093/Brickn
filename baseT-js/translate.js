@@ -428,6 +428,16 @@
 	'{ "cat" : "Mostrar per temes seleccionats" },' + 
  	'{ "es"  : "Mostrar por temas seleccionados" },' + 
 	'{ "en"  : "Show groups by selected topics"}' + 
+ '],' +
+ '"stringAhir" : [' + 
+	'{ "cat" : "Ahir" },' + 
+ 	'{ "es"  : "Ayer" },' + 
+	'{ "en"  : "Yesterday"}' + 
+ '],' +
+  '"stringAbans" : [' + 
+	'{ "cat" : "abans" },' + 
+ 	'{ "es"  : "antes" },' + 
+	'{ "en"  : "ago"}' + 
  ']' +
 '}';
 

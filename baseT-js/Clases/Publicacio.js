@@ -73,16 +73,16 @@ class Publicacio {
         if (dateNow.getDay() == date.getDay() && dateNow.getFullYear() == date.getFullYear()
             && dateNow.getMonth() == date.getMonth()) { //la publicacio s'ha fet en el mateix dia;
             if (date.getHours() == dateNow.getHours()) {
-                ret = (dateNow.getMinutes() - date.getMinutes()) + 'm ago';
+                ret = (dateNow.getMinutes() - date.getMinutes()) + 'm ' + __('stringAbans');
             }
             else {
-                ret = (dateNow.getHours() - date.getHours()) + "h ago";
+                ret = (dateNow.getHours() - date.getHours()) + "h " + __('stringAbans');
             }
         }
         else {
             var i = storage.getItem("idioma");
             if (date.getDay() + 1 == dateNow.getDay() && date.getFullYear() == dateNow.getFullYear() && date.getMonth() == dateNow.getMonth()) {
-                ret = 'ayer';
+                ret = __('stringAhir');
             }
             else {
                 if (i == 'en') { //any-mes-dia
