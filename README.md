@@ -27,8 +27,6 @@
 - [X] ~~Afegir acceptar contacte~~;
 - [x] ~~Tractar data de la publicacio~~;
 
-
-- [ ] Pensar un millor nom;
 - [ ] Documentació del projecte;
 - [ ] pagina web del projecte (acabar-la); 
 - [ ] Revisar traducció
