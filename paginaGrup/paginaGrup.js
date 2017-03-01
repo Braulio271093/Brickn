@@ -216,6 +216,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 })
             });
             $(document).on('click', '.removeContacte', function() {
+                Utils.deleteFromArray(nousUsuaris, $(this).parent().text());
                 $(this).parent().remove();
             });
             $('#buttonAfegirContactes').click(function() {

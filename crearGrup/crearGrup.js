@@ -17,7 +17,7 @@ require(['Clases/Error', 'Clases/Grup', 'Clases/Usuari'], function () {
         })
 
 
-        $('div').on('click', '.contacteUsuari', function() {
+        $(document).on('click', '.contacteUsuari', function() {
             var nom = $(this).text();
             Utils.getIdByNom(nom, function(id) {
                 if (!Utils.inArray(usuarisGrup, id)) {
@@ -27,7 +27,7 @@ require(['Clases/Error', 'Clases/Grup', 'Clases/Usuari'], function () {
             })
         });
 
-        $('div').on('click', '.tema', function() {
+        $(document).on('click', '.tema', function() {
             var nom = $(this).text();
             Utils.getIdByNomTema(nom, function(id) {
                 if (!Utils.inArray(temesGrup, id)) {
@@ -37,12 +37,12 @@ require(['Clases/Error', 'Clases/Grup', 'Clases/Usuari'], function () {
             })
         });
 
-        $('div').on('click', '.removeContacte', function() {
+        $(document).on('click', '.removeContacte', function() {
             Utils.deleteFromArray(usuarisGrup, $(this).parent().text());
             $(this).parent().remove();
         });
 
-        $('div').on('click', '.removeTema', function() {
+        $(document).on('click', '.removeTema', function() {
             Utils.deleteFromArray(temesGrup, $(this).parent().text());
             $(this).parent().remove();
         });
