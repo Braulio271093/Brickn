@@ -65,14 +65,35 @@ class Publicacio {
      * @param data de la publicacio;
      */
     convertirData(date) {
-        return date;
-        /*
-        var dateParts = date.split("-");
-        date = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
-        var dateNow = new Date();
-        if (dateNow.getDate() == date.getDate()) {
-            
-        }*/
+        var ret = "";
+
+        var t = date.split(/[- :]/); //YYYY, MM, DD, HH, mm, ss
+        date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]); //date de la bd;
+        var dateNow = new Date(); //data d'ara;
+        if (dateNow.getDay() == date.getDay() && dateNow.getFullYear() == date.getFullYear()
+            && dateNow.getMonth() == date.getMonth()) { //la publicacio s'ha fet en el mateix dia;
+            if (date.getHours() == dateNow.getHours()) {
+                ret = (dateNow.getMinutes() - date.getMinutes()) + 'm ago';
+            }
+            else {
+                ret = (dateNow.getHours() - date.getHours()) + "h ago";
+            }
+        }
+        else {
+            var i = storage.getItem("idioma");
+            if (date.getDay() + 1 == dateNow.getDay() && date.getFullYear() == dateNow.getFullYear() && date.getMonth() == dateNow.getMonth()) {
+                ret = 'ayer';
+            }
+            else {
+                if (i == 'en') { //any-mes-dia
+                    ret = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay();
+                }
+                else { //dia-mes-any
+                    ret = date.getDay() + "-" + date.getMonth() + "-" + date.getFullYear();
+                }
+            }
+        }        
+        return ret;
     }
 
     /**
