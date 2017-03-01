@@ -261,6 +261,9 @@ class Grup {
             dataType: 'json',
             cache: false,
             success: function (data) {
+                if (data == 3) {
+                    alert('No s\'han afegit tots els usuaris');
+                }
                 cambiPag('index.html');
             },
             error: function (xhr, status, error) {
@@ -276,6 +279,24 @@ class Grup {
             dataType: 'json',
             cache: false,
             success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
+    }
+
+    static afegirUsuarisGrup(idUsuari, usuarisGrup, idGrup, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/insert/afegirUsuarisGrup.php?idGrup=" + idGrup + "&idUsuari=" + idUsuari + "&usuarisGrup=" + usuarisGrup,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                if (data == 3) {
+                    alert('No usuaris afegits etc etc');
+                }
                 onSucces(data);
             },
             error: function (xhr, status, error) {

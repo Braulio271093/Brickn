@@ -53,7 +53,6 @@ class Usuari {
      * Obtenir els contactes del usuari;
      */
     getContactes() {
-        usuari.temas = [];
         $.ajax({
             type: "POST",
             url: urlServer + "/get/getContactesUsuari.php?idUsuari=" + this.idUsuari, //el script reotrna un array amb tots els contactes;
@@ -75,7 +74,6 @@ class Usuari {
      * @param onSuccess funcio a executar al obtenir tots els contactes;
      */
     getContactes(onSuccess) {
-        usuari.temas = [];
         $.ajax({
             type: "POST",
             url: urlServer + "/get/getContactesUsuari.php?idUsuari=" + this.idUsuari, //el script reotrna un array amb tots els contactes;

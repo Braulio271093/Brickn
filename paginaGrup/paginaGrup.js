@@ -15,15 +15,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
 
     //obtenir les publicacions del grup; al obtenir-les executar mostrarPagina;
     Grup.getDadesGrup(idGrup, publicacions, mostrarPagina); //obtenir les publicacions del grup i altres;
-    //obtenir els membres del grup;
-    Grup.getMembresGrup(idGrup, function(membres) {
-        for (var i = 0; i < membres.length; i++) {
-            $('#participantsGrupDiv').find('ul').append('<li>' +
-                '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
-                    membres[i].nomUsuari +
-                '</li>');
-        }
-    });
+    getMembres(idGrup);
 
     /**
      * Quan s'han cargat les publicacions, exevutar aquesta funcio;
@@ -212,15 +204,29 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                     $('#listContactesAfegir').fadeIn();
                 });   
             });
+
+            var nousUsuaris = [];
             $(document).on('click', '.contacteUsuari', function() {
                 var nom = $(this).text();
-                $('.contactesGrup').append("<div><button class='buttonNoStyle removeContacte'><span class='glyphicon glyphicon-remove-circle'></span></button>" + nom + "</div>");
+                Utils.getIdByNom(nom, function(id) {
+                if (!Utils.inArray(nousUsuaris, id)) {
+                    nousUsuaris.push(id);
+                    $('.contactesGrup').append("<div><button class='buttonNoStyle removeContacte'><span class='glyphicon glyphicon-remove-circle'></span></button>" + nom + "</div>")
+                    }
+                })
             });
             $(document).on('click', '.removeContacte', function() {
                 $(this).parent().remove();
             });
+            $('#buttonAfegirContactes').click(function() {
+                Grup.afegirUsuarisGrup(usuari.idUsuari, nousUsuaris, idGrup, function(data) {
+                    getMembres(idGrup);
+                    $('#btnBackToGrup').trigger('click');
+                })
+            });
 
             $('#btnBackToGrup').click(function() {
+                nousUsuaris = [];
                 $('#listContactesAfegir').hide();
                 $('#grup').fadeIn();
             });
@@ -231,3 +237,17 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
         });
     }
 })
+
+
+function getMembres(idGrup) {
+    //obtenir els membres del grup;
+    Grup.getMembresGrup(idGrup, function(membres) {
+         $('#participantsGrupDiv').find('ul').empty();
+         for (var i = 0; i < membres.length; i++) {
+             $('#participantsGrupDiv').find('ul').append('<li>' +
+                 '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
+                 membres[i].nomUsuari +
+                 '</li>');
+        }
+    });
+}
