@@ -142,8 +142,18 @@ body {
     margin-left: 0px;
 }
 
+#buttonChangeFotoGrup {
+    float: right; 
+    z-index: 1; 
+    position: absolute;
+    margin-top: 5px; 
+    font-size: 24px;
+    right: 5px;
+    top: 195px;
+}
+
 #imgGrupDiv img{
-    height: 40%;
+    height: 240px;
     width: 100%;  
     position: relative;  
 }

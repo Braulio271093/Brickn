@@ -2,8 +2,20 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils'], functi
     $(document).ready(function () {
         noEnrere(); //deshabilitar el boto de tornar enrere;
         
-        usuari.mostrarGrupsPrivats();
-        usuari.mostrarGrupsPublics();
+        usuari.getGrupsPrivats(function(grups) { //afegir els grups privats
+            for (var i = 0; i < grups.length; i++) {
+                var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
+                $('#teusGrups').append(g.toHtml());
+            }
+        });
+
+        usuari.getGrupsPublics(function(grups) { //afegir els grups publics;
+            for (var i = 0; i < grups.length; i++) {
+                var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
+                $('#mon').append(g.toHtml());
+            }
+        });
+
         usuari.mostrarUltimesPublicacions();
         usuari.getSolicitutsContacte(function(data) {
             if (data.length > 0) {

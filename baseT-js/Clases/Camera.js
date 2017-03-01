@@ -90,3 +90,29 @@ function uploadPhotoUsuari(imageURI, idUsuari, onSuccess) {
         },
         options);
 }
+
+/**
+ * Pujar una foto d'un grup al servidor
+ */
+function uploadPhotoGrup(imageURI, idGrup, onSuccess) {
+    var options = new FileUploadOptions();
+    options.fileKey = "file";
+    options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+    options.mimeType = "image/jpeg";
+    console.log(options.fileName);
+    var params = new Object();
+    params.value1 = "test";
+    params.value2 = "param";
+    options.params = params;
+    options.chunkedMode = false;
+
+    var ft = new FileTransfer();
+    ft.upload(imageURI, urlServer + "/funcions/pujarFotoGrup.php?idGrup=" + idGrup, function (result) {
+            console.log(JSON.stringify(result));
+            onSuccess(options.fileName);
+        },
+        function (error) {
+            console.log(JSON.stringify(error));
+        },
+        options);
+}

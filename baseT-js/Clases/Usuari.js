@@ -11,17 +11,14 @@ class Usuari {
     /**
      * Afegir al index els grups privats del usuari;
      */
-    mostrarGrupsPrivats() {
-        var id = this.idUsuari;
+    getGrupsPrivats(onSucces) {
         $.ajax({
             type: "POST",
             url: urlServer + "/get/getGrupsPrivatsUsuari.php?idUsuari=" + this.idUsuari,
             dataType: 'json',
             cache: false,
             success: function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    Grup.appendGrupPrivats(data[i].idGrup, data[i].nomGrup, id);
-                }
+                onSucces(data);
             },
             error: function (xhr, status, error) {
                 Error.showError(__("{{errorServerOut}}"));
@@ -32,16 +29,14 @@ class Usuari {
     /**
      * Afegir al index els grups publics del usuari;
      */
-    mostrarGrupsPublics() {
+    getGrupsPublics(onSucces) {
         $.ajax({
             type: "POST",
             url: urlServer + "/get/getGrupsPublicsUsuari.php?idUsuari=" + this.idUsuari,
             dataType: 'json',
             cache: false,
             success: function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    Grup.appendGrupPublic(data[i].idGrup, data[i].nomGrup);
-                }
+                onSucces(data);
             },
             error: function (xhr, status, error) {
                 Error.showError(__("{{errorServerOut}}"));

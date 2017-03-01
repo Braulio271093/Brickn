@@ -40,8 +40,8 @@ create table grup (
     id INT(6) unsigned primary key auto_increment,
     nom VARCHAR(50) not null,
     tipus BOOLEAN not null default 1, /* 1 = privat, 0 = public */
-    pass VARCHAR(16) default 0
-    /* foto VARCHAR(50) */
+    pass VARCHAR(16) default 0,
+    foto VARCHAR(100) default '/imgServer/fotosGrup/nofoto.png' 
     );
 
 create table usuari_grup ( 

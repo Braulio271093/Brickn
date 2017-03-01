@@ -16,7 +16,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
     //obtenir les publicacions del grup; al obtenir-les executar mostrarPagina;
     Grup.getDadesGrup(idGrup, publicacions, mostrarPagina); //obtenir les publicacions del grup i altres;
     getMembres(idGrup);
-
+    updateFotoGrup(idGrup);
     /**
      * Quan s'han cargat les publicacions, exevutar aquesta funcio;
      */
@@ -105,7 +105,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 $(this).popover('toggle');
             });
 
-
+            //Publicar una foto;
             $(document).on('click', "#photoFromLibrary", function() {
                 getPhoto(pictureSource.PHOTOLIBRARY ,function(imageUri) {
                     uploadPhoto(imageUri, function(nomFoto) {
@@ -127,12 +127,14 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 $('.bottomBar').hide();
             });
             
+            //Ocultar el input de les publicacions al apretar un de comentar;
             $(document).click(function() {
                 if (!$('.bottomBar').is(':visible') && !$('.inputPublicarComentari').is(':focus')) {
                     $('.bottomBar').fadeIn();
                 }
             });
 
+            //Bloq. si la publicacio te més de 300 chars.
             $('.inputPublicarComentari').on('keyup', function(e) {
                 if ($(this).val().length >= 300) {
                     //no mes caracters
@@ -142,7 +144,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 }
             })
 
-
+            //Mostrar mes comentaris (mes de 5);
             $(document).on('click', '.buttonMostrarComentaris',function() {
                 var x = $(this).parent().parent().find('.comentarisPublicacio');
                 var idPublicacio = $(this).parent().parent().data('id');
@@ -185,6 +187,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 $('#grup').fadeIn();
             });
 
+            //Opcions disponibles;
             $('.buttonMenuOpcions').click(function() {
                 var opcio = $(this).data('id');
                 switch (opcio) {
@@ -205,6 +208,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 });   
             });
 
+            //Afegir nous usuaris al grup (només si ets admin);
             var nousUsuaris = [];
             $(document).on('click', '.contacteUsuari', function() {
                 var nom = $(this).text();
@@ -232,8 +236,20 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 $('#grup').fadeIn();
             });
 
+            //Sortir del grup
             $('#buttonSortirGrup').click(function() {
                 usuari.eliminarseGrup(idGrup);
+            });
+
+            //Cambiar foto
+            $('#buttonChangeFotoGrup').click(function() {
+                getPhoto(pictureSource.PHOTOLIBRARY ,function(imageUri) {
+                   uploadPhotoGrup(imageUri, idGrup, function(nomFoto) {
+                        Grup.setFotoGrup(idGrup, nomFoto, function() {
+                            updateFotoGrup(idGrup);
+                        });
+                   });
+                });
             });
         });
     }
@@ -251,4 +267,16 @@ function getMembres(idGrup) {
                  '</li>');
         }
     });
+}
+
+
+/**
+ * Cambiar el src de la imatge del grup per la que hi ha a la bd;
+ */
+function updateFotoGrup(idGrup) {
+    Grup.getRutaFoto(idGrup, function(ruta) {
+        if (ruta != 0) {
+            $('#imgGrup').attr('src', urlServer + ruta);    
+        }
+    })
 }

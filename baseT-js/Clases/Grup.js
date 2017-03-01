@@ -1,90 +1,46 @@
 class Grup {
 
-    /**
-     * Afegir al index els grups privats del usuari;
-     * @param idGrup
-     * @param nomGrup
-     * @param idUsuari;
-     */
-    static appendGrupPrivats(idGrup, nomGrup, idUsuari) {
-        $.ajax({
-            type: "POST",
-            url: urlServer + "/get/getMembresGrupPrivat.php?idUsuari=" + idUsuari + "&idGrup=" + idGrup,
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-               Grup.onSuccesGrupPrivat(idGrup, nomGrup, idUsuari, data);
-            },
-            error: function (xhr, status, error) {
-                Error.showError("error: " + error);
-            }
-        });
+    constructor(idGrup, nomGrup, fotoGrup, usuaris, notificacions) {
+        this.idGrup = idGrup;
+        this.nomGrup = nomGrup;
+        this.fotoGrup = fotoGrup;
+        this.usuaris = usuaris; //també temas;
+        this.notificacions = notificacions;
     }
 
-    /**
-     * Callback dels grups privats;
-     * @param idGrup
-     * @param nomGrup
-     * @param idUsuari;
-     */
-    static onSuccesGrupPrivat(idGrup, nomGrup, idUsuari, data) {
-        Grup.obtenirNotificacions(idGrup, idUsuari, function(num) {
-            var membres = [];
-            var str = '<div class="grup" data-id="' + idGrup + '">';
-            str += '<div class="grupPhoto" style="position: relative">';
-            if (num > 0) {
-                str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + num + '</span>'
-            }
-            str += '<img src="../baseT-css/img/nofoto.png" alt="..." class="img-circle imgGrup">';
-            str += '</div>';
-            str += '<div class="grupNom">';
-            str += '<strong>' + nomGrup + '</strong>';
-            str += '</br>'; //aqui van els integrants del grup;
-            if (data.length < 3) {
-                for (var j = 0; j < data.length; j++) {
-                    if (j == 1) {
-                        str += ', ';
-                        str += data[j].nomUsuari;
-                    }
-                    else {
-                        str += data[j].nomUsuari;
-                    }
+    toHtml() {
+        var str = '<div class="grup" data-id="' + this.idGrup + '">';
+        str += '<div class="grupPhoto" style="position: relative">';
+        if (this.notificacions > 0) {
+            str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
+        }
+        str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup">';
+        str += '</div>';
+        str += '<div class="grupNom">';
+        str += '<strong>' + this.nomGrup + '</strong>';
+        str += '</br>';
+        if (this.usuaris.length < 3) {
+            for (var j = 0; j < this.usuaris.length; j++) {
+                if (j == 1) {
+                    str += ', ';
+                    str += this.usuaris[j];
+                }
+                else {
+                    str += this.usuaris[j];
                 }
             }
-            else {
-                for (var j = 0; j < 3; j++) {
-                    str += data[j].nomUsuari + ', ';
-                }
-                str += '...';
+        }
+        else {
+            for (var j = 0; j < 3; j++) {
+                str += this.usuaris[j] + ', ';
             }
-            str += '</div></div>';
-            $('#teusGrups').append(str);
-            $('#teusGrups').find('.grup [data-id="' + idGrup + '"]').fadeIn('fast');
-        });
+            str += '...';
+        }
+        str += '</div></div>';
+        return str;
     }
+    
 
-    static appendGrupPublic (idGrup, nomGrup) {
-        $.ajax({
-            type: "POST",
-            url: urlServer + "/get/getTemasGrupPublic.php?idGrup=" + idGrup,
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                Grup.onSuccesGrupPublic(idGrup, nomGrup, data);
-            },
-            error: function (xhr, status, error) {
-                Error.showError("Error: " + error);
-            }
-        });
-    }
-
-    /**
-     * Callback grups publics
-     */
-    static onSuccesGrupPublic(idGrup, nomGrup, data) {
-        var str = Grup.toHtml(idGrup, nomGrup, data);
-        $('#mon').append(str);
-    }
 
     /**
      * Convertir les dades d0un grup a html per el buscador de grups (elimina paddings, margins, width)
@@ -121,40 +77,7 @@ class Grup {
         return str;
     }
 
-    /**
-     * Dades d'un grup a html;
-     * @param idGrup;
-     * @param nomGrup;
-     * @param data (els temes que son retornats amb ajax);
-     */
-    static toHtml(idGrup, nomGrup, data) {
-        var str = '<div class="grup" data-id="' + idGrup + '">';
-        str += '<div class="grupPhoto" style="position: relative">';
-        str +=      '<img src="../baseT-css/img/nofoto.png" alt="..." class="img-circle imgGrup">';
-        str += '</div>';
-        str += '<div class="grupNom">';
-        str += '<strong>' + nomGrup + '</strong>';
-        str += '</br>';
-        if (data.length < 3) {
-            for (var j = 0; j < data.length; j++) {
-                if (j == 1) {
-                    str += ', ';
-                    str += data[j].tema;
-                }
-                else {
-                    str += data[j].tema;
-                }
-            }
-        }
-        else {
-            for (var j = 0; j < 3; j++) {
-                str += data[j].tema + ', ';
-            }
-            str += '...';
-        }
-        str += '</div></div>';
-        return str;
-    }
+  
     /**
      * Obtenir les dades del grup i crear les publicacions;
      * @param idGrup id del grup;
@@ -217,26 +140,6 @@ class Grup {
         });
     }
 
-    /**
-     * Obtenir el numero de publicacions que s'han fet en un grup desde l'ultim access del usuari;
-     * @param idGrup
-     * @param idUsuari;
-     * @param onSucces
-     */
-    static obtenirNotificacions(idGrup, idUsuari, onSucces) {
-        $.ajax({
-            type: "POST",
-            url: urlServer + "/get/getNotificacions.php?idGrup=" + idGrup + "&idUsuari=" + idUsuari,
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                onSucces(data);
-            },
-            error: function (xhr, status, error) {
-                Error.showError("Error: " + error);
-            }
-        });
-    }
 
 
     static buttonMesToHtml() {
@@ -297,6 +200,37 @@ class Grup {
                 if (data == 3) {
                     alert('No usuaris afegits etc etc');
                 }
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
+    }
+
+    static setFotoGrup(idGrup, nomFoto, onSucces) {
+        var ruta = "/imgServer/fotosGrup/" + nomFoto + "_" + idGrup + ".jpg";
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/update/updateFotoGrup.php?idGrup=" + idGrup + "&ruta=" + ruta,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
+    }
+
+    static getRutaFoto(idGrup, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/get/getFotoGrup.php?idGrup=" + idGrup,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
                 onSucces(data);
             },
             error: function (xhr, status, error) {
