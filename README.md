@@ -25,12 +25,12 @@
 - [X] ~~Millorar contadors (fer que en buscar o mostrar algo només es mostrin N i al apretar un boto es mostrin N més)~~;
 - [X] ~~Notificacions en cada grup~~
 - [X] ~~Afegir acceptar contacte~~;
-- [X] ~~solucionar error nom grups~~;
+- [x] ~~Tractar data de la publicacio~~;
+
 
 - [ ] Pensar un millor nom;
 - [ ] Documentació del projecte;
 - [ ] pagina web del projecte (acabar-la); 
-- [ ] Tractar data de la publicacio;
 - [ ] Revisar traducció
 - [ ] Mostrar publicacions en la tab resum
 - [ ] Afegir data als grups i al arribar una data que es borri;
