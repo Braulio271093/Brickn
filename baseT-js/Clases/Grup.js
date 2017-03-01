@@ -168,7 +168,7 @@ class Grup {
             dataType: 'json',
             cache: false,
             success: function (data) {
-                $('.miniHeaderLeftTitle').text(data[0].nomGrup + " - Mur");
+                $('#nomGrupTitle').text(data[0].nomGrup + " - " + __('stringMur'));
                 for (var i = 2; i <= data[1].numPublicacions + 1; i++) {
                     var p = new Publicacio(data[i].publicacio.id, data[i].publicacio.publicador, data[i].publicacio.dataPublicacio, data[i].publicacio.publicacio, data[i].publicacio.tipus);
                     publicacions.push(p);

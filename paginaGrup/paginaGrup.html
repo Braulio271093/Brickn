@@ -19,7 +19,7 @@
                     <button type="button" class="btnBack buttonNoStyle" id="btnBackToIndex">
                         <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
                     </button>
-                    <p class="miniHeaderLeftTitle">
+                    <p class="miniHeaderLeftTitle" id="nomGrupTitle">
                         Nom del grup
                     </p>
                 </div>
@@ -96,6 +96,42 @@
             </div>
         </div>
 
+        <!-- Lista dels contactes del admin -->
+        <div id="listContactesAfegir" class="ocult" style="background-color: white; margin: 0px; padding: 0px;">
+            <div class="miniHeader">
+                <div class="miniHeaderLeft">
+                    <button type="button" class="btnBack buttonNoStyle" id="btnBackToGrup">
+                        <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                    </button>
+                    <p class="miniHeaderLeftTitle">
+                        Afegir Usuaris al grup
+                    </p>
+                </div>
+            </div>
+            
+            <div class="seleccionarContactesDiv">
+                <div class="seleccionarContactesTop">
+                    <div class="translate">{{stringAfegirContactes}}</div>
+                    <div>
+                        <button type="button" class="buttonNoStyle" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="contactesGrup">
+
+                </div>
+                <div class="contactesUsuari">
+
+                </div>
+                <div class="buttonNextDiv">
+                    <button class="buttonNoStyle buttonNext" type="button" >
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
 <!-- Modal (per mostrar la foto en gran) -->
 <div class="modal fade" id="modalImg" tabindex="-1" role="dialog" style="text-align: center">
     <div class="modal-dialog modal-sm modalImg" role="document">
@@ -165,22 +201,5 @@
         <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
         <script type="text/javascript" src="../baseT-js/baseT.js"></script>
         <script type="text/javascript" src="paginaGrup.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $('#startDate').datetimepicker({
-                    language:  'es',
-                    inline: true,
-                    todayBtn:  1,
-                    weekStart: 1,
-                    todayHighlight: 1,
-                });
-                $('#endDAte').datetimepicker({
-                    language:  'es',
-                    inline: true,
-                    weekStart: 1,
-                    todayHighlight: 1,
-                });
-                });
-        </script>
     </body>
 </html>

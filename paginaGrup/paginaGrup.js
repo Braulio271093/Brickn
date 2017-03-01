@@ -58,17 +58,25 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             '</div>'
         });
 
+        $('#startDate').datetimepicker({ //datepickers del events
+            language: 'es',
+            inline: true,
+            todayBtn: 1,
+            weekStart: 1,
+            todayHighlight: 1,
+        });
+        $('#endDAte').datetimepicker({
+            language: 'es',
+            inline: true,
+            weekStart: 1,
+            todayHighlight: 1,
+        });
+           
+
         $(document).ready(function () {
             $('#btnBackToIndex').click(function () {
                 cambiPag('index.html');
             });
-
-            /*
-            $('.publicacio').each(function() { //cargar imatge del publicador, s'ha de millorar el codi; fer que no fagi tantes conexions;
-                var id = $(this).attr('id');
-                var publicador = $(this).find('.titolPublicacio').find('p:first').text();
-                Publicacio.cargarImatgesPublicador(id, publicador);
-            });*/
 
             $(document).on('click', '.fotoPublicadorImg', function() {
                 var imgSrc = $(this).attr('src');
@@ -193,6 +201,28 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                         $('#infoGrup').fadeIn();
                         break;
                 }
+            });
+            $('#buttonAddUsuariGrup').click(function() {
+                $('#infoGrup').hide();
+                $('.contactesUsuari').empty();
+                usuari.getContactes(function() {
+                    for (var i = 0; i < usuari.contactes.length; i++) {
+                        $('.contactesUsuari').append("<div class='contacteUsuari'>" + usuari.contactes[i] + "</div>");
+                    }
+                    $('#listContactesAfegir').fadeIn();
+                });   
+            });
+            $(document).on('click', '.contacteUsuari', function() {
+                var nom = $(this).text();
+                $('.contactesGrup').append("<div><button class='buttonNoStyle removeContacte'><span class='glyphicon glyphicon-remove-circle'></span></button>" + nom + "</div>");
+            });
+            $(document).on('click', '.removeContacte', function() {
+                $(this).parent().remove();
+            });
+
+            $('#btnBackToGrup').click(function() {
+                $('#listContactesAfegir').hide();
+                $('#grup').fadeIn();
             });
 
             $('#buttonSortirGrup').click(function() {

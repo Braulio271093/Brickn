@@ -129,6 +129,11 @@
  	'{ "es"  : "MURO" },' + 
 	'{ "en"  : "WALL"}' + 
  '],' + 
+ '"stringMur" : [' + 
+ 	'{ "cat" : "Mur" },' + 
+ 	'{ "es"  : "Muro" },' + 
+	'{ "en"  : "Wall"}' + 
+ '],' + 
 '"stringGrups" : [' + 
  	'{ "cat" : "GRUPS" },' + 
  	'{ "es"  : "GRUPOS" },' + 
