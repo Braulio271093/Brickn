@@ -16,8 +16,8 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils'], functi
             }
         });
 
-        usuari.mostrarUltimesPublicacions(function(ultimesPublicacions) {
-            
+        usuari.getUltimesPublicacions(function(ultimesPublicacions) {
+
         });
         usuari.getSolicitutsContacte(function(data) {
             if (data.length > 0) {

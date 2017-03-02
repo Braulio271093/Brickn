@@ -349,7 +349,7 @@ class Usuari {
     getUltimesPublicacions(onSucces) {
         $.ajax({
             type: "POST",
-            url: urlServer + "/funcions/getUltimesPublicacions.php?idUsuari=" + this.idUsuari,
+            url: urlServer + "/get/getUltimesPublicacions.php?idUsuari=" + this.idUsuari,
             dataType: 'json',
             cache: false,
             success: function (data) {
