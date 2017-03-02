@@ -344,21 +344,21 @@ class Usuari {
 
     /**
      * Obtenir les ultimes publicacions de cada grup
-     * i afegirles a la tab resum;
+     * per afegilres a la tab resum/mur;
      */
-    mostrarUltimesPublicacions() {
-        /*$.ajax({
+    getUltimesPublicacions(onSucces) {
+        $.ajax({
             type: "POST",
-            url: urlServer + "/funcions/.php?idUsuari=" + this.idUsuari,
+            url: urlServer + "/funcions/getUltimesPublicacions.php?idUsuari=" + this.idUsuari,
             dataType: 'json',
             cache: false,
             success: function (data) {
-                
+                onSucces(data);
             },
             error: function (xhr, status, error) {
                 Error.showError(error);
             }
-        });*/
+        });
     }
 
     /**

@@ -16,7 +16,9 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils'], functi
             }
         });
 
-        usuari.mostrarUltimesPublicacions();
+        usuari.mostrarUltimesPublicacions(function(ultimesPublicacions) {
+            
+        });
         usuari.getSolicitutsContacte(function(data) {
             if (data.length > 0) {
                 $('#numSolicitutsContacte').text(data.length);
