@@ -18,7 +18,7 @@ class Publicacio {
             rutaFoto += '.jpg';
             body = "<img class='imatgePublicacio' src=" + urlServer + rutaFoto + ">";
         }
-        return "<div class='publicacio' data-id='" + this.id + "'>" +
+        return "<div class='publicacio' data-id='" + this.id + "' style='display: none'>" +
                 "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + "/imgServer/fotosPerfil/nofoto.png" + "'></div>" +
                 "<div class='titolPublicacio'>" +
                     "<p>" + this.publicador + "</p>" +

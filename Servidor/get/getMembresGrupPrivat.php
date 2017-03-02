@@ -5,7 +5,7 @@
 	$idUsuari = $_GET['idUsuari'];
     $idGrup = $_GET['idGrup'];
 
-    $sql = "SELECT usuari.nomUsuari
+    $sql = "SELECT usuari.nomUsuari, usuari_grup.admin
             FROM usuari 
             JOIN usuari_grup 
 			ON usuari.id = usuari_grup.idUsuari
@@ -19,7 +19,7 @@
     {
 		while ($row = mysqli_fetch_row($resultat)) 
         {
-            $str[$i] = array("nomUsuari" => $row[0]);
+            $str[$i] = array("nomUsuari" => $row[0], "admin" => $row[1]);
 			$i++; 
 		}
 		echo json_encode($str);

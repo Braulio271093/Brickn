@@ -19,20 +19,26 @@ class Grup {
         str += '<div class="grupNom">';
         str += '<strong>' + this.nomGrup + '</strong>';
         str += '</br>';
-        if (this.usuaris.length < 3) {
+        if (this.usuaris.length <= 3) {
             for (var j = 0; j < this.usuaris.length; j++) {
-                if (j == 1) {
+                var aux;
+                if (this.usuaris[j] == usuari.nomUsuari) aux = 'tu';
+                else aux = this.usuaris[j];
+                if (j == 1 || j == 2) {
                     str += ', ';
-                    str += this.usuaris[j];
+                    str += aux;
                 }
                 else {
-                    str += this.usuaris[j];
+                    str += aux;
                 }
             }
         }
         else {
             for (var j = 0; j < 3; j++) {
-                str += this.usuaris[j] + ', ';
+                var aux;
+                if (this.usuaris[j] == usuari.nomUsuari) aux = 'tu';
+                else aux = this.usuaris[j];
+                str += aux + ', ';
             }
             str += '...';
         }

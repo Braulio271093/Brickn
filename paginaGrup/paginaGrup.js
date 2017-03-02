@@ -14,7 +14,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
     });
 
     //obtenir les publicacions del grup; al obtenir-les executar mostrarPagina;
-    Grup.getDadesGrup(idGrup, publicacions, mostrarPagina); //obtenir les publicacions del grup i altres;
+    Grup.getDadesGrup(idGrup, publicacions, mostrarPagina); //obtenir les publicacions del grup i altres i omplir el array publicacions;
     getMembres(idGrup);
     updateFotoGrup(idGrup);
     /**
@@ -26,12 +26,13 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
         for (var i = 0; i < publicacions.length && i < 5; i++) {
             var p = publicacions[i];
             $('.publicacions').append(p.publicacioToHtml());
+            $('div [data-id="'+ p.id + '"]').fadeIn();
         }
         if (publicacions.length >= 5) { //afegir boto mostrar mes publicacions;
             $('.publicacions .publicacio').last().css('margin-bottom', '0px');
             $('body').append(Grup.buttonMesToHtml());
         }        
-        $('body').fadeIn();
+    
 
         $('#buttonPublicarFoto').popover({ //popover per seleccionar/fer fotos;
             container: 'body',
@@ -261,10 +262,21 @@ function getMembres(idGrup) {
     Grup.getMembresGrup(idGrup, function(membres) {
          $('#participantsGrupDiv').find('ul').empty();
          for (var i = 0; i < membres.length; i++) {
-             $('#participantsGrupDiv').find('ul').append('<li>' +
-                 '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
-                 membres[i].nomUsuari +
-                 '</li>');
+             var str;
+             if (membres[i].admin == 1) {
+                str = '<li style="border-bottom: 1px solid rgba(0,0,0,0.125);">' +
+                        '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
+                            membres[i].nomUsuari +
+                        '<p style="float: right; z-index: 1; font-size: 14px; border: 1px solid; color: #D51C1C; padding: 5px; margin-top: 10px; border-radius: 5px">Admin</p>'
+                        '</li>';
+             }
+             else {
+                str = '<li style="border-bottom: 1px solid rgba(0,0,0,0.125);">' +
+                    '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
+                    membres[i].nomUsuari +
+                    '</li>';
+             }
+             $('#participantsGrupDiv').find('ul').append(str);
         }
     });
 }
