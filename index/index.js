@@ -19,6 +19,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils'], functi
         usuari.getUltimesPublicacions(function(ultimesPublicacions) {
 
         });
+
         usuari.getSolicitutsContacte(function(data) {
             if (data.length > 0) {
                 $('#numSolicitutsContacte').text(data.length);
@@ -218,7 +219,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils'], functi
         /**
          * Mostrar la imatge del grup en gran;
          *//*
-        $('div').on('click', '.imgGrup', function () {
+        $(document).on('click', '.imgGrup', function () {
             var imgSrc = $(this).attr('src');
             $('#modalImgGrup').attr('src', imgSrc);
             $('#modalImg').modal('show'); //mostar el quadrat on es mostrarà la imatge;

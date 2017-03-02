@@ -34,9 +34,9 @@ class Publicacio {
                 "</div>" +
                 "<div class='comentarisPublicacio' style='display: none'>" +
                     "<div class='input-group inputComentar' style='margin-top: 5px; margin-bottom: 5px'>" +
-                        "<input type='text' class='form-control inputPublicarComentari' placeholder='Escriu algo...'>" +
+                        "<input type='text' class='form-control inputPublicarComentari' placeholder='....'>" +
                         "<span class='input-group-btn'>" +
-                            "<button class='btn btn-danger buttonComentar' type='button'>Comentar</button>" +
+                            "<button class='btn btn-danger buttonComentar' type='button'>" + __('stringComentar') + "</button>" +
                         "</span>" +
                     "</div>" +
                 "</div>" +

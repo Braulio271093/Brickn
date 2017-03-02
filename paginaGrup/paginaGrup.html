@@ -29,7 +29,7 @@
                             <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
                         </button>
                         <ul class="dropdown-menu pull-right" aria-labelledby="buttonOpcionsGrup" style="color: black; margin-top: 40px; padding: 10px; font-size: 16px; ">
-                            <li class="buttonMenuOpcions" data-id="1">Info. del grup</li>
+                            <li class="buttonMenuOpcions translate" data-id="1">{{stringInfoDelGrup}}</li>
                         </ul>
                     </div>
                     <button type="button" class="buttonNoStyle" aria-label="Left Align" data-toggle="modal" data-target="#modalEvento">
@@ -42,14 +42,14 @@
                 
             </div><!-- final publicacions -->
 
-
+            <!-- Bottom bar -->
             <div class="input-group bottomBar">
-                <input type="text" class="form-control" id="inputPublicar" placeholder="Escriu algo...">
+                <input type="text" class="form-control" id="inputPublicar" placeholder="...">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-danger" id="buttonPublicarFoto" data-toggle="popover" data-placement="left">
                             <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
                     </button>
-                    <button class="btn btn-danger" type="button" id="buttonPublicar">Publicar</button>
+                    <button class="btn btn-danger translate" type="button" id="buttonPublicar">{{stringPublicar}}</button>
                 </span>
             </div>
 
@@ -79,23 +79,23 @@
             </div>
 
             <div id="participantsGrupDiv">
-                <p>Participants</p>
+                <p class="translate">{{stringParticipants}}</p>
                 <ul>
                     
                 </ul>
             </div>
 
             <div id="afegirAlGrup" class="boxOpcions ocult opcioAdmin">
-                <button type="button" class="buttonNoStyle" id="buttonAddUsuariGrup" aria-label="Left Align" style="font-size: 24px">
+                <button type="button" class="buttonNoStyle translate" id="buttonAddUsuariGrup" aria-label="Left Align" style="font-size: 24px">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    Afegir contacte
+                    {{stringAfegirContacte}}
                 </button>
             </div>
 
             <div class="boxOpcions" id="eliminarseGrup">
-                <button type="button" class="buttonNoStyle" id="buttonSortirGrup" aria-label="Left Align" style="font-size: 24px">
+                <button type="button" class="buttonNoStyle translate" id="buttonSortirGrup" aria-label="Left Align" style="font-size: 24px">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                    Sortir del grup
+                    {{stringSortirGrup}}
                 </button>
             </div>
         </div>
@@ -107,8 +107,8 @@
                     <button type="button" class="btnBack buttonNoStyle" id="btnBackToGrup">
                         <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
                     </button>
-                    <p class="miniHeaderLeftTitle">
-                        Afegir Usuaris al grup
+                    <p class="miniHeaderLeftTitle translate">
+                        {{stringAfegirContactes}}
                     </p>
                 </div>
             </div>
@@ -153,33 +153,33 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Nuevo evento</h4>
+                <h4 class="modal-title translate" id="myModalLabel">{{stringNouEvent}}</h4>
             </div>
             <div class="modal-body">
                 <form action="" class="form-horizontal" role="form">
                     <div class="form-group" style="margin-left: 15%;">
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="InputName" style="margin-left: 60px">Fecha inicio</label>
+                                <label for="InputName" style="margin-left: 60px" class="translate">{{stringStartDate}}</label>
                                 <div id="startDate"></div>
                             </div>
                             <hr>
                             <div class="col-md-6">
-                                <label for="InputName" style="margin-left: 60px">Fecha final</label>
+                                <label for="InputName" style="margin-left: 60px" class="translate">{{stringEndDate}}</label>
                                 <div id="endDAte"></div>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="form-group">
-                        <label for="InputName" style="margin-left: 5%;">Nombre del evento</label>
+                        <label for="InputName" style="margin-left: 5%;" class="translate">{{stringNomDelEvent}}</label>
                         <div class="col-md-6">
                             <input type="text" class="form-control" id="inputName" placeholder="Nombre">
                         </div>
                     </div>
                     <hr>
                     <div class="form-group">
-                        <label for="InputName" style="margin-left: 5%;">Descripción</label>
+                        <label for="InputName" style="margin-left: 5%;" class="translate">{{stringDescripcio}}</label>
                         <br/>
                         <div class="col-md-6">
                             <textarea id="descripcion" class="form-control" rows="5"></textarea>
@@ -189,7 +189,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default translate" data-dismiss="modal">{{stringTancar}}</button>
-                <button type="button" class="btn btn-danger">Crear evento</button>
+                <button type="button" class="btn btn-danger translate">{{stringCrearEvent}}</button>
             </div>
         </div>
     </div>

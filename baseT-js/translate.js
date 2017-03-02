@@ -443,7 +443,62 @@
 	'{ "cat" : "abans" },' + 
  	'{ "es"  : "antes" },' + 
 	'{ "en"  : "ago"}' + 
- ']' +
+ '],' +
+'"stringInfoDelGrup" : [' + 
+	'{ "cat" : "Info. del grup" },' + 
+ 	'{ "es"  : "Info. del grupo" },' + 
+	'{ "en"  : "Info. of group"}' + 
+ '],' +
+ '"stringPublicar" : [' + 
+	'{ "cat" : "Publicar" },' + 
+ 	'{ "es"  : "Publicar" },' + 
+	'{ "en"  : "Publish"}' + 
+ '],' +
+  '"stringParticipants" : [' + 
+	'{ "cat" : "Integrants del grup" },' + 
+ 	'{ "es"  : "Integrantes del grupo" },' + 
+	'{ "en"  : "Group members"}' + 
+  '],' +
+ '"stringSortirGrup" : [' + 
+	'{ "cat" : "Sortir del grup" },' + 
+ 	'{ "es"  : "Salir del grupo" },' + 
+	'{ "en"  : "Exit group"}' + 
+  '],' +
+   '"stringNouEvent" : [' + 
+	'{ "cat" : "Nou event" },' + 
+ 	'{ "es"  : "Nuevo evento" },' + 
+	'{ "en"  : "New event"}' + 
+  '],' +
+'"stringStartDate" : [' + 
+	'{ "cat" : "Data inicial" },' + 
+ 	'{ "es"  : "Fecha inicial" },' + 
+	'{ "en"  : "Start date"}' + 
+  '],' +
+'"stringEndDate" : [' + 
+	'{ "cat" : "Data final" },' + 
+ 	'{ "es"  : "Fecha final" },' + 
+	'{ "en"  : "End date"}' + 
+  '],' +
+'"stringNomDelEvent" : [' + 
+	'{ "cat" : "Nom del event" },' + 
+ 	'{ "es"  : "Nombre del evento" },' + 
+	'{ "en"  : "Name of the event"}' + 
+  '],' +
+  '"stringDescripcio" : [' + 
+	'{ "cat" : "Descripció" },' + 
+ 	'{ "es"  : "Descripción" },' + 
+	'{ "en"  : "Description"}' + 
+  '],' +
+'"stringCrearEvent" : [' + 
+	'{ "cat" : "Crear event" },' + 
+ 	'{ "es"  : "Crear evento" },' + 
+	'{ "en"  : "Create event"}' + 
+  '],' +
+  '"stringComentar" : [' + 
+	'{ "cat" : "Comentar" },' + 
+ 	'{ "es"  : "Comentar" },' + 
+	'{ "en"  : "Comment"}' + 
+  ']' +
 '}';
 
 
