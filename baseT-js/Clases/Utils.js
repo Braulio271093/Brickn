@@ -6,8 +6,8 @@ class Utils {
      */
     static tryConexio() {
         var conexio;
-        $('#modalLoading').modal('show', function () {
-            $.ajax({
+        $('#modalLoading').modal('show');
+        $.ajax({
                 type: "POST",
                 url: urlServer + "/funcions/testConexio.php",
                 dataType: 'json',
@@ -20,8 +20,7 @@ class Utils {
                     conexio = false;
                 }
             });
-        });
-        $('#modalLoading').modal('hide');
+       
         return conexio;
     }
 

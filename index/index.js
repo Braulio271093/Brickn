@@ -1,7 +1,7 @@
 require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio'], function () {
     $(document).ready(function () {
         noEnrere(); //deshabilitar el boto de tornar enrere;
-        
+
         usuari.getGrupsPrivats(function(grups) { //afegir els grups privats
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
@@ -16,30 +16,38 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             }
         });
 
-        usuari.getUltimesPublicacions(function(ultimesPublicacions) {
-            for (var i = 0; i < ultimesPublicacions.length; i++) {
-                var p = Publicacio.toHtmlForIndex(ultimesPublicacions[i].nomPublicador, ultimesPublicacions[i].nomGrup, ultimesPublicacions[i].publicacio, ultimesPublicacions[i].tipus, ultimesPublicacions[i].idGrup);
-                $('.resum').append(p);
-            }
-        });
+        function getUltimesPublicacions() {
+            $('.resum').empty();
+            usuari.getUltimesPublicacions(function(ultimesPublicacions) {
+                for (var i = 0; i < ultimesPublicacions.length; i++) {
+                    var p = Publicacio.toHtmlForIndex(ultimesPublicacions[i].nomPublicador, ultimesPublicacions[i].nomGrup, ultimesPublicacions[i].publicacio, ultimesPublicacions[i].tipus, ultimesPublicacions[i].idGrup);
+                    $('.resum').append(p);
+                }
+            });
+        };
+        getUltimesPublicacions();
+
         $(document).on('click', '.publicacioMur', function() {
             var ids = $(this).data('id');
             cambiPag('paginaGrup.html?idGrup=' + ids);  
         });
 
-        usuari.getSolicitutsContacte(function(data) {
-            if (data.length > 0) {
-                $('#numSolicitutsContacte').text(data.length);
-                for (var i = 0; i < data.length; i++) {
-                    $('.acceptarUsuarisUl').append(Utils.solicitutContacteToHtml(data[i].idUsuari, data[i].nomUsuari));
+        function getSolicitutsContacte() {
+            $('.acceptarUsuarisUl').empty();
+            usuari.getSolicitutsContacte(function(data) {
+                if (data.length > 0) {
+                    $('#numSolicitutsContacte').text(data.length);
+                    for (var i = 0; i < data.length; i++) {
+                        $('.acceptarUsuarisUl').append(Utils.solicitutContacteToHtml(data[i].idUsuari, data[i].nomUsuari));
+                    }
                 }
-            }
-            else {
-                $('#numSolicitutsContacte').hide();
-                $('.acceptarUsuarisUl').append('<li><div style="float: left; font-size: 20px;">' + __('stringNoSolicitut') + '</div></li>')
-            }
-        });
-
+                else {
+                    $('#numSolicitutsContacte').hide();
+                    $('.acceptarUsuarisUl').append('<li><div style="float: left; font-size: 20px;">' + __('stringNoSolicitut') + '</div></li>')
+                }
+            });
+        };
+        getSolicitutsContacte();
 
 
         var buttonPressed = false; //per prevenir que el dropdown es tanqui;
@@ -136,8 +144,14 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
         $('.body').hammer().on('swipedown', function() {
             var conexio = Utils.tryConexio();
             if (conexio) {
-                cambiPag('index.html');
+                getSolicitutsContacte();
+                getUltimesPublicacions();
+                $('#modalLoading').modal('hide');
             }
+            else {
+                 
+            }
+    
         })
 
         $('.headerBottomPart').click(function () { //al apreatar un buto de la header;
