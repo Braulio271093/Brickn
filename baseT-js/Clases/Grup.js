@@ -244,5 +244,20 @@ class Grup {
             }
         });
     }
+    
+    static eliminarContacteGrup(idUsuari, idGrup, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/delete/deleteUsuariGrup.php?idGrup=" + idGrup + "&idUsuari=" + idUsuari,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
+    }
  }
 

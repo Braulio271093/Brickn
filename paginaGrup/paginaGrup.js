@@ -3,9 +3,12 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
     var $_GET = Utils.getVariablesHtml();
     var idGrup = $_GET['idGrup'];
     var publicacions = [];
+    var isAdmin; //si el usuari es admin;
+    var membresGrup; //noms dels membres del grupp;
 
     //Cargar les opcions del admin si ho és;
-    usuari.isAdmin(idGrup, function(isAdmin) {
+    usuari.isAdmin(idGrup, function(a) {
+        isAdmin = a;
         if (isAdmin) {
             $('.opcioAdmin').show();
         }
@@ -197,9 +200,11 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                         break;
                 }
             });
-            $('#buttonAddUsuariGrup').click(function() {
+            //Mostrar la pantalla per afegir usuaris al grup si ets admin;
+            $('#buttonAddUsuariGrup').click(function() { 
                 $('#infoGrup').hide();
-                $('.contactesUsuari').empty();
+                $('.contactesUsuari').find('div').remove(); //no funciona, s'ha de borrar els divs;
+                $('.contactesGrup').find('div').remove();
                 usuari.getContactes(function() {
                     for (var i = 0; i < usuari.contactes.length; i++) {
                         $('.contactesUsuari').append("<div class='contacteUsuari'>" + usuari.contactes[i] + "</div>");
@@ -223,11 +228,19 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 Utils.deleteFromArray(nousUsuaris, $(this).parent().text());
                 $(this).parent().remove();
             });
-            $('#buttonAfegirContactes').click(function() {
+
+            $('#buttonAfegirContactes').click(function() { //afegir un usuari al grup si ets admin
                 Grup.afegirUsuarisGrup(usuari.idUsuari, nousUsuaris, idGrup, function(data) {
                     getMembres(idGrup);
                     $('#btnBackToGrup').trigger('click');
                 })
+            });
+
+            $(document).on('click', '.eliminarUsuariGrup', function() { //eliminar un usuari del grup si ets admin;
+                var ids = $(this).parent().parent().data('id');
+                Grup.eliminarContacteGrup(ids, idGrup, function() {
+                    getMembres(idGrup);
+                });
             });
 
             $('#btnBackToGrup').click(function() {
@@ -253,27 +266,37 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             });
         });
     }
-})
 
 
-function getMembres(idGrup) {
+function getMembres() {
     //obtenir els membres del grup;
     Grup.getMembresGrup(idGrup, function(membres) {
+        membresGrup = [];
          $('#participantsGrupDiv').find('ul').empty();
          for (var i = 0; i < membres.length; i++) {
              var str;
              if (membres[i].admin == 1) {
-                str = '<li style="border-bottom: 1px solid rgba(0,0,0,0.125);">' +
+                str = '<li style="border-bottom: 1px solid rgba(0,0,0,0.125);" data-id="' + membres[i].idUsuari + '">' +
                         '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
                             membres[i].nomUsuari +
                         '<p style="float: right; z-index: 1; font-size: 14px; border: 1px solid; color: #D51C1C; padding: 5px; margin-top: 10px; border-radius: 5px">Admin</p>'
                         '</li>';
              }
              else {
-                str = '<li style="border-bottom: 1px solid rgba(0,0,0,0.125);">' +
-                    '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
-                    membres[i].nomUsuari +
-                    '</li>';
+                if (isAdmin) {
+                    str = '<li style="border-bottom: 1px solid rgba(0,0,0,0.125);" data-id="' + membres[i].idUsuari + '">' +
+                                '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
+                                membres[i].nomUsuari +
+                                '<p style="float: right; color: black; margin-right: 15px;"> <button type="button" class="buttonNoStyle eliminarUsuariGrup" aria-label="Left Align"> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></p>'
+                            '</li>';
+                }
+                else {
+                    str = '<li style="border-bottom: 1px solid rgba(0,0,0,0.125);" data-id="' + membres[i].idUsuari + '">' +
+                        '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
+                        membres[i].nomUsuari +
+                        '</li>';
+                }
+            membresGrup.push(membres[i].nomUsuari);
              }
              $('#participantsGrupDiv').find('ul').append(str);
         }
@@ -291,3 +314,7 @@ function updateFotoGrup(idGrup) {
         }
     })
 }
+
+})
+
+
