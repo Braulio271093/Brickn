@@ -4,7 +4,7 @@
 
     $idUsuari = $_GET['idUsuari'];
 
-    $sql = "SELECT usuari.nomUsuari, grup.nom, publicacio.publicacio FROM publicacio 
+    $sql = "SELECT usuari.nomUsuari, grup.nom, publicacio.publicacio, publicacio.tipus, grup.id FROM publicacio 
             JOIN usuari ON publicacio.idUsuari = usuari.id 
             JOIN grup ON grup.id = publicacio.idGrup 
             WHERE publicacio.dataPublicacio IN (SELECT max(dataPublicacio) FROM publicacio WHERE publicacio.idGrup = idGrup GROUP BY idGrup) 
@@ -20,7 +20,9 @@
             $nomPublicador = $row[0];
             $nomGrup = $row[1];
             $publicacio = $row[2];
-            $res[$i] = ["nomPublicador" => $nomPublicador, "nomGrup" => $nomGrup, "publicacio" => $publicacio];
+            $tipus = $row[3];
+            $idGrup = $row[4];
+            $res[$i] = ["nomPublicador" => $nomPublicador, "nomGrup" => $nomGrup, "publicacio" => $publicacio, "tipus" => $tipus, "idGrup" => $idGrup];
             $i++;
         }
         echo json_encode($res);
