@@ -25,12 +25,14 @@
 - [X] ~~Millorar contadors (fer que en buscar o mostrar algo només es mostrin N i al apretar un boto es mostrin N més)~~;
 - [X] ~~Notificacions en cada grup~~
 - [X] ~~Afegir acceptar contacte~~;
-- [x] ~~Tractar data de la publicacio~~;
+- [X] ~~Tractar data de la publicacio~~;
+- [X] Mostrar publicacions en la tab resum
+
+
 
 - [ ] Documentació del projecte;
 - [ ] pagina web del projecte (acabar-la); 
 - [ ] Revisar traducció
-- [ ] Mostrar publicacions en la tab resum
 - [ ] Afegir data als grups i al arribar una data que es borri;
 - [ ] Afegir events en el grup (Com un tipus de publicacio) --> lluc;
 - [ ] Mostrar el nombre de persones que hi ha en els grups públics;
