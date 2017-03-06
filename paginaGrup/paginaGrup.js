@@ -4,8 +4,6 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
     var idGrup = $_GET['idGrup'];
     var publicacions = [];
 
-    usuari.actualitzarUltimAcces(idGrup); //set ultim access al grup del usuari;
-
     //Cargar les opcions del admin si ho és;
     usuari.isAdmin(idGrup, function(isAdmin) {
         if (isAdmin) {
@@ -17,6 +15,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
     Grup.getDadesGrup(idGrup, publicacions, mostrarPagina); //obtenir les publicacions del grup i altres i omplir el array publicacions;
     getMembres(idGrup);
     updateFotoGrup(idGrup);
+    usuari.actualitzarUltimAcces(idGrup); //set ultim access al grup del usuari;
     /**
      * Quan s'han cargat les publicacions, exevutar aquesta funcio;
      */

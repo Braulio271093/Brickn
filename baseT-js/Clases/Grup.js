@@ -99,7 +99,7 @@ class Grup {
             success: function (data) {
                 $('#nomGrupTitle').text(data[0].nomGrup + " - " + __('stringMur'));
                 for (var i = 2; i <= data[1].numPublicacions + 1; i++) {
-                    var p = new Publicacio(data[i].publicacio.id, data[i].publicacio.publicador, data[i].publicacio.dataPublicacio, data[i].publicacio.publicacio, data[i].publicacio.tipus);
+                    var p = new Publicacio(data[i].publicacio.id, data[i].publicacio.publicador, data[i].publicacio.dataPublicacio, data[i].publicacio.publicacio, data[i].publicacio.tipus, data[i].publicacio.numComentaris);
                     publicacions.push(p);
                 }
                 onSucces();

@@ -1,13 +1,14 @@
 class Publicacio {
 
-    constructor(id, publicador, dataPublicacio, publicacio, tipus) {
+    constructor(id, publicador, dataPublicacio, publicacio, tipus, numComentaris) {
         this.id             = id;
         this.publicador     = publicador;
         this.dataPublicacio = dataPublicacio;
         this.publicacio     = publicacio;
-        this.tipus = tipus;
+        this.tipus          = tipus;
+        this.numComentaris  = numComentaris;
     }
-
+    
     /**
      * Obtenir la publicacio amb html;
      */
@@ -27,7 +28,8 @@ class Publicacio {
                 "<div class='bodyPublicacio'>" +
                     body +
                 "</div>" +
-                "<div class='buttonComentaris' style='margin-top: 20px; font-size: 16px'>" +
+                "<div class='buttonComentaris' style='margin-top: 20px; font-size: 16px; position: relative'>" +
+                    '<span class="badge" style="z-index: 1; position: absolute; bottom: 22px; left: 33px; background-color: #D51C1C;">' + this.numComentaris + '</span>' +
                     "<button class='buttonNoStyle buttonMostrarComentaris' style='font-size: 20px'>" +
                         "<span class='glyphicon glyphicon-comment' aria-hidden='true'></span>" +
                     "</button>" +
@@ -48,7 +50,7 @@ class Publicacio {
         if (tipus == 0) {
             str = '<div class="publicacioMur" data-id="' + idGrup + '">'+
                     '<p class="publicacioMurHeader">'+
-                       'de <strong>' + nomPublicador + "</strong> desde <strong>" + nomGrup + '</strong>' +     
+                       'De <strong>' + nomPublicador + "</strong> desde <strong>" + nomGrup + '</strong>:' +     
                     '</p>' +
                     '<p class="publicacioMurBody">'+
                         publicacio +

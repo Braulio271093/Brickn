@@ -10,8 +10,9 @@
     $row =  mysqli_fetch_row($result);
     $dades[0] = ["nomGrup" => $row[0]];
     
-    $sql = "SELECT usuari.nomUsuari, usuari.fotoPerfil, publicacio.publicacio, publicacio.dataPublicacio, publicacio.id, publicacio.tipus FROM publicacio JOIN usuari
-            ON publicacio.idUsuari = usuari.id WHERE publicacio.idGrup = $idGrup ORDER BY publicacio.dataPublicacio DESC";
+    $sql = "SELECT usuari.nomUsuari, usuari.fotoPerfil, publicacio.publicacio, publicacio.dataPublicacio, publicacio.id, publicacio.tipus
+            FROM publicacio JOIN usuari ON publicacio.idUsuari = usuari.id 
+            WHERE publicacio.idGrup = $idGrup ORDER BY publicacio.dataPublicacio DESC";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         $dades[1] = ["numPublicacions" => mysqli_num_rows($result)];
@@ -24,7 +25,11 @@
             $dataPublicacio = $row[3];
             $id = $row[4];
             $tipus = $row[5];
-            $dades[$i] = ["publicacio" => ["id" => $id, "publicador" => $publicador, "imgPublicador"=> $imgPublicador, "publicacio" => $publicacio, "dataPublicacio" => $dataPublicacio, "tipus" => $tipus]]; //array de arrays
+            $sql = "SELECT COUNT(*) FROM comentari WHERE idPublicacio = $id";
+            $r = mysqli_query($conn, $sql);
+            $rw = mysqli_fetch_row($r);
+            $numComentaris = $rw[0];
+            $dades[$i] = ["publicacio" => ["id" => $id, "publicador" => $publicador, "imgPublicador"=> $imgPublicador, "publicacio" => $publicacio, "dataPublicacio" => $dataPublicacio, "tipus" => $tipus, "numComentaris" => $numComentaris]]; //array de arrays
             $i++;
         }
         echo json_encode($dades);
