@@ -76,18 +76,15 @@ create table publicacio (
 create table event (
     id INT(6) unsigned PRIMARY KEY auto_increment,
     idGrup INT(6) unsigned not null,
+    idUsuari INT (6) unsigned not null,
     nom VARCHAR(50) not null,
     descripcio VARCHAR(120) not null,
     dateStart DATETIME not null,
-    dateEnd DATETIME not null
+    dateEnd DATETIME not null,
+    FOREIGN KEY (idGrup) REFERENCES grup(id) ON DELETE CASCADE,
+    FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE
 );
 
-create table usuari_event(
-    idUsuari INT(6) unsigned,
-    idEvent INT(6) unsigned,
-    FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE,
-    FOREIGN KEY (idEvent) REFERENCES event(id) ON DELETE CASCADE
-);
 
 create table comentari (
     idPublicacio INT(6) unsigned,
