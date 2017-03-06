@@ -207,7 +207,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 $('.contactesGrup').find('div').remove();
                 usuari.getContactes(function() { //actualitzar llista de contactes del usuari;
                     for (var i = 0; i < usuari.contactes.length; i++) {
-                        if (!Utils.inArray(membresGrup, usuari.contactes[i])) {
+                        if (!Utils.inArray(membresGrup, usuari.contactes[i])) { //perque no es vegin els usuaris que ja estan al grup;
                             $('.contactesUsuari').append("<div class='contacteUsuari'>" + usuari.contactes[i] + "</div>");
                         }
                     }
@@ -289,7 +289,7 @@ function getMembres() {
                     str = '<li style="border-bottom: 1px solid rgba(0,0,0,0.125);" data-id="' + membres[i].idUsuari + '">' +
                                 '<img src="' + urlServer + membres[i].fotoUsuari + '" class="img-circle fotoPublicadorImg" width="50px" height="50px" style="margin-right: 10px">' +
                                 membres[i].nomUsuari +
-                                '<p style="float: right; color: black; margin-right: 15px;"> <button type="button" class="buttonNoStyle eliminarUsuariGrup" aria-label="Left Align"> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></p>'
+                                '<p style="float: right; color: black; margin-right: 15px; margin-top: 10px;"> <button type="button" class="buttonNoStyle eliminarUsuariGrup" aria-label="Left Align"> <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></button></p>'
                             '</li>';
                 }
                 else {
