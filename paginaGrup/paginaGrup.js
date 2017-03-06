@@ -205,9 +205,11 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 $('#infoGrup').hide();
                 $('.contactesUsuari').find('div').remove(); //no funciona, s'ha de borrar els divs;
                 $('.contactesGrup').find('div').remove();
-                usuari.getContactes(function() {
+                usuari.getContactes(function() { //actualitzar llista de contactes del usuari;
                     for (var i = 0; i < usuari.contactes.length; i++) {
-                        $('.contactesUsuari').append("<div class='contacteUsuari'>" + usuari.contactes[i] + "</div>");
+                        if (!Utils.inArray(membresGrup, usuari.contactes[i])) {
+                            $('.contactesUsuari').append("<div class='contacteUsuari'>" + usuari.contactes[i] + "</div>");
+                        }
                     }
                     $('#listContactesAfegir').fadeIn();
                 });   
@@ -296,8 +298,8 @@ function getMembres() {
                         membres[i].nomUsuari +
                         '</li>';
                 }
-            membresGrup.push(membres[i].nomUsuari);
              }
+             membresGrup.push(membres[i].nomUsuari);
              $('#participantsGrupDiv').find('ul').append(str);
         }
     });
