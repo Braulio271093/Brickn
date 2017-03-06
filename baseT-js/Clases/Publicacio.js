@@ -23,7 +23,7 @@ class Publicacio {
                 "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + "/imgServer/fotosPerfil/nofoto.png" + "'></div>" +
                 "<div class='titolPublicacio'>" +
                     "<p>" + this.publicador + "</p>" +
-                    "<p>" + this.convertirData(this.dataPublicacio) + "</p>" +
+                    "<p>" + Publicacio.convertirData(this.dataPublicacio) + "</p>" +
                 "</div>" +
                 "<div class='bodyPublicacio'>" +
                     body +
@@ -45,12 +45,13 @@ class Publicacio {
             "</div>";
     }
 
-    static toHtmlForIndex(nomPublicador, nomGrup, publicacio, tipus, idGrup) {
+    static toHtmlForIndex(nomPublicador, nomGrup, publicacio, tipus, idGrup, dataPublicacio) {
         var str;
         if (tipus == 0) {
             str = '<div class="publicacioMur" data-id="' + idGrup + '">'+
                     '<p class="publicacioMurHeader">'+
-                       'De <strong>' + nomPublicador + "</strong> desde <strong>" + nomGrup + '</strong>:' +     
+                       '<p>De <strong>' + nomPublicador + "</strong> desde <strong>" + nomGrup + '</strong>:</p>' +
+                       '<p style="float: right; position: relative; bottom: 33px; color: gray; font-size: 14px">' +  Publicacio.convertirData(dataPublicacio) +'</p>'  +   
                     '</p>' +
                     '<p class="publicacioMurBody">'+
                         publicacio +
@@ -84,7 +85,7 @@ class Publicacio {
      * Convertir la data de publicacio;
      * @param data de la publicacio;
      */
-    convertirData(date) {
+    static convertirData(date) {
         var ret = "";
 
         var t = date.split(/[- :]/); //YYYY, MM, DD, HH, mm, ss

@@ -20,7 +20,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             $('.resum').empty();
             usuari.getUltimesPublicacions(function(ultimesPublicacions) {
                 for (var i = 0; i < ultimesPublicacions.length; i++) {
-                    var p = Publicacio.toHtmlForIndex(ultimesPublicacions[i].nomPublicador, ultimesPublicacions[i].nomGrup, ultimesPublicacions[i].publicacio, ultimesPublicacions[i].tipus, ultimesPublicacions[i].idGrup);
+                    var p = Publicacio.toHtmlForIndex(ultimesPublicacions[i].nomPublicador, ultimesPublicacions[i].nomGrup, ultimesPublicacions[i].publicacio, ultimesPublicacions[i].tipus, ultimesPublicacions[i].idGrup, ultimesPublicacions[i].dataPublicacio);
                     $('.resum').append(p);
                 }
             });
