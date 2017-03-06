@@ -27,9 +27,6 @@
 - [X] ~~Afegir acceptar contacte~~;
 - [X] ~~Tractar data de la publicacio~~;
 - [X] Mostrar publicacions en la tab resum
-
-
-
 - [ ] Documentació del projecte;
 - [ ] pagina web del projecte (acabar-la); 
 - [ ] Revisar traducció
