@@ -133,19 +133,17 @@
 .resum {
     box-sizing: border-box;
 }
-.resumBody{
-    min-height: 200px;
-    min-width: 100px;
-    /*border-left: 1px solid lightgray;
-    border-right: 1px solid lightgray;
-    border-radius: 1px;*/
-    margin: 0px 20px 0px 20px;
+.publicacioMur {
+    font-size: 16px; 
+    border-bottom: 1px solid rgba(0,0,0,0.125); 
+    padding: 5px;
 }
-.resumPublicacio {
-    min-height: 100px;
-    min-width: 100px;
-    margin-top: 10px;
-    border-bottom: 1px  solid lightgray;
+.publicacioMurHeader {
+    
+    margin-top: 5px;
+}
+.publicacioMurBody {
+    margin-left: 10px;
 }
 
 /* Altres */

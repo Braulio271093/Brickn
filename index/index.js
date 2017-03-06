@@ -1,4 +1,4 @@
-require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils'], function () {
+require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio'], function () {
     $(document).ready(function () {
         noEnrere(); //deshabilitar el boto de tornar enrere;
         
@@ -17,7 +17,14 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils'], functi
         });
 
         usuari.getUltimesPublicacions(function(ultimesPublicacions) {
-
+            for (var i = 0; i < ultimesPublicacions.length; i++) {
+                var p = Publicacio.toHtmlForIndex(ultimesPublicacions[i].nomPublicador, ultimesPublicacions[i].nomGrup, ultimesPublicacions[i].publicacio, ultimesPublicacions[i].tipus, ultimesPublicacions[i].idGrup);
+                $('.resum').append(p);
+            }
+        });
+        $(document).on('click', '.publicacioMur', function() {
+            var ids = $(this).data('id');
+            cambiPag('paginaGrup.html?idGrup=' + ids);  
         });
 
         usuari.getSolicitutsContacte(function(data) {

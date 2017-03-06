@@ -43,6 +43,24 @@ class Publicacio {
             "</div>";
     }
 
+    static toHtmlForIndex(nomPublicador, nomGrup, publicacio, tipus, idGrup) {
+        var str;
+        if (tipus == 0) {
+            str = '<div class="publicacioMur" data-id="' + idGrup + '">'+
+                    '<p class="publicacioMurHeader">'+
+                       'de <strong>' + nomPublicador + "</strong> desde <strong>" + nomGrup + '</strong>' +     
+                    '</p>' +
+                    '<p class="publicacioMurBody">'+
+                        publicacio +
+                    '</p>' +
+                '</div>';
+        }
+        else if (tipus == 1) {
+
+        }
+        return str;
+    }
+
     static cargarImatgesPublicador(idPublicacio, publicador) {
         Usuari.getIdByNom(publicador, function(idUsuari) {
             $.ajax({
