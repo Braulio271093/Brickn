@@ -1,32 +1,6 @@
 # Brickn
 
 **A fer:**
-- [X] ~~Crear la clase error per mostrar els errors bé~~;
-- [X] ~~Millorar animacions (fer-les amb css)~~;
-- [X] ~~Multi-idioma~~;
-- [X] ~~Arreglar crear grup public sense tema~~;
-- [X] ~~Mostrar temas grup public (actualment es mostren els usuaris)~~;
-- [X] ~~Modificar interfaz perfil~~
-- [X] ~~Eliminar email  (ja que no te sentit guardar el mail d'una persona si el nom d'usuari ja es unic)~~;
-- [X] ~~Login per nom d'usuari i no per email.~~
-- [X] ~~Recargar index al swipeup~~ ;
-- [X] ~~Afegir canviar idioma en el login~~;
-- [X] ~~Canviar alerts per console.log~~
-- [X] ~~Poder eliminar-se d'un grup~~;
-- [X] ~~Arreglar agregar contactes (Hi ha un error que fa que puguis agregar contactes que ja tens agregats)~~; 
-- [X] ~~Poder eliminar temes al crear un grup~~;
-- [X] ~~Poder eliminar contactes al crear un grup~~;
-- [X] ~~Cambiar foto usuari~~;
-- [X] ~~Publicar imatges~~
-- [X] ~~Comentaris publicacions~~
-- [X] ~~Crear recuperació de contrasenya~~
-- [X] ~~Afegir contrasenya als grups publics~~
-- [X] ~~Cambiar html de les publicacions i els comentaris~~
-- [X] ~~Millorar contadors (fer que en buscar o mostrar algo només es mostrin N i al apretar un boto es mostrin N més)~~;
-- [X] ~~Notificacions en cada grup~~
-- [X] ~~Afegir acceptar contacte~~;
-- [X] ~~Tractar data de la publicacio~~;
-- [X] Mostrar publicacions en la tab resum
 - [ ] Documentació del projecte;
 - [ ] pagina web del projecte (acabar-la); 
 - [ ] Revisar traducció
