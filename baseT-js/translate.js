@@ -498,6 +498,11 @@
 	'{ "cat" : "Comentar" },' + 
  	'{ "es"  : "Comentar" },' + 
 	'{ "en"  : "Comment"}' + 
+  '],' +
+  '"stringTu" : [' + 
+	'{ "cat" : "tú" },' + 
+ 	'{ "es"  : "tu" },' + 
+	'{ "en"  : "you"}' + 
   ']' +
 '}';
 

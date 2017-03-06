@@ -22,7 +22,7 @@ class Grup {
         if (this.usuaris.length <= 3) {
             for (var j = 0; j < this.usuaris.length; j++) {
                 var aux;
-                if (this.usuaris[j] == usuari.nomUsuari) aux = 'tu';
+                if (this.usuaris[j] == usuari.nomUsuari) aux = __('stringTu');
                 else aux = this.usuaris[j];
                 if (j == 1 || j == 2) {
                     str += ', ';
@@ -36,7 +36,7 @@ class Grup {
         else {
             for (var j = 0; j < 3; j++) {
                 var aux;
-                if (this.usuaris[j] == usuari.nomUsuari) aux = 'tu';
+                if (this.usuaris[j] == usuari.nomUsuari) aux = __('stringTu');
                 else aux = this.usuaris[j];
                 str += aux + ', ';
             }
