@@ -188,11 +188,13 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             $('#buttonBackToGrup').click(function() {
                 $('#infoGrup').hide();
                 $('#grup').fadeIn();
+                $('.buttonMesPublicacions').show();
             });
 
             //Opcions disponibles;
             $('.buttonMenuOpcions').click(function() {
                 var opcio = $(this).data('id');
+                $('.buttonMesPublicacions').hide();
                 switch (opcio) {
                     case 1: //info del grup;
                         $('#grup').hide();
