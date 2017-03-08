@@ -14,35 +14,37 @@ class Publicacio {
      */
     publicacioToHtml() {
         var body = this.publicacio;
+        let str = ''; 
         if (this.tipus == 1) {
             var rutaFoto = this.publicacio;
             rutaFoto += '.jpg';
             body = "<img class='imatgePublicacio' src=" + urlServer + rutaFoto + ">";
         }
-        return "<div class='publicacio' data-id='" + this.id + "' style='display: none'>" +
-                "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + "/imgServer/fotosPerfil/nofoto.png" + "'></div>" +
-                "<div class='titolPublicacio'>" +
-                    "<p>" + this.publicador + "</p>" +
-                    "<p>" + Publicacio.convertirData(this.dataPublicacio) + "</p>" +
-                "</div>" +
-                "<div class='bodyPublicacio'>" +
-                    body +
-                "</div>" +
-                "<div class='buttonComentaris' style='margin-top: 20px; font-size: 16px; position: relative'>" +
-                    '<span class="badge" style="z-index: 1; position: absolute; bottom: 22px; left: 33px; background-color: #D51C1C;">' + this.numComentaris + '</span>' +
-                    "<button class='buttonNoStyle buttonMostrarComentaris' style='font-size: 20px'>" +
-                        "<span class='glyphicon glyphicon-comment' aria-hidden='true'></span>" +
-                    "</button>" +
-                "</div>" +
-                "<div class='comentarisPublicacio' style='display: none'>" +
-                    "<div class='input-group inputComentar' style='margin-top: 5px; margin-bottom: 5px'>" +
-                        "<input type='text' class='form-control inputPublicarComentari' placeholder='....'>" +
-                        "<span class='input-group-btn'>" +
-                            "<button class='btn btn-danger buttonComentar' type='button'>" + __('stringComentar') + "</button>" +
-                        "</span>" +
-                    "</div>" +
-                "</div>" +
-            "</div>";
+        str += "<div class='publicacio' data-id='" + this.id + "'>";
+        str +=   "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + "/imgServer/fotosPerfil/nofoto.png" + "'></div>";
+        str +=   "<div class='titolPublicacio'>";
+        str +=       "<p>" + this.publicador + "</p>"; 
+        str +=       "<p>" + Publicacio.convertirData(this.dataPublicacio) + "</p>"; 
+        str +=   "</div>"; 
+        str +=   "<div class='bodyPublicacio'>";
+        str +=       body;
+        str +=  "</div>";
+        str +=  "<div class='buttonComentaris' style='margin-top: 20px; font-size: 16px; position: relative'>";
+        if (this.numComentaris > 0) str +='<span class="badge" style="z-index: 1; position: absolute; bottom: 22px; left: 33px; background-color: #D51C1C;">' + this.numComentaris + '</span>';
+        str +=            "<button class='buttonNoStyle buttonMostrarComentaris' style='font-size: 20px'>";
+        str +=                "<span class='glyphicon glyphicon-comment' aria-hidden='true'></span>";
+        str +=            "</button>";
+        str +=        "</div>";
+        str +=        "<div class='comentarisPublicacio' style='display: none'>";
+        str +=            "<div class='input-group inputComentar' style='margin-top: 5px; margin-bottom: 5px'>";
+        str +=                "<input type='text' class='form-control inputPublicarComentari' placeholder='....'>";
+        str +=                "<span class='input-group-btn'>";
+        str +=                   "<button class='btn btn-danger buttonComentar' type='button'>" + __('stringComentar') + "</button>";
+        str +=                "</span>";
+        str +=            "</div>";
+        str +=        "</div>";
+        str +=    "</div>";
+        return str;
     }
 
     static toHtmlForIndex(nomPublicador, nomGrup, publicacio, tipus, idGrup, dataPublicacio) {
