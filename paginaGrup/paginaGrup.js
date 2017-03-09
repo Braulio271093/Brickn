@@ -69,6 +69,15 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
            
 
         $(document).ready(function () {
+
+            setInterval(function() { //obtenir la ultima publicació cada minut;
+                Grup.getUltimaPublicacio(idGrup, function(publicacio) {
+                    var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0)
+                    $('.publicacions').prepend(p.publicacioToHtml());
+                });
+            }, 1000 * 60); 
+
+
             $('#btnBackToIndex').click(function () {
                 cambiPag('index.html');
             });
