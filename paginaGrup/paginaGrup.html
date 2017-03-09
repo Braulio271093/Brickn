@@ -7,9 +7,9 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="../baseT-css/bootstrap/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+        <link href="../baseT-css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
         <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
         <link rel="stylesheet" type="text/css" href="paginaGrup.css">
-        <link href="../baseT-css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
         <title>paginaGrup</title>
     </head>
     <body> 
@@ -157,20 +157,22 @@
             </div>
             <div class="modal-body">
                 <form action="" class="form-horizontal" role="form">
-                    <div class="form-group" style="margin-left: 15%;">
+                    <!-- Date pickers -->
+                    <div class="form-group">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="margin-left: 20%">
                                 <label for="InputName" style="margin-left: 60px" class="translate">{{stringStartDate}}</label>
                                 <div id="startDate"></div>
                             </div>
-                            <hr>
-                            <div class="col-md-6">
+                            <hr style="width: 50%; color: #D51C1C;">
+                            <div class="col-md-6" style="margin-left: 20%">
                                 <label for="InputName" style="margin-left: 60px" class="translate">{{stringEndDate}}</label>
                                 <div id="endDAte"></div>
                             </div>
                         </div>
                     </div>
                     <hr>
+                    <!-- Part inferior -->
                     <div class="form-group">
                         <label for="InputName" style="margin-left: 5%;" class="translate">{{stringNomDelEvent}}</label>
                         <div class="col-md-6">
