@@ -72,6 +72,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
 
             setInterval(function() { //obtenir la ultima publicació cada minut;
                 Grup.getUltimaPublicacio(idGrup, function(publicacio) {
+                    $('.publicacions').first().remove();
                     var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0)
                     $('.publicacions').prepend(p.publicacioToHtml());
                 });
