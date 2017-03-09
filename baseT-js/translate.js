@@ -503,6 +503,16 @@
 	'{ "cat" : "tú" },' + 
  	'{ "es"  : "tu" },' + 
 	'{ "en"  : "you"}' + 
+  '],' +
+'"stringAfegirContactes" : [' + 
+	'{ "cat" : "Afegir contactes" },' + 
+ 	'{ "es"  : "Añadir contactos" },' + 
+	'{ "en"  : "Add contacts"}' + 
+  '],' +
+  '"stringGrupAmbContrasenya" : [' + 
+	'{ "cat" : "Grup amb contrasenya" },' + 
+ 	'{ "es"  : "Grupo con contraseña" },' + 
+	'{ "en"  : "Group with password"}' + 
   ']' +
 '}';
 
