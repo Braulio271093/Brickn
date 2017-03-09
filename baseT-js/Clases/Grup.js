@@ -259,5 +259,24 @@ class Grup {
             }
         });
     }
+
+    /**
+     * Obtenir la ultima publicacio d'un grup; serveix per quan publiques es fagi el preppend;
+     * @param idGrup;
+     */
+    static getUltimaPublicacio(idGrup, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/get/getUltimaPublicacio.php?idGrup=" + idGrup,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
+    }
  }
 

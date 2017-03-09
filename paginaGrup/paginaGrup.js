@@ -85,7 +85,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                     var p = publicacions[i];
                     $('.publicacions').append(p.publicacioToHtml());
                     if (i == publicacions.length - 1)  {
-                       $('div').find('[data-id="' + p.id + '"]').css('margin-bottom', '80px');
+                       $('div .publicacio').find('[data-id="' + p.id + '"]').css('margin-bottom', '80px');
                     }
                 }
             }); 
@@ -93,7 +93,13 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             $('#buttonPublicar').click(function () {
                 var publicacio = $('#inputPublicar').val();
                 if (publicacio != "") {
-                   Publicacio.afegirPublicacio(idGrup, usuari.idUsuari, publicacio, 0);
+                   Publicacio.afegirPublicacio(idGrup, usuari.idUsuari, publicacio, 0, function() {
+                       $('#inputPublicar').val('');
+                       Grup.getUltimaPublicacio(idGrup, function(publicacio) {
+                           var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0)
+                           $('.publicacions').prepend(p.publicacioToHtml());
+                       });
+                   });
                 }
             });
 

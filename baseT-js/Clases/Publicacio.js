@@ -125,7 +125,7 @@ class Publicacio {
      * @param idUsuari
      * @param publicacio;
      */
-    static afegirPublicacio(idGrup, idUsuari, publicacio, tipus) {
+    static afegirPublicacio(idGrup, idUsuari, publicacio, tipus, onSuccess) {
         $.ajax({
             type: "POST",
             url: urlServer + "/insert/afegirPublicacio.php?idGrup=" + idGrup + "&idUsuari=" + idUsuari + "&publicacio=" + publicacio + "&tipus=" + tipus,
@@ -133,7 +133,7 @@ class Publicacio {
             cache: false,
             success: function (data) {
                 if (data == 1) {
-                    location.href = window.location;
+                    onSuccess();
                 }
             },
             error: function (xhr, status, error) {
