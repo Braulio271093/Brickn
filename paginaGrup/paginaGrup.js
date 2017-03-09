@@ -72,11 +72,13 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
 
             setInterval(function() { //obtenir la ultima publicació cada minut;
                 Grup.getUltimaPublicacio(idGrup, function(publicacio) {
-                    $('.publicacions').first().remove();
-                    var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0)
-                    $('.publicacions').prepend(p.publicacioToHtml());
+                    var lastId = $('.publicacions').find('.publicacio').first().data('id');
+                    if (lastId != publicacio.id) {
+                        var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0)
+                        $('.publicacions').prepend(p.publicacioToHtml());
+                    }
                 });
-            }, 1000 * 60); 
+            }, 1000 * 5); 
 
 
             $('#btnBackToIndex').click(function () {
