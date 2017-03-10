@@ -1,4 +1,8 @@
 <?php
+	/**
+    *	Buscar un tema que tingui un nom semblant
+    */
+
 	require '../connectDB.php';
 	header("Access-Control-Allow-Origin: *");
 

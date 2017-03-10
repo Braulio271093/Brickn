@@ -1,4 +1,7 @@
 <?php
+    /**
+    * Obtneir el nom d'un grup semblant
+    */
     require '../connectDB.php';
     header("Access-Control-Allow-Origin: *");
 

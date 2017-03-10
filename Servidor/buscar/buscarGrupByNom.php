@@ -1,7 +1,7 @@
 <?php
 
 	/**
-	*	Buscar un grup per el nom; 
+	*	Buscar un grup per el nom on el nom sigui semblan i el usuari no estigui dins; 
 	* 	@return id i nom del grup;
 	*/
     require '../connectDB.php';

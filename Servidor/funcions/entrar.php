@@ -27,4 +27,5 @@
         echo json_encode(array("errorDades" => "1"));
     }
     mysqli_close($conn);
-?>
+
+?>	

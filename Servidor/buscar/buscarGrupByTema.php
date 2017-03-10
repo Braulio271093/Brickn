@@ -1,4 +1,8 @@
 <?php
+	/**
+    * Buscar un grup per el nom del tema (semblant) on l'usuari no estigui dins;
+    */
+
     require '../connectDB.php';
     header("Access-Control-Allow-Origin: *");
 

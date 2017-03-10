@@ -61,7 +61,7 @@ class Publicacio {
                 '</div>';
         }
         else if (tipus == 1) {
-
+            //si la publicacio és una foto;
         }
         return str;
     }

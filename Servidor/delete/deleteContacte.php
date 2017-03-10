@@ -1,4 +1,7 @@
 <?php
+	/**
+    *
+    */
 	require '../connectDB.php';
 	header("Access-Control-Allow-Origin: *");
 

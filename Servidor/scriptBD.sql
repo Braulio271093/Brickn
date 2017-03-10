@@ -12,13 +12,11 @@ create table usuari (
 );
 /*insert into usuari (nomUsuari, email, pass, respostaPregunta) VALUES ('pau', 'pau', '123', 'Barcelona');*/
 
-drop table if exists tema;
 create table tema (
 	id int(6) unsigned primary key auto_increment,
     nom varchar(30) not null 
     );
 
-drop table if exists usuari_tema;
 create table usuari_tema (
 	idUsuari INT(6) unsigned,
     idTema INT(6) unsigned,

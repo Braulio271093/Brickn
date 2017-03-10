@@ -1,4 +1,7 @@
 <?php
+    /**
+    *   Borrar un usuari d'un grup;
+    */
     require '../connectDB.php';
 	header("Access-Control-Allow-Origin: *");
 

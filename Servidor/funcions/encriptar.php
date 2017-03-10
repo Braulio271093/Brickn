@@ -55,6 +55,7 @@
     function ClautoArray($clau){
         return explode(",",$clau);  
     }
+   
 
         
-?>
+?> 

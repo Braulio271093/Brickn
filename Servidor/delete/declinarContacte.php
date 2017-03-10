@@ -1,4 +1,8 @@
 <?php
+	/**
+    *	Elimniar un fila de la taula usuari_contacte;
+    */
+
     require '../connectDB.php';
     header("Access-Control-Allow-Origin: *");
 

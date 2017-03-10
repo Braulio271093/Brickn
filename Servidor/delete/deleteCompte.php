@@ -1,4 +1,7 @@
 <?php
+	/**
+    *	Eliminiar una compte d'usuari
+    */
     require '../connectDB.php';
     header("Access-Control-Allow-Origin: *");
 

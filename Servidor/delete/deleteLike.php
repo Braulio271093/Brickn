@@ -1,4 +1,7 @@
 <?php
+	/**
+    * BOrrar-se un tema
+    */
 	require '../connectDB.php';
 	header("Access-Control-Allow-Origin: *");
 

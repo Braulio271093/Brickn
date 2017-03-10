@@ -165,7 +165,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 }
             })
 
-            //Mostrar mes comentaris (mes de 5);
+            //Mostrar els comentaris d'una publicacio;
             $(document).on('click', '.buttonMostrarComentaris',function() {
                 var x = $(this).parent().parent().find('.comentarisPublicacio');
                 var idPublicacio = $(this).parent().parent().data('id');
@@ -189,7 +189,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                     });
                 }
             });
-
+            //Mostrar mes comentaris d'una publicacio (més de 5);
             $(document).on('click', '.buttonMesComentaris', function() {
                 $(this).hide();
                 var idPublicacio = $(this).parent().parent().parent().data('id');
@@ -209,7 +209,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 $('.buttonMesPublicacions').show();
             });
 
-            //Opcions disponibles;
+            //Opcions disponibles d'intre un grup;;
             $('.buttonMenuOpcions').click(function() {
                 var opcio = $(this).data('id');
                 $('.buttonMesPublicacions').hide();
