@@ -52,7 +52,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             '</button>' +
             '</div>'
         });
- $('#startDate').datetimepicker({ //datepickers del events
+        $('#startDate').datetimepicker({ //datepickers del events
             language: 'es',
             inline: true,
             todayBtn: 1,
@@ -70,7 +70,6 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
         
        //para crear el evento
         $('#submitEvento').click(function() {
-            
             //date format: YYYY-MM-dd HH:mm
             var startDate = $("#startDate").datetimepicker('getDate'); //fecha inicio;
             var day  = startDate.getDate();
@@ -89,7 +88,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             var year =  endDate.getFullYear();
             var hour = endDate.getHours();
             var min = endDate.getMinutes();
-             var dataFinal =   year +"-"+ 
+            var dataFinal =   year +"-"+ 
                                 month +"-"+
                                 day +" "+
                                 hour +":"+
@@ -97,27 +96,27 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             var nombre = $("#inputNombre").val();
             var descripcio = $("#inputDescripcion").val();
             var idUsuari = usuari.idUsuari;
-            var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio+'&startDate='+dataInicial+'&endDate='+dataFinal+'&idUsuari='+idUsuari+'&idGrup='+idGrup;
             
-        
-        $.ajax
-        ({
-            type: "POST",
-            url: url,
-            dataType: 'json',
-            cache: false,
-            success: function(data)
-            {
-                if(data == 1){
-                    alert("event Introduit Correctament");
-                }else{
-                    alert("error creando el evento")
+            var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio+'&startDate='+dataInicial+'&endDate='+dataFinal+'&idUsuari='+idUsuari+'&idGrup='+idGrup;
+            $.ajax
+            ({
+                type: "POST",
+                url: url,
+                dataType: 'json',
+                cache: false,
+                success: function(data)
+                {
+                    if(data == 1){
+                        alert("event Introduit Correctament");
+                    }
+                    else{
+                        alert("error creando el evento")
+                    }
+                },
+                error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
+                    alert("error al servidor");
                 }
-            },
-            error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
-                alert("error al servidor");
-            }
-        }); 
+            }); 
 
     });           
 

@@ -8,8 +8,10 @@
     $Descripcion = $_GET['descripcion'];
     $idUsuari = $_GET['idUsuari'];
     $idGrup = $_GET['idGrup'];
+    $date = date("Y-m-d H:i:s");
     
-        $sql = "INSERT INTO event (idGrup, idUsuari,nom, descripcio, dateStart, dateEnd) VALUES ($idUsuari, $idGrup,'$Nombre', '$Descripcion', '$fechaInicio', '$fechaFinal')";
+        $sql = "INSERT INTO event (idGrup, idUsuari,nom, descripcio, dateStart, dateEnd, dataPublicacio) 
+                VALUES ($idUsuari, $idGrup,'$Nombre', '$Descripcion', '$fechaInicio', '$fechaFinal', '$date')";
         if (mysqli_query($conn, $sql)) {
             $res = 1;
         }
