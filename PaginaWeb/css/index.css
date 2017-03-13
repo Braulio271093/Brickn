@@ -15,7 +15,7 @@
   }
   .bg-2 { 
       background-color:#D51C1C; /* Dark Blue */
-      color: #ffffff;
+      color: #F2F2F2;
   }
   .bg-3 { 
       background-color: #ffffff; /* White */
@@ -23,12 +23,19 @@
   }
   .bg-4 { 
       background-color: #2f2f2f; /* Black Gray */
-      color: #fff;
+      color: #F2F2F2;
   }
   .container-fluid {
       padding-top: 70px;
       padding-bottom: 70px;
   }
+  .register input {
+    margin:5px 0px 5px 0px;
+    border-radius: 5px;
+}
+.espacio-vertical {
+    margin-top: 15%;
+}
   .navbar {
       padding-top: 15px;
       padding-bottom: 15px;
@@ -39,12 +46,18 @@
       letter-spacing: 5px;
   }
   .navbar-nav  li a:hover {
-      color: #FE2E2E !important;
+      color: #F2F2F2 !important;
   }
-.register input {
-    margin:5px 0px 5px 0px;
-    border-radius: 5px;
-}
-.espacio-vertical {
-    margin-top: 15%;
-}
+  .navbar-brand1
+  {
+      z-index:1;
+      position:relative;
+      right:30px; 
+      width:50px; 
+      height:50px;
+      font-size: 25px;
+      float: left; 
+  }
+  .redback{
+      background-color: #D51C1C; 
+  }
