@@ -1,4 +1,4 @@
-require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camera'], function () {
+require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camera', 'Clases/Error'], function () {
     
     var $_GET = Utils.getVariablesHtml();
     var idGrup = $_GET['idGrup'];

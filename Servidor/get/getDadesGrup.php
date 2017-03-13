@@ -1,4 +1,7 @@
 <?php
+/*
+    Obtenir les dades d'un grup i totes les seves publicacions;'
+*/
     require '../connectDB.php';
     header("Access-Control-Allow-Origin: *");
 
@@ -10,9 +13,11 @@
     $row =  mysqli_fetch_row($result);
     $dades[0] = ["nomGrup" => $row[0]];
     
-    $sql = "SELECT usuari.nomUsuari, usuari.fotoPerfil, publicacio.publicacio, publicacio.dataPublicacio, publicacio.id, publicacio.tipus
-            FROM publicacio JOIN usuari ON publicacio.idUsuari = usuari.id 
-            WHERE publicacio.idGrup = $idGrup ORDER BY publicacio.dataPublicacio DESC";
+    $sql = "SELECT usuari.nomUsuari, usuari.fotoPerfil, publicacio.publicacio, grup_publicacions.dataPublicacio, grup_publicacions.id, grup_publicacions.tipus
+            FROM grup_publicacions
+            JOIN usuari ON grup_publicacions.idUsuari = usuari.id
+            JOIN publicacio ON publicacio.id = grup_publicacions.id 
+            WHERE grup_publicacions.idGrup = 1 ORDER BY grup_publicacions.dataPublicacio DESC";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         $dades[1] = ["numPublicacions" => mysqli_num_rows($result)];

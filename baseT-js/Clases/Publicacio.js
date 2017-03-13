@@ -126,6 +126,7 @@ class Publicacio {
      * @param publicacio;
      */
     static afegirPublicacio(idGrup, idUsuari, publicacio, tipus, onSuccess) {
+        //location.href = urlServer + "/insert/afegirPublicacio.php?idGrup=" + idGrup + "&idUsuari=" + idUsuari + "&publicacio=" + publicacio + "&tipus=" + tipus;
         $.ajax({
             type: "POST",
             url: urlServer + "/insert/afegirPublicacio.php?idGrup=" + idGrup + "&idUsuari=" + idUsuari + "&publicacio=" + publicacio + "&tipus=" + tipus,
