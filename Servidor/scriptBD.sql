@@ -77,6 +77,7 @@ create table event (
     idUsuari INT (6) unsigned not null,
     nom VARCHAR(50) not null,
     descripcio VARCHAR(120) not null,
+    dataPublicacio DATETIME not null,
     dateStart DATETIME not null,
     dateEnd DATETIME not null,
     FOREIGN KEY (idGrup) REFERENCES grup(id) ON DELETE CASCADE,
