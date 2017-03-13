@@ -168,31 +168,31 @@
                             <hr style="width: 50%; color: #D51C1C;">
                             <div class="col-md-6" style="margin-left: 20%">
                                 <label for="InputName" style="margin-left: 60px" class="translate">{{stringEndDate}}</label>
-                                <div id="endDAte"></div>
+                                <div id="endDate"></div>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <!-- Part inferior -->
                     <div class="form-group">
-                        <label for="InputName" style="margin-left: 5%; float: left; clear: both;" class="translate">{{stringNomDelEvent}}</label>
+                        <label for="inputNombre" style="margin-left: 5%; float: left; clear: both;" class="translate">{{stringNomDelEvent}}</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" style="float: left;"id="inputName" placeholder="Nombre">
+                            <input type="text" class="form-control" style="float: left;"id="inputNombre" placeholder="Nombre">
                         </div>
                     </div>
                     <hr>
                     <div class="form-group">
-                        <label for="InputName" style="margin-left: 5%;" class="translate">{{stringDescripcio}}</label>
+                        <label for="inputDescripcion" style="margin-left: 5%;" class="translate">{{stringDescripcio}}</label>
                         <br/>
                         <div class="col-md-6">
-                            <textarea id="descripcion" class="form-control" rows="5"></textarea>
+                            <textarea id="inputDescripcion" class="form-control" rows="5"></textarea>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default translate" data-dismiss="modal">{{stringTancar}}</button>
-                <button type="button" class="btn btn-danger translate">{{stringCrearEvent}}</button>
+                <button type="button" class="btn btn-danger translate" id="submitEvento">{{stringCrearEvent}}</button>
             </div>
         </div>
     </div>

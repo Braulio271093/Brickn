@@ -52,21 +52,74 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             '</button>' +
             '</div>'
         });
-
-        $('#startDate').datetimepicker({ //datepickers del events
+ $('#startDate').datetimepicker({ //datepickers del events
             language: 'es',
             inline: true,
             todayBtn: 1,
             weekStart: 1,
             todayHighlight: 1,
+            format: 'yyyy-mm-dd hh:ii',
         });
-        $('#endDAte').datetimepicker({
+        $('#endDate').datetimepicker({
             language: 'es',
             inline: true,
             weekStart: 1,
             todayHighlight: 1,
+            format: 'yyyy-mm-dd hh:ii',
         });
-           
+        
+       //para crear el evento
+        $('#submitEvento').click(function() {
+            
+            //date format: YYYY-MM-dd HH:mm
+            var startDate = $("#startDate").datetimepicker('getDate'); //fecha inicio;
+            var day  = startDate.getDate();
+            var month = startDate.getMonth() + 1;             
+            var year =  startDate.getFullYear();
+            var hour = startDate.getHours();
+            var min = startDate.getMinutes();
+            var dataInicial =   year +"-"+ 
+                                month +"-"+
+                                day +" "+
+                                hour +":"+
+                                min;                
+            var endDate = $("#endDate").datetimepicker('getDate'); //fecha final;
+            var day  = endDate.getDate();
+            var month = endDate.getMonth() + 1;             
+            var year =  endDate.getFullYear();
+            var hour = endDate.getHours();
+            var min = endDate.getMinutes();
+             var dataFinal =   year +"-"+ 
+                                month +"-"+
+                                day +" "+
+                                hour +":"+
+                                min; 
+            var nombre = $("#inputNombre").val();
+            var descripcio = $("#inputDescripcion").val();
+            var idUsuari = usuari.idUsuari;
+            var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio+'&startDate='+dataInicial+'&endDate='+dataFinal+'&idUsuari='+idUsuari+'&idGrup='+idGrup;
+            
+        
+        $.ajax
+        ({
+            type: "POST",
+            url: url,
+            dataType: 'json',
+            cache: false,
+            success: function(data)
+            {
+                if(data == 1){
+                    alert("event Introduit Correctament");
+                }else{
+                    alert("error creando el evento")
+                }
+            },
+            error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
+                alert("error al servidor");
+            }
+        }); 
+
+    });           
 
         $(document).ready(function () {
 
