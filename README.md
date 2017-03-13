@@ -35,5 +35,6 @@ Història 4: (**15/04/2017**)
 - [ ] Crear i mostrar grups públics per proximitat;
 - [ ] albums
 - [ ] Filtre de temas
+- [ ] Borrar grup si ets admin;
 
 Història 5: (**1/05/2017) --> Entrega Projecte**
