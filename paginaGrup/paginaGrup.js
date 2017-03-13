@@ -106,18 +106,12 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 cache: false,
                 success: function(data)
                 {
-                    if(data == 1){
-                        alert("event Introduit Correctament");
-                    }
-                    else{
-                        alert("error creando el evento")
-                    }
+                    $('#modalEvento').modal('hide');
                 },
                 error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
                     alert("error al servidor");
                 }
             }); 
-
     });           
 
         $(document).ready(function () {

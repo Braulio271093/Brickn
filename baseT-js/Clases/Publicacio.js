@@ -20,6 +20,9 @@ class Publicacio {
             rutaFoto += '.jpg';
             body = "<img class='imatgePublicacio' src=" + urlServer + rutaFoto + ">";
         }
+        else if (this.tipus == 2) {
+            alert("HI HA UN EVENT");
+        }
         str += "<div class='publicacio' data-id='" + this.id + "'>";
         str +=   "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + "/imgServer/fotosPerfil/nofoto.png" + "'></div>";
         str +=   "<div class='titolPublicacio'>";

@@ -9,15 +9,22 @@
     $idUsuari = $_GET['idUsuari'];
     $idGrup = $_GET['idGrup'];
     $date = date("Y-m-d H:i:s");
-    
-        $sql = "INSERT INTO event (idGrup, idUsuari,nom, descripcio, dateStart, dateEnd, dataPublicacio) 
-                VALUES ($idUsuari, $idGrup,'$Nombre', '$Descripcion', '$fechaInicio', '$fechaFinal', '$date')";
+
+    $sql = "INSERT INTO grup_publicacions (idGrup, tipus, idUsuari, dataPublicacio) VALUES ($idGrup, 2, $idUsuari, '$date')";
+	if (mysqli_query($conn, $sql)) {
+		$last_id = mysqli_insert_id($conn);   
+        $sql = "INSERT INTO event (nom, descripcio, dateStart, dateEnd) 
+                VALUES ('$Nombre', '$Descripcion', '$fechaInicio', '$fechaFinal')";
         if (mysqli_query($conn, $sql)) {
-            $res = 1;
+            $res = 1;        
         }
         else {
             $res = 0;
         }
+    }
+    else {
+        $res = 0;
+    }
     echo $res;
     mysqli_close($conn);
 ?>
