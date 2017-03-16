@@ -318,9 +318,9 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             });
 
             //Borrar el grup;
-            $('#buttonSortirGrup').click(function() {
-                grup.borrarGrup(idGrup, function() {
-                    cambiPag('index');
+            $('#buttonBorrarGrup').click(function() {
+                Grup.borrarGrup(idGrup, function() {
+                    cambiPag('index.html');
                 });
             });
 

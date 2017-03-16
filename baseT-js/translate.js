@@ -509,6 +509,11 @@
  	'{ "es"  : "Añadir contactos" },' + 
 	'{ "en"  : "Add contacts"}' + 
   '],' +
+  '"stringBorrarGrup" : [' + 
+	'{ "cat" : "Borrar grup" },' + 
+ 	'{ "es"  : "Borrar grupo" },' + 
+	'{ "en"  : "Delete group"}' + 
+  '],' +
   '"stringGrupAmbContrasenya" : [' + 
 	'{ "cat" : "Grup amb contrasenya" },' + 
  	'{ "es"  : "Grupo con contraseña" },' + 
