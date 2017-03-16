@@ -278,5 +278,20 @@ class Grup {
             }
         });
     }
+
+    static borrarGrup(idGrup, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/delete/deleteGrup.php?idGrup=" + idGrup,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
+    }
  }
 

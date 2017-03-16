@@ -317,6 +317,13 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                 $('#grup').fadeIn();
             });
 
+            //Borrar el grup;
+            $('#buttonSortirGrup').click(function() {
+                grup.borrarGrup(idGrup, function() {
+                    cambiPag('index');
+                });
+            });
+
             //Sortir del grup
             $('#buttonSortirGrup').click(function() {
                 usuari.eliminarseGrup(idGrup);

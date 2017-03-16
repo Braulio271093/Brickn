@@ -17,7 +17,7 @@
             FROM grup_publicacions
             JOIN usuari ON grup_publicacions.idUsuari = usuari.id
             JOIN publicacio ON publicacio.id = grup_publicacions.id 
-            WHERE grup_publicacions.idGrup = 1 ORDER BY grup_publicacions.dataPublicacio DESC";
+            WHERE grup_publicacions.idGrup = $idGrup ORDER BY grup_publicacions.dataPublicacio DESC";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         $dades[1] = ["numPublicacions" => mysqli_num_rows($result)];
