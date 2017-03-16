@@ -99,7 +99,13 @@ class Grup {
             success: function (data) {
                 $('#nomGrupTitle').text(data[0].nomGrup + " - " + __('stringMur'));
                 for (var i = 2; i <= data[1].numPublicacions + 1; i++) {
-                    var p = new Publicacio(data[i].publicacio.id, data[i].publicacio.publicador, data[i].publicacio.dataPublicacio, data[i].publicacio.publicacio, data[i].publicacio.tipus, data[i].publicacio.numComentaris);
+                    var p = new Publicacio(data[i].publicacio.id, data[i].publicacio.publicador, data[i].publicacio.dataPublicacio, data[i].publicacio.publicacio, data[i].publicacio.tipus, data[i].publicacio.numComentaris, data[i].publicacio.imgPublicador);
+                    if (p.tipus == 2) {
+                        p.nomEvent  = data[i].publicacio.nomEvent;
+                        p.descripcioEvent = data[i].publicacio.descripcioEvent;
+                        p.dateEnd   = data[i].publicacio.dateEnd;
+                        p.dateStart = data[i].publicacio.dateStart;
+                    }
                     publicacions.push(p);
                 }
                 onSucces();

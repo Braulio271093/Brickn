@@ -116,7 +116,8 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
 
         $(document).ready(function () {
 
-            setInterval(function() { //obtenir la ultima publicació cada minut;
+            //NO SE PERQUE NO FUNCIONA;
+            /*setInterval(function() { //obtenir la ultima publicació cada minut;
                 Grup.getUltimaPublicacio(idGrup, function(publicacio) {
                     var lastId = $('.publicacions').find('.publicacio').first().data('id');
                     if (lastId != publicacio.id) {
@@ -124,7 +125,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                         $('.publicacions').prepend(p.publicacioToHtml());
                     }
                 });
-            }, 1000 * 5); 
+            }, 1000 * 5); */
 
 
             $('#btnBackToIndex').click(function () {
