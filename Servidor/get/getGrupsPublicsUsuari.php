@@ -41,7 +41,7 @@
 		$dateUltimaEntrada = $row[0];
 		
 		
-		$sql = "SELECT COUNT(*) FROM publicacio WHERE dataPublicacio > '$dateUltimaEntrada' AND idUsuari != $idUsuari AND idGrup = $idGrup";
+		$sql = "SELECT COUNT(*) FROM grup_publicacions WHERE dataPublicacio > '$dateUltimaEntrada' AND idUsuari != $idUsuari AND idGrup = $idGrup";
 		$result = mysqli_query($conn, $sql);
 		$row =  mysqli_fetch_row($result);
 		$numPublicacions = $row[0];
