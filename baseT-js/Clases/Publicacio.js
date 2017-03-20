@@ -19,15 +19,8 @@ class Publicacio {
         if (this.tipus == 1) {
             var rutaFoto = this.publicacio;
             rutaFoto += '.jpg';
-            body = "<img class='imatgePublicacio' src=" + urlServer + rutaFoto + ">";
+            body = "<img class='imatgePublicacio' src=" + urlServer + "/" + rutaFoto + ">";
         }
-        else if (this.tipus == 2) {
-            body = "<div><strong>Evento: </strong><br>-" + this.nomEvent;
-            body += "<p style='margin-left: 80px; margin-bottom: 0px;'>-de: " + Publicacio.dateEvent(this.dateStart) + " hasta: " + Publicacio.dateEvent(this.dateEnd) + "</p>";
-            body += "<p style='rgba(0,0,0,0.5); margin-left: 80px; margin-top: 0px;'>-" + this.descripcioEvent + "</p>";
-            body += "</div>";
-        }
-
         str += "<div class='publicacio' data-id='" + this.id + "'>";
         str +=   "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + this.imgPublicador + "'></div>";
         str +=   "<div class='titolPublicacio'>";
@@ -37,13 +30,12 @@ class Publicacio {
         str +=   "<div class='bodyPublicacio'>";
         str +=       body;
         str +=   "</div>";
-        str +=   "<div class='buttonComentaris' style='margin-top: 20px; font-size: 16px; position: relative; width: 10%'>";
-        if (this.numComentaris > 0) str +='<span class="badge" style="z-index: 1; position: absolute; bottom: 22px; left: 33px; background-color: #D51C1C;">' + this.numComentaris + '</span>';
-        str +=            "<button class='buttonNoStyle buttonMostrarComentaris' style='font-size: 20px'>";
-        str +=                "<span class='glyphicon glyphicon-comment' aria-hidden='true'></span>";
-        str +=            "</button>";
+        str +=   "<div style='margin-top: 25px; padding-left: 15px;'>";
+        str +=      "<button class='buttonNoStyle buttonMostrarComentaris' style='font-size: 20px;'>";
+        str +=          "<span class='glyphicon glyphicon-comment' aria-hidden='true'></span>";
+        if (this.numComentaris > 0) str +='<span class="badge" style="z-index: 1; position: relative; bottom: 15px; left: -10px; background-color: #D51C1C;">' + this.numComentaris + '</span>';
+        str +=      "</button>";
         str +=   "</div>";
-
         str +=   "<div class='comentarisPublicacio' style='display: none;'>";
         str +=       "<div class='input-group inputComentar' style='margin-top: 5px; margin-bottom: 5px'>";
         str +=          "<input type='text' class='form-control inputPublicarComentari' placeholder='....'>";
@@ -73,6 +65,21 @@ class Publicacio {
             //si la publicacio és una foto;
         }
         return str;
+    }
+
+    static acceptarEvent(idUsuari, idEvent, onSuccess) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/insert/afegirUsuariEvent.php?idUsuari=" + idUsuari + "&idEvent=" + idEvent,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSuccess(data);
+            },
+            error: function (xhr, status, error) {
+
+            }
+        });
     }
 
     static cargarImatgesPublicador(idPublicacio, publicador) {

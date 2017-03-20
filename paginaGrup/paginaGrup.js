@@ -1,4 +1,4 @@
-require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camera', 'Clases/Error'], function () {
+require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Event', 'Clases/Comentari' , 'Clases/Camera', 'Clases/Error'], function () {
     
     var $_GET = Utils.getVariablesHtml();
     var idGrup = $_GET['idGrup'];
@@ -27,7 +27,13 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
         //Afegir les publicacions en pantalla
         for (var i = 0; i < publicacions.length && i < 5; i++) {
             var p = publicacions[i];
-            $('.publicacions').append(p.publicacioToHtml());
+            if (p.tipus != 2) {
+                $('.publicacions').append(p.publicacioToHtml());            
+            }
+            else { //la publicacio es un event;
+                var event = new Event(p.id, p.publicador, p.dataPublicacio, p.publicacio, p.tipus, p.numComentaris, p.imgPublicador, p.numPersones, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent);
+                $('.publicacions').append(event.toHtml());
+            }
             $('div [data-id="'+ p.id + '"]').fadeIn();
         }
         if (publicacions.length >= 5) { //afegir boto mostrar mes publicacions;
@@ -247,6 +253,14 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                         var html = c.toHtml();
                         $('body').find('[data-id="' + idPublicacio + '"]').find('.comentarisPublicacio').append(html);
                     }
+                });
+            });
+
+            //Acceptar anar a un event;
+            $(document).on('click', '.buttonAcceptarEvent', function() {
+                var idPublicacio = $(this).parent().parent().data('id');
+                Publicacio.acceptarEvent(usuari.idUsuari, idPublicacio, function(data) {
+                    //ha de fer algo;
                 });
             });
 

@@ -84,6 +84,14 @@ create table event (
     FOREIGN KEY (id) REFERENCES grup_publicacions(id) ON DELETE CASCADE
 );
 
+create table usuari_event (
+    idUsuari INT(6) unsigned NOT NULL,
+    idEvent INT(6) unsigned NOT NULL,
+    PRIMARY KEY(idUsuari, idEvent),
+    FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE,
+    FOREIGN KEY (idEvent) REFERENCES event(id) ON DELETE CASCADE
+);
+
 
 create table comentari (
     idPublicacio INT(6) unsigned,

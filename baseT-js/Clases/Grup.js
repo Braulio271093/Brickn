@@ -105,6 +105,7 @@ class Grup {
                         p.descripcioEvent = data[i].publicacio.descripcioEvent;
                         p.dateEnd   = data[i].publicacio.dateEnd;
                         p.dateStart = data[i].publicacio.dateStart;
+                        p.numPersones = data[i].publicacio.personesEvent;
                     }
                     publicacions.push(p);
                 }

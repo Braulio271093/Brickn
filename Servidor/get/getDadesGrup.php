@@ -67,12 +67,16 @@
                 $descripcioEvent = $rw[1];
                 $dateStart = $rw[2];
                 $dateEnd = $rw[3];
+                $sql = "SELECT COUNT(*) FROM usuari_event WHERE idEvent = $id";
+                $r = mysqli_query($conn, $sql);
+                $rw = mysqli_fetch_row($r);
+                $personesEvent = $rw[0];
                 $dades[$i] = ["publicacio" => ["id" => $id, "publicador" => $publicador, 
                                            "imgPublicador"=> $imgPublicador, 
                                            "dataPublicacio" => $dataPublicacio, "tipus" => $tipus, 
                                            "numComentaris" => $numComentaris, "dateStart" => $dateStart,
                                            "dateEnd" => $dateEnd, "nomEvent" => $nomEvent, 
-                                           "descripcioEvent" => $descripcioEvent]];
+                                           "descripcioEvent" => $descripcioEvent, "personesEvent" => $personesEvent]];
             }
             else {
                 $sql = "SELECT publicacio FROM publicacio WHERE id = $id";
