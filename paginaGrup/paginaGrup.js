@@ -246,15 +246,16 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
             //Acceptar anar a un event;
             $(document).on('click', '.buttonAcceptarEvent', function() {
                 var idPublicacio = $(this).parent().parent().data('id');
+                var x = $(this);
                 PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 1,  function(data) {
-                    //ha de fer algo;
+                    location.reload();
                 });
             });
             //Declinar anar a un event
             $(document).on('click', '.buttonDeclinarEvent', function() {
                 var idPublicacio = $(this).parent().parent().data('id');
                 PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 0, function(data) {
-                    //ha de fer algo;
+                    location.reload();
                 });
             });
 
