@@ -19,11 +19,11 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Event', 'Clases/Comentari'
     getMembres(idGrup);
     updateFotoGrup(idGrup);
     usuari.actualitzarUltimAcces(idGrup); //set ultim access al grup del usuari;
+    
     /**
      * Quan s'han cargat les publicacions, exevutar aquesta funcio;
      */
     function mostrarPagina() {
-         
         //Afegir les publicacions en pantalla
         for (var i = 0; i < publicacions.length && i < 5; i++) {
             var p = publicacions[i];
@@ -31,7 +31,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Event', 'Clases/Comentari'
                 $('.publicacions').append(p.publicacioToHtml());            
             }
             else { //la publicacio es un event;
-                var event = new Event(p.id, p.publicador, p.dataPublicacio, p.publicacio, p.tipus, p.numComentaris, p.imgPublicador, p.numPersones, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent);
+                var event = new Event(p.id, p.publicador, p.dataPublicacio, p.tipus, p.numComentaris, p.imgPublicador, p.numPersones, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent);
                 $('.publicacions').append(event.toHtml());
             }
             $('div [data-id="'+ p.id + '"]').fadeIn();
@@ -77,48 +77,35 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Event', 'Clases/Comentari'
        //para crear el evento
         $('#submitEvento').click(function() {
             //date format: YYYY-MM-dd HH:mm
-            var startDate = $("#startDate").datetimepicker('getDate'); //fecha inicio;
-            var day  = startDate.getDate();
-            var month = startDate.getMonth() + 1;             
-            var year =  startDate.getFullYear();
-            var hour = startDate.getHours();
-            var min = startDate.getMinutes();
-            var dataInicial =   year +"-"+ 
-                                month +"-"+
-                                day +" "+
-                                hour +":"+
-                                min;                
-            var endDate = $("#endDate").datetimepicker('getDate'); //fecha final;
-            var day  = endDate.getDate();
-            var month = endDate.getMonth() + 1;             
-            var year =  endDate.getFullYear();
-            var hour = endDate.getHours();
-            var min = endDate.getMinutes();
-            var dataFinal =   year +"-"+ 
-                                month +"-"+
-                                day +" "+
-                                hour +":"+
-                                min; 
+            var dataInicial = Utils.transfromDate($("#startDate").datetimepicker('getDate'));              
+            var dataFinal =  Utils.transfromDate( $("#endDate").datetimepicker('getDate'));
+
             var nombre = $("#inputNombre").val();
             var descripcio = $("#inputDescripcion").val();
             var idUsuari = usuari.idUsuari;
             
             var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio+'&startDate='+dataInicial+'&endDate='+dataFinal+'&idUsuari='+idUsuari+'&idGrup='+idGrup;
-            $.ajax
-            ({
-                type: "POST",
-                url: url,
-                dataType: 'json',
-                cache: false,
-                success: function(data)
-                {
-                    $('#modalEvento').modal('hide');
-                },
-                error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
-                    alert("error al servidor");
-                }
-            }); 
-    });           
+            if (nombre != '' && descripcio != '') {
+                $.ajax
+                ({
+                    type: "POST",
+                    url: url,
+                    dataType: 'json',
+                    cache: false,
+                    success: function(data)
+                    {
+                        $('#modalEvento').modal('hide');
+                        Grup.getUtimEvent(idGrup, function(p) {
+                           var event = new Event(p.id, p.publicador, p.dataPublicacio, p.tipus, 0, p.imgPublicador, 0, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent);
+                           $('.publicacions').prepend(event.toHtml());
+                       });
+                    },
+                    error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
+                        
+                    }
+                });
+            } 
+        });           
 
         $(document).ready(function () {
 
@@ -161,7 +148,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Event', 'Clases/Comentari'
                    Publicacio.afegirPublicacio(idGrup, usuari.idUsuari, publicacio, 0, function() {
                        $('#inputPublicar').val('');
                        Grup.getUltimaPublicacio(idGrup, function(publicacio) {
-                           var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0)
+                           var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador)
                            $('.publicacions').prepend(p.publicacioToHtml());
                        });
                    });

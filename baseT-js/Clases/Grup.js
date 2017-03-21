@@ -286,6 +286,21 @@ class Grup {
         });
     }
 
+    static getUtimEvent(idGrup, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/get/getUltimEvent.php?idGrup=" + idGrup,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
+    }
+
     static borrarGrup(idGrup, onSucces) {
         $.ajax({
             type: "POST",

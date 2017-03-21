@@ -1,9 +1,8 @@
 class Event {
-    constructor(id, publicador, dataPublicacio, publicacio, tipus, numComentaris, imgPublicador, numPersones, dateStart, dateEnd, nomEvent, descripcioEvent) {
+    constructor(id, publicador, dataPublicacio, tipus, numComentaris, imgPublicador, numPersones, dateStart, dateEnd, nomEvent, descripcioEvent) {
         this.id             = id;
         this.publicador     = publicador;
         this.dataPublicacio = dataPublicacio;
-        this.publicacio     = publicacio;
         this.tipus          = tipus;
         this.numComentaris  = numComentaris;
         this.imgPublicador  = imgPublicador;

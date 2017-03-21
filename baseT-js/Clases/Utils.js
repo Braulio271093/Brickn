@@ -142,4 +142,18 @@ class Utils {
         ]
         return opcions;
     }
+
+    static transfromDate(startDate) {
+        var day  = startDate.getDate();
+        var month = startDate.getMonth() + 1;             
+        var year =  startDate.getFullYear();
+        var hour = startDate.getHours();
+        var min = startDate.getMinutes();
+        var dataInicial =   year +"-"+ 
+                                month +"-"+
+                                day +" "+
+                                hour +":"+
+                                min; 
+        return dataInicial;    
+    }
 }
