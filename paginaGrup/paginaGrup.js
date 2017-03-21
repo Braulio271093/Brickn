@@ -1,4 +1,4 @@
-require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Event', 'Clases/Comentari' , 'Clases/Camera', 'Clases/Error'], function () {
+require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/Comentari' , 'Clases/Camera', 'Clases/Error'], function () {
     
     var $_GET = Utils.getVariablesHtml();
     var idGrup = $_GET['idGrup'];
@@ -31,7 +31,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Event', 'Clases/Comentari'
                 $('.publicacions').append(p.publicacioToHtml());            
             }
             else { //la publicacio es un event;
-                var event = new Event(p.id, p.publicador, p.dataPublicacio, p.tipus, p.numComentaris, p.imgPublicador, p.numPersones, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent);
+                var event = new PublicacioEvent(p.id, p.publicador, p.dataPublicacio, p.tipus, p.numComentaris, p.imgPublicador, p.numPersones, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent, p.numPersonesDec);
                 $('.publicacions').append(event.toHtml());
             }
             $('div [data-id="'+ p.id + '"]').fadeIn();
@@ -96,7 +96,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Event', 'Clases/Comentari'
                     {
                         $('#modalEvento').modal('hide');
                         Grup.getUtimEvent(idGrup, function(p) {
-                           var event = new Event(p.id, p.publicador, p.dataPublicacio, p.tipus, 0, p.imgPublicador, 0, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent);
+                           var event = new PublicacioEvent(p.id, p.publicador, p.dataPublicacio, p.tipus, 0, p.imgPublicador, 0, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent, 0);
                            $('.publicacions').prepend(event.toHtml());
                        });
                     },
@@ -246,7 +246,14 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Event', 'Clases/Comentari'
             //Acceptar anar a un event;
             $(document).on('click', '.buttonAcceptarEvent', function() {
                 var idPublicacio = $(this).parent().parent().data('id');
-                Publicacio.acceptarEvent(usuari.idUsuari, idPublicacio, function(data) {
+                PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 1,  function(data) {
+                    //ha de fer algo;
+                });
+            });
+            //Declinar anar a un event
+            $(document).on('click', '.buttonDeclinarEvent', function() {
+                var idPublicacio = $(this).parent().parent().data('id');
+                PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 0, function(data) {
                     //ha de fer algo;
                 });
             });

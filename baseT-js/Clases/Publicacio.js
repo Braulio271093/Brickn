@@ -67,20 +67,7 @@ class Publicacio {
         return str;
     }
 
-    static acceptarEvent(idUsuari, idEvent, onSuccess) {
-        $.ajax({
-            type: "POST",
-            url: urlServer + "/insert/afegirUsuariEvent.php?idUsuari=" + idUsuari + "&idEvent=" + idEvent,
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                onSuccess(data);
-            },
-            error: function (xhr, status, error) {
-
-            }
-        });
-    }
+    
 
     static cargarImatgesPublicador(idPublicacio, publicador) {
         Usuari.getIdByNom(publicador, function(idUsuari) {

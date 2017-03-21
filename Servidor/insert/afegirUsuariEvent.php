@@ -4,8 +4,9 @@
 
 	$idUsuari = $_GET['idUsuari'];
 	$idEvent = $_GET['idEvent'];
+	$acceptat = $_GET['acceptat'];
 
-	$sql = "INSERT INTO usuari_event VALUES ($idUsuari, $idEvent)";
+	$sql = "INSERT INTO usuari_event VALUES ($idUsuari, $idEvent, $acceptat)";
 	if (mysqli_query($conn, $sql)) {
 		echo 1;
 	}

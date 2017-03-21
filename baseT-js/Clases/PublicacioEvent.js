@@ -1,5 +1,5 @@
-class Event {
-    constructor(id, publicador, dataPublicacio, tipus, numComentaris, imgPublicador, numPersones, dateStart, dateEnd, nomEvent, descripcioEvent) {
+class PublicacioEvent {
+    constructor(id, publicador, dataPublicacio, tipus, numComentaris, imgPublicador, numPersones, dateStart, dateEnd, nomEvent, descripcioEvent, numPersonesDec) {
         this.id             = id;
         this.publicador     = publicador;
         this.dataPublicacio = dataPublicacio;
@@ -11,6 +11,7 @@ class Event {
         this.dateEnd        = dateEnd;
         this.nomEvent       = nomEvent;
         this.descripcioEvent= descripcioEvent;
+        this.numPersonesDec = numPersonesDec;
     }
 
     toHtml() {
@@ -38,7 +39,11 @@ class Event {
         str +=      "</button>";
         str +=      "<button class='buttonNoStyle buttonAcceptarEvent' style='font-size: 20px;'>";
         str +=          "<span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span>";
-        if (this.numPersones > 0) str +='<span class="badge" style="z-index: 1; position: relative; bottom: 15px; left: -10px; background-color: #D51C1C;">' + this.numComentaris + '</span>';
+        str +=          '<span class="badge" style="z-index: 1; position: relative; bottom: 15px; left: -7px; background-color: #D51C1C;">' + this.numPersones + '</span>';
+        str +=      "</button>";
+        str +=      "<button class='buttonNoStyle buttonDeclinarEvent' style='font-size: 20px;'>";
+        str +=          "<span class='glyphicon glyphicon-hand-down' aria-hidden='true'></span>";
+        str +=          '<span class="badge" style="z-index: 1; position: relative; bottom: 15px; left: -7px; background-color: #D51C1C;">' + this.numPersonesDec + '</span>';
         str +=      "</button>";
         str +=   "</div>";
         str +=   "<div class='comentarisPublicacio' style='display: none;'>";
@@ -51,5 +56,22 @@ class Event {
         str +=        "</div>"; 
         str +=    "</div>";
         return str;
+    }
+
+    static acceptarEvent(idUsuari, idEvent, acceptat,  onSuccess) {
+        if (acceptat == true) acceptat = 1;
+        if (acceptat == false) acceptat = 0;
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/insert/afegirUsuariEvent.php?idUsuari=" + idUsuari + "&idEvent=" + idEvent + "&acceptat=" + acceptat,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSuccess(data);
+            },
+            error: function (xhr, status, error) {
+
+            }
+        });
     }
 }

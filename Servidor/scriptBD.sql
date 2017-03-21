@@ -87,6 +87,7 @@ create table event (
 create table usuari_event (
     idUsuari INT(6) unsigned NOT NULL,
     idEvent INT(6) unsigned NOT NULL,
+    acceptat BOOLEAN not null default 0,
     PRIMARY KEY(idUsuari, idEvent),
     FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE,
     FOREIGN KEY (idEvent) REFERENCES event(id) ON DELETE CASCADE

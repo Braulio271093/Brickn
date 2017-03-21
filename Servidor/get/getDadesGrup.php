@@ -67,16 +67,21 @@
                 $descripcioEvent = $rw[1];
                 $dateStart = $rw[2];
                 $dateEnd = $rw[3];
-                $sql = "SELECT COUNT(*) FROM usuari_event WHERE idEvent = $id";
+                $sql = "SELECT COUNT(*) FROM usuari_event WHERE idEvent = $id AND acceptat = 1";
                 $r = mysqli_query($conn, $sql);
                 $rw = mysqli_fetch_row($r);
                 $personesEvent = $rw[0];
+                $sql = "SELECT COUNT(*) FROM usuari_event WHERE idEvent = $id AND acceptat = 0";
+                $r = mysqli_query($conn, $sql);
+                $rw = mysqli_fetch_row($r);
+                $personesEventDec = $rw[0]; //persones que han posat que no assistiran al event;
                 $dades[$i] = ["publicacio" => ["id" => $id, "publicador" => $publicador, 
                                            "imgPublicador"=> $imgPublicador, 
                                            "dataPublicacio" => $dataPublicacio, "tipus" => $tipus, 
                                            "numComentaris" => $numComentaris, "dateStart" => $dateStart,
                                            "dateEnd" => $dateEnd, "nomEvent" => $nomEvent, 
-                                           "descripcioEvent" => $descripcioEvent, "personesEvent" => $personesEvent]];
+                                           "descripcioEvent" => $descripcioEvent, "personesEvent" => $personesEvent, 
+                                           "personesEventDec" => $personesEventDec]];
             }
             else {
                 $sql = "SELECT publicacio FROM publicacio WHERE id = $id";
