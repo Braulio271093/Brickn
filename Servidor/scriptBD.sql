@@ -8,7 +8,9 @@ create table usuari (
     pass VARCHAR(16) not null,
     clau VARCHAR(16) not null, 
     respostaPregunta VARCHAR(30) not NULL,
-    fotoPerfil VARCHAR(100) default '/imgServer/fotosPerfil/nofoto.png'
+    fotoPerfil VARCHAR(100) default '/imgServer/fotosPerfil/nofoto.png',
+    localActivada BOOLEAN default 0,
+    localitzacio VARCHAR(50) default 0
 );
 /*insert into usuari (nomUsuari, email, pass, respostaPregunta) VALUES ('pau', 'pau', '123', 'Barcelona');*/
 
