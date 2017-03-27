@@ -78,7 +78,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
         $('#submitEvento').click(function() {
             //date format: YYYY-MM-dd HH:mm
             var dataInicial = Utils.transfromDate($("#startDate").datetimepicker('getDate'));              
-            var dataFinal =  Utils.transfromDate( $("#endDate").datetimepicker('getDate'));
+            var dataFinal =  Utils.transfromDate($("#endDate").datetimepicker('getDate'));
 
             var nombre = $("#inputNombre").val();
             var descripcio = $("#inputDescripcion").val();
@@ -110,7 +110,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
         $(document).ready(function () {
 
             //NO SE PERQUE NO FUNCIONA;
-            /*setInterval(function() { //obtenir la ultima publicació cada minut;
+            setInterval(function() { //obtenir la ultima publicació cada minut;
                 Grup.getUltimaPublicacio(idGrup, function(publicacio) {
                     var lastId = $('.publicacions').find('.publicacio').first().data('id');
                     if (lastId != publicacio.id) {
@@ -118,7 +118,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                         $('.publicacions').prepend(p.publicacioToHtml());
                     }
                 });
-            }, 1000 * 5); */
+            }, 1000 * 1);
 
 
             $('#btnBackToIndex').click(function () {
