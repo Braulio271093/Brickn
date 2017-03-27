@@ -182,6 +182,14 @@
                     <hr>
                     <!-- Part inferior -->
                     <div class="form-group">
+                        <div class="checkbox">
+                            <label class="translate" style="margin-left: 5%"><input type="checkbox" id="checkboxEventWithLoc">Event amb localització</label>
+                        </div>
+                        <div class="col-md-6 locDiv ocult">
+                            <input type="text" class="form-control" style="float: left;"id="inputLocEvent" placeholder="Localitzacio">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="inputNombre" style="margin-left: 5%; float: left; clear: both;" class="translate">{{stringNomDelEvent}}</label>
                         <div class="col-md-6">
                             <input type="text" class="form-control" style="float: left;"id="inputNombre" placeholder="Nombre">
@@ -190,7 +198,7 @@
                     <hr>
                     <div class="form-group">
                         <label for="inputDescripcion" style="margin-left: 5%;" class="translate">{{stringDescripcio}}</label>
-                        <br/>
+                        <br>
                         <div class="col-md-6">
                             <textarea id="inputDescripcion" class="form-control" rows="5"></textarea>
                         </div>

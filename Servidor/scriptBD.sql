@@ -81,8 +81,8 @@ create table event (
     descripcio VARCHAR(120) not null,
     dateStart DATETIME not null,
     dateEnd DATETIME not null,
-    coordX INT(6) default 0,
-    coordY INT(6) default 0,
+    coordX DECIMAL(11, 8) default 0,
+    coordY DECIMAL(11, 8) default 0,
     icon VARCHAR(50) default 0,
     FOREIGN KEY (id) REFERENCES grup_publicacions(id) ON DELETE CASCADE
 );

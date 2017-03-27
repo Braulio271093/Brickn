@@ -25,6 +25,7 @@
 
             <ul id="listOpcions" style="list-style: none; margin-left: 0px; padding-left: 0px;">
                 <li class="elementOpcions translate" data-id="compte"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> {{stringCompte}}</li>
+                <li class="elementOpcions translate" data-id="localitzacio"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>{{stringLocalitzacio}}</li>
                 <li class="elementOpcions translate" data-id="cambiarIdioma"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> {{stringCambiarIdioma}}</li>
                 <li class="elementOpcions translate" data-id="infoAjuda"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> {{stringInformacióAjuda}}</li>
             </ul>
@@ -39,7 +40,6 @@
                         <li class="elementOpcionsSub translate" id="cambiarNomUsuari">{{stringCambiarNomUsuari}}</li>
                         <li class="elementOpcionsSub translate" id="cambiarContrasenya">{{stringCambiarContrasenya}}</li>
                         <li class="elementOpcionsSub translate" id="eliminarCompte">{{stringElimnarContrasenya}}</li>
-                        <li class="elementOpcionsSub">Altres Opcions</li>
                     </ul>
                 </div>
 
@@ -50,6 +50,13 @@
                         <li class="elementOpcionsSub idioma" data-id="en"><img src="../baseT-css/img/flags/en.png"></li>
                     </ul>
                 </div>   
+
+                <div class="ocult localitzacio">
+                    <div class="form-group" style="padding: 5%;">
+                        <label for="inputLocalitzacio">Introdueix la teva localitzacio</label>
+                        <input type="text" placeholder="Ciutat, poble, etc.." class="form-control">
+                    </div>
+                </div>
             
             </div> <!-- Final subopcions globals -->
 
