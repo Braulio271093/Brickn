@@ -8,7 +8,9 @@ create table usuari (
     pass VARCHAR(16) not null,
     clau VARCHAR(16) not null, 
     respostaPregunta VARCHAR(30) not NULL,
-    fotoPerfil VARCHAR(100) default '/imgServer/fotosPerfil/nofoto.png'
+    fotoPerfil VARCHAR(100) default '/imgServer/fotosPerfil/nofoto.png',
+    localActivada BOOLEAN default 0,
+    localitzacio VARCHAR(50) default 0
 );
 /*insert into usuari (nomUsuari, email, pass, respostaPregunta) VALUES ('pau', 'pau', '123', 'Barcelona');*/
 
@@ -81,8 +83,19 @@ create table event (
     descripcio VARCHAR(120) not null,
     dateStart DATETIME not null,
     dateEnd DATETIME not null,
-    
+    coordX DECIMAL(11, 8) default 0,
+    coordY DECIMAL(11, 8) default 0,
+    icon VARCHAR(50) default 0,
     FOREIGN KEY (id) REFERENCES grup_publicacions(id) ON DELETE CASCADE
+);
+
+create table usuari_event (
+    idUsuari INT(6) unsigned NOT NULL,
+    idEvent INT(6) unsigned NOT NULL,
+    acceptat BOOLEAN not null default 0,
+    PRIMARY KEY(idUsuari, idEvent),
+    FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE,
+    FOREIGN KEY (idEvent) REFERENCES event(id) ON DELETE CASCADE
 );
 
 

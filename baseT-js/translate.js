@@ -85,9 +85,9 @@
 	'{ "en"  : "Public"}' + 
  '],' + 
 '"stringAfegirTemas" : [' + 
- 	'{ "cat" : "Afegir Temas: " },' + 
- 	'{ "es"  : "Añadir Temas: " },' + 
-	'{ "en"  : "Add topics: "}' + 
+ 	'{ "cat" : "Afegir Temas " },' + 
+ 	'{ "es"  : "Añadir Temas " },' + 
+	'{ "en"  : "Add topics "}' + 
  '],' + 
 '"stringAfegirContacteGrup" : [' + 
  	'{ "cat" : "Afegir contactes al grup: " },' + 
@@ -233,6 +233,26 @@
  	'{ "cat" : "No es pot conectar al servidor" },' + 
  	'{ "es"  : "No se puede conectar al servidor" },' + 
 	'{ "en"  : "Can not connect to server"}' + 
+ '],' + 
+ '"stringLocalitzacio" : [' + 
+ 	'{ "cat" : "Localització" },' + 
+ 	'{ "es"  : "Localización" },' + 
+	'{ "en"  : "Localitzation"}' + 
+ '],' + 
+'"stringEventAmbLocalitzacio" : [' + 
+ 	'{ "cat" : "Event amb localització" },' + 
+ 	'{ "es"  : "Evento con Localización" },' + 
+	'{ "en"  : "Event with Localitzation"}' + 
+ '],' + 
+  '"stringPasswordIncorrecte" : [' + 
+ 	'{ "cat" : "Contrasenya incorrecte" },' + 
+ 	'{ "es"  : "Contraseña incorrecta" },' + 
+	'{ "en"  : "Incorrect password"}' + 
+ '],' + 
+  '"stringIntroduirLocalitzacio" : [' + 
+ 	'{ "cat" : "Introueix la teva localització (La teva ciutat, poble...)" },' + 
+ 	'{ "es"  : "Introduce tu Localización (tu ciudad, pueblo...)" },' + 
+	'{ "en"  : "Enter your Localitzation"}' + 
  '],' + 
 '"stringEmailModificat" : [' + 
  	'{ "cat" : "E-mail modificat" },' + 

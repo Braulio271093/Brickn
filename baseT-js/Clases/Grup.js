@@ -7,9 +7,9 @@ class Grup {
         this.usuaris = usuaris; //també temas;
         this.notificacions = notificacions;
     }
-
-    toHtml() {
-        var str = '<div class="grup" name="grupMostrar" data-id="' + this.idGrup + '">';
+  
+    toHtmlEvent() {
+       var str = '<div class="grup" name="grupMostrar" data-id="' + this.idGrup + '">';
         str += '<div class="grupPhoto" style="position: relative">';
         if (this.notificacions > 0) {
             str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
@@ -45,14 +45,18 @@ class Grup {
         str += '</div></div>';
         return str;
     }
-    
-    toHtmlEvent() {
-        var str = '<div class="grup" name="eventMostrar" data-id="' + this.idGrup + '">';
+    /**
+     * To html
+     * @param privat; si el grup es privat;
+     */
+    toHtml(privat) {
+        var str = '<div class="grup" data-id="' + this.idGrup + '">';
         str += '<div class="grupPhoto" style="position: relative">';
         if (this.notificacions > 0) {
             str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
         }
-        str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup">';
+        if (privat) str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup" style="border: 2px solid #D51C1C;;">';
+        else        str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup" style="border: 2px solid #088A08;">';
         str += '</div>';
         str += '<div class="grupNom">';
         str += '<strong>' + this.nomGrup + '</strong>';
@@ -91,7 +95,7 @@ class Grup {
      * @param idGrup
      * @param nomGrup
      */
-    static toHtmlForBuscar(idGrup, nomGrup, pass) {
+    static toHtmlForBuscar(idGrup, nomGrup, pass, foto) {
         var str = '<div class="grup grupBuscar" data-id="' + idGrup + '" data-pass="' + pass + '">';
         str += '<div class="grupPhoto" style="position: relative">';
         if (pass != 0) {
@@ -99,7 +103,7 @@ class Grup {
             str += '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>';
             str += '</span>';
         }
-        str += '<img src="../baseT-css/img/nofoto.png" alt="..." class="img-circle imgGrup" height="60px" width="60px">';
+        str += '<img src="' + urlServer + foto + '" alt="..." class="img-circle imgGrup" height="60px" width="60px">';
         str += '</div>';
         str += '<div class="grupNom">';
         str += '<strong>' + nomGrup + '</strong>';
@@ -137,7 +141,15 @@ class Grup {
             success: function (data) {
                 $('#nomGrupTitle').text(data[0].nomGrup + " - " + __('stringMur'));
                 for (var i = 2; i <= data[1].numPublicacions + 1; i++) {
-                    var p = new Publicacio(data[i].publicacio.id, data[i].publicacio.publicador, data[i].publicacio.dataPublicacio, data[i].publicacio.publicacio, data[i].publicacio.tipus, data[i].publicacio.numComentaris);
+                    var p = new Publicacio(data[i].publicacio.id, data[i].publicacio.publicador, data[i].publicacio.dataPublicacio, data[i].publicacio.publicacio, data[i].publicacio.tipus, data[i].publicacio.numComentaris, data[i].publicacio.imgPublicador);
+                    if (p.tipus == 2) {
+                        p.nomEvent  = data[i].publicacio.nomEvent;
+                        p.descripcioEvent = data[i].publicacio.descripcioEvent;
+                        p.dateEnd   = data[i].publicacio.dateEnd;
+                        p.dateStart = data[i].publicacio.dateStart;
+                        p.numPersones = data[i].publicacio.personesEvent;
+                        p.numPersonesDec = data[i].publicacio.personesEventDec;
+                    }
                     publicacions.push(p);
                 }
                 onSucces();
@@ -306,6 +318,21 @@ class Grup {
         $.ajax({
             type: "POST",
             url: urlServer + "/get/getUltimaPublicacio.php?idGrup=" + idGrup,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                onSucces(data);
+            },
+            error: function (xhr, status, error) {
+                Error.showError(__("errorServerOut"));
+            }
+        });
+    }
+
+    static getUtimEvent(idGrup, onSucces) {
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/get/getUltimEvent.php?idGrup=" + idGrup,
             dataType: 'json',
             cache: false,
             success: function (data) {

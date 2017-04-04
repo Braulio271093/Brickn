@@ -1,12 +1,13 @@
 class Publicacio {
 
-    constructor(id, publicador, dataPublicacio, publicacio, tipus, numComentaris) {
+    constructor(id, publicador, dataPublicacio, publicacio, tipus, numComentaris, imgPublicador) {
         this.id             = id;
         this.publicador     = publicador;
         this.dataPublicacio = dataPublicacio;
         this.publicacio     = publicacio;
         this.tipus          = tipus;
         this.numComentaris  = numComentaris;
+        this.imgPublicador  = imgPublicador;
     }
     
     /**
@@ -18,34 +19,31 @@ class Publicacio {
         if (this.tipus == 1) {
             var rutaFoto = this.publicacio;
             rutaFoto += '.jpg';
-            body = "<img class='imatgePublicacio' src=" + urlServer + rutaFoto + ">";
-        }
-        else if (this.tipus == 2) {
-            
+            body = "<img class='imatgePublicacio' src=" + urlServer + "/" + rutaFoto + ">";
         }
         str += "<div class='publicacio' data-id='" + this.id + "'>";
-        str +=   "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + "/imgServer/fotosPerfil/nofoto.png" + "'></div>";
+        str +=   "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + this.imgPublicador + "'></div>";
         str +=   "<div class='titolPublicacio'>";
         str +=       "<p>" + this.publicador + "</p>"; 
         str +=       "<p>" + Publicacio.convertirData(this.dataPublicacio) + "</p>"; 
         str +=   "</div>"; 
         str +=   "<div class='bodyPublicacio'>";
         str +=       body;
-        str +=  "</div>";
-        str +=  "<div class='buttonComentaris' style='margin-top: 20px; font-size: 16px; position: relative'>";
-        if (this.numComentaris > 0) str +='<span class="badge" style="z-index: 1; position: absolute; bottom: 22px; left: 33px; background-color: #D51C1C;">' + this.numComentaris + '</span>';
-        str +=            "<button class='buttonNoStyle buttonMostrarComentaris' style='font-size: 20px'>";
-        str +=                "<span class='glyphicon glyphicon-comment' aria-hidden='true'></span>";
-        str +=            "</button>";
-        str +=        "</div>";
-        str +=        "<div class='comentarisPublicacio' style='display: none'>";
-        str +=            "<div class='input-group inputComentar' style='margin-top: 5px; margin-bottom: 5px'>";
-        str +=                "<input type='text' class='form-control inputPublicarComentari' placeholder='....'>";
-        str +=                "<span class='input-group-btn'>";
-        str +=                   "<button class='btn btn-danger buttonComentar' type='button'>" + __('stringComentar') + "</button>";
+        str +=   "</div>";
+        str +=   "<div style='margin-top: 25px; padding-left: 15px;'>";
+        str +=      "<button class='buttonNoStyle buttonMostrarComentaris' style='font-size: 20px;'>";
+        str +=          "<span class='glyphicon glyphicon-comment' aria-hidden='true'></span>";
+        if (this.numComentaris > 0) str +='<span class="badge" style="z-index: 1; position: relative; bottom: 15px; left: -10px; background-color: #D51C1C;">' + this.numComentaris + '</span>';
+        str +=      "</button>";
+        str +=   "</div>";
+        str +=   "<div class='comentarisPublicacio' style='display: none;'>";
+        str +=       "<div class='input-group inputComentar' style='margin-top: 5px; margin-bottom: 5px'>";
+        str +=          "<input type='text' class='form-control inputPublicarComentari' placeholder='....'>";
+        str +=              "<span class='input-group-btn'>";
+        str +=                  "<button class='btn btn-danger buttonComentar' type='button'>" + __('stringComentar') + "</button>";
         str +=                "</span>";
         str +=            "</div>";
-        str +=        "</div>";
+        str +=        "</div>"; 
         str +=    "</div>";
         return str;
     }
@@ -68,6 +66,8 @@ class Publicacio {
         }
         return str;
     }
+
+    
 
     static cargarImatgesPublicador(idPublicacio, publicador) {
         Usuari.getIdByNom(publicador, function(idUsuari) {
@@ -120,6 +120,19 @@ class Publicacio {
             }
         }        
         return ret;
+    }
+
+    /**
+     * Convertir les dates dels events;
+     * @param date
+     * @return date
+     */
+    static dateEvent(date) {
+        var aux = date.substring(0, date.lastIndexOf(':'));
+        var days = date.substring(0, date.lastIndexOf(' '));
+        var lan = storage.getItem("idioma");
+        //Falta fer per les dates amb angles;
+        return aux;
     }
 
     /**

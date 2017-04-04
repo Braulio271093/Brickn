@@ -5,7 +5,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
         usuari.getGrupsPrivats(function(grups) { //afegir els grups privats
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
-                $('#teusGrups').append(g.toHtml());
+                $('#teusGrups').append(g.toHtml(true));
             }
         });
 
@@ -13,6 +13,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
                 $('#mon').append(g.toHtmlEvent());
+              $('#teusGrups').append(g.toHtml(false));
             }
         });
 

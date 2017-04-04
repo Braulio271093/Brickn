@@ -1,4 +1,4 @@
-require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camera', 'Clases/Error'], function () {
+require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/Comentari' , 'Clases/Camera', 'Clases/Error'], function () {
     
     var $_GET = Utils.getVariablesHtml();
     var idGrup = $_GET['idGrup'];
@@ -19,15 +19,21 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
     getMembres(idGrup);
     updateFotoGrup(idGrup);
     usuari.actualitzarUltimAcces(idGrup); //set ultim access al grup del usuari;
+    
     /**
      * Quan s'han cargat les publicacions, exevutar aquesta funcio;
      */
     function mostrarPagina() {
-         
         //Afegir les publicacions en pantalla
         for (var i = 0; i < publicacions.length && i < 5; i++) {
             var p = publicacions[i];
-            $('.publicacions').append(p.publicacioToHtml());
+            if (p.tipus != 2) {
+                $('.publicacions').append(p.publicacioToHtml());            
+            }
+            else { //la publicacio es un event;
+                var event = new PublicacioEvent(p.id, p.publicador, p.dataPublicacio, p.tipus, p.numComentaris, p.imgPublicador, p.numPersones, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent, p.numPersonesDec);
+                $('.publicacions').append(event.toHtml());
+            }
             $('div [data-id="'+ p.id + '"]').fadeIn();
         }
         if (publicacions.length >= 5) { //afegir boto mostrar mes publicacions;
@@ -68,55 +74,54 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
             format: 'yyyy-mm-dd hh:ii',
         });
         
+        //event amb localitzacio;
+        $('#checkboxEventWithLoc').click(function() {
+            if ($(this).is(':checked')) {
+                $('.locDiv').fadeIn();
+            }
+            else {
+                $('.locDiv').hide();
+                $('#inputLocEvent').val('');
+            }
+        });
+
        //para crear el evento
         $('#submitEvento').click(function() {
             //date format: YYYY-MM-dd HH:mm
-            var startDate = $("#startDate").datetimepicker('getDate'); //fecha inicio;
-            var day  = startDate.getDate();
-            var month = startDate.getMonth() + 1;             
-            var year =  startDate.getFullYear();
-            var hour = startDate.getHours();
-            var min = startDate.getMinutes();
-            var dataInicial =   year +"-"+ 
-                                month +"-"+
-                                day +" "+
-                                hour +":"+
-                                min;                
-            var endDate = $("#endDate").datetimepicker('getDate'); //fecha final;
-            var day  = endDate.getDate();
-            var month = endDate.getMonth() + 1;             
-            var year =  endDate.getFullYear();
-            var hour = endDate.getHours();
-            var min = endDate.getMinutes();
-            var dataFinal =   year +"-"+ 
-                                month +"-"+
-                                day +" "+
-                                hour +":"+
-                                min; 
+            var dataInicial = Utils.transfromDate($("#startDate").datetimepicker('getDate'));              
+            var dataFinal =  Utils.transfromDate($("#endDate").datetimepicker('getDate'));
+
             var nombre = $("#inputNombre").val();
             var descripcio = $("#inputDescripcion").val();
             var idUsuari = usuari.idUsuari;
             
             var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio+'&startDate='+dataInicial+'&endDate='+dataFinal+'&idUsuari='+idUsuari+'&idGrup='+idGrup;
-            $.ajax
-            ({
-                type: "POST",
-                url: url,
-                dataType: 'json',
-                cache: false,
-                success: function(data)
-                {
-                    $('#modalEvento').modal('hide');
-                },
-                error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
-                    alert("error al servidor");
-                }
-            }); 
-    });           
+            if (nombre != '' && descripcio != '') {
+                $.ajax
+                ({
+                    type: "POST",
+                    url: url,
+                    dataType: 'json',
+                    cache: false,
+                    success: function(data)
+                    {
+                        $('#modalEvento').modal('hide');
+                        Grup.getUtimEvent(idGrup, function(p) {
+                           var event = new PublicacioEvent(p.id, p.publicador, p.dataPublicacio, p.tipus, 0, p.imgPublicador, 0, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent, 0);
+                           $('.publicacions').prepend(event.toHtml());
+                       });
+                    },
+                    error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
+                        
+                    }
+                });
+            } 
+        });           
 
         $(document).ready(function () {
 
-            setInterval(function() { //obtenir la ultima publicació cada minut;
+            //NO SE PERQUE NO FUNCIONA;
+            /*setInterval(function() { //obtenir la ultima publicació cada minut;
                 Grup.getUltimaPublicacio(idGrup, function(publicacio) {
                     var lastId = $('.publicacions').find('.publicacio').first().data('id');
                     if (lastId != publicacio.id) {
@@ -124,7 +129,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                         $('.publicacions').prepend(p.publicacioToHtml());
                     }
                 });
-            }, 1000 * 5); 
+            }, 1000 * 1);*/
 
 
             $('#btnBackToIndex').click(function () {
@@ -154,7 +159,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                    Publicacio.afegirPublicacio(idGrup, usuari.idUsuari, publicacio, 0, function() {
                        $('#inputPublicar').val('');
                        Grup.getUltimaPublicacio(idGrup, function(publicacio) {
-                           var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0)
+                           var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador)
                            $('.publicacions').prepend(p.publicacioToHtml());
                        });
                    });
@@ -246,6 +251,22 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/Comentari' , 'Clases/Camer
                         var html = c.toHtml();
                         $('body').find('[data-id="' + idPublicacio + '"]').find('.comentarisPublicacio').append(html);
                     }
+                });
+            });
+
+            //Acceptar anar a un event;
+            $(document).on('click', '.buttonAcceptarEvent', function() {
+                var idPublicacio = $(this).parent().parent().data('id');
+                var x = $(this);
+                PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 1,  function(data) {
+                    location.reload();
+                });
+            });
+            //Declinar anar a un event
+            $(document).on('click', '.buttonDeclinarEvent', function() {
+                var idPublicacio = $(this).parent().parent().data('id');
+                PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 0, function(data) {
+                    location.reload();
                 });
             });
 
