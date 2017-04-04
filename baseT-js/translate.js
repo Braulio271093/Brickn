@@ -239,6 +239,11 @@
  	'{ "es"  : "Localización" },' + 
 	'{ "en"  : "Localitzation"}' + 
  '],' + 
+'"stringEventAmbLocalitzacio" : [' + 
+ 	'{ "cat" : "Event amb localització" },' + 
+ 	'{ "es"  : "Evento con Localización" },' + 
+	'{ "en"  : "Event with Localitzation"}' + 
+ '],' + 
   '"stringPasswordIncorrecte" : [' + 
  	'{ "cat" : "Contrasenya incorrecte" },' + 
  	'{ "es"  : "Contraseña incorrecta" },' + 
