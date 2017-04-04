@@ -234,6 +234,16 @@
  	'{ "es"  : "No se puede conectar al servidor" },' + 
 	'{ "en"  : "Can not connect to server"}' + 
  '],' + 
+ '"stringLocalitzacio" : [' + 
+ 	'{ "cat" : "Localització" },' + 
+ 	'{ "es"  : "Localización" },' + 
+	'{ "en"  : "Localitzation"}' + 
+ '],' + 
+  '"stringIntroduirLocalitzacio" : [' + 
+ 	'{ "cat" : "Introueix la teva localització (La teva ciutat, poble...)" },' + 
+ 	'{ "es"  : "Introduce tu Localización (tu ciudad, pueblo...)" },' + 
+	'{ "en"  : "Enter your Localitzation"}' + 
+ '],' + 
 '"stringEmailModificat" : [' + 
  	'{ "cat" : "E-mail modificat" },' + 
  	'{ "es"  : "E-mail modificado" },' + 
