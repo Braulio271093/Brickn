@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var idGo; //id de la pestanya a la que vols anar;
 
-    $('#btnBackToIndex').click(function() { 
+    $('.btnBack').click(function() { 
         if ($('#listOpcions').is(":visible")) {
             cambiPag("index.html");      
         }

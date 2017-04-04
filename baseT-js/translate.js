@@ -85,9 +85,9 @@
 	'{ "en"  : "Public"}' + 
  '],' + 
 '"stringAfegirTemas" : [' + 
- 	'{ "cat" : "Afegir Temas: " },' + 
- 	'{ "es"  : "Añadir Temas: " },' + 
-	'{ "en"  : "Add topics: "}' + 
+ 	'{ "cat" : "Afegir Temas " },' + 
+ 	'{ "es"  : "Añadir Temas " },' + 
+	'{ "en"  : "Add topics "}' + 
  '],' + 
 '"stringAfegirContacteGrup" : [' + 
  	'{ "cat" : "Afegir contactes al grup: " },' + 
