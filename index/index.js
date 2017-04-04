@@ -13,7 +13,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
                 $('#mon').append(g.toHtmlEvent());
-              $('#teusGrups').append(g.toHtml(false));
+				$('#teusGrups').append(g.toHtml(false));
             }
         });
 
@@ -234,24 +234,25 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
         });
         $(document).on('mouseup', '.grup', function() {
             if (new Date().getTime() <= (start + longpress)) {
-                 var ids = $(this).data('id');
-                if($(this).attr("name")=="grupMostrar"){
-                cambiPag('paginaGrup.html?idGrup=' + ids);
-            }else{
-                /*$.ajax({
-                type: "POST",
-                url: urlServer + "/get/getUltimEvent.php?idGrup="+ids,
-                dataType: 'json',
-                cache: false,
-                success: function (data) {
-                    newLocation(data.coordX,data.coordY);
-                },
-                error: function (xhr, status, error) {
-                    Error.showError(__("{{errorServerOut}}"));
-                }
-                });*/
-                 newLocation(40.7033127,-73.979681);
-            }
+                var ids = $(this).data('id');
+                if($(this).attr("name") == "grupMostrar"){
+					cambiPag('paginaGrup.html?idGrup=' + ids);
+				}
+				else{
+					/*$.ajax({
+					type: "POST",
+					url: urlServer + "/get/getUltimEvent.php?idGrup="+ids,
+					dataType: 'json',
+					cache: false,
+					success: function (data) {
+						newLocation(data.coordX,data.coordY);
+					},
+					error: function (xhr, status, error) {
+						Error.showError(__("{{errorServerOut}}"));
+					}
+					});*/
+					 newLocation(40.7033127,-73.979681);
+				}
             }
         });
         
