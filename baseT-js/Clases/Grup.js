@@ -9,7 +9,7 @@ class Grup {
     }
   
     toHtmlEvent() {
-       var str = '<div class="grup" name="grupMostrar" data-id="' + this.idGrup + '">';
+       var str = '<div class="grup" name="eventMostrar" data-id="' + this.idGrup + '">';
         str += '<div class="grupPhoto" style="position: relative">';
         if (this.notificacions > 0) {
             str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
@@ -50,7 +50,7 @@ class Grup {
      * @param privat; si el grup es privat;
      */
     toHtml(privat) {
-        var str = '<div class="grup" data-id="' + this.idGrup + '">';
+        var str = '<div class="grup" name="grupMostrar" data-id="' + this.idGrup + '">';
         str += '<div class="grupPhoto" style="position: relative">';
         if (this.notificacions > 0) {
             str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
