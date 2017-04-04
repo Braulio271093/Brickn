@@ -81,6 +81,7 @@ create table event (
     descripcio VARCHAR(120) not null,
     dateStart DATETIME not null,
     dateEnd DATETIME not null,
+    
     FOREIGN KEY (id) REFERENCES grup_publicacions(id) ON DELETE CASCADE
 );
 
