@@ -239,6 +239,11 @@
  	'{ "es"  : "Localización" },' + 
 	'{ "en"  : "Localitzation"}' + 
  '],' + 
+  '"stringPasswordIncorrecte" : [' + 
+ 	'{ "cat" : "Contrasenya incorrecte" },' + 
+ 	'{ "es"  : "Contraseña incorrecta" },' + 
+	'{ "en"  : "Incorrect password"}' + 
+ '],' + 
   '"stringIntroduirLocalitzacio" : [' + 
  	'{ "cat" : "Introueix la teva localització (La teva ciutat, poble...)" },' + 
  	'{ "es"  : "Introduce tu Localización (tu ciudad, pueblo...)" },' + 

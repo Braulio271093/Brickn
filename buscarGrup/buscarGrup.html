@@ -28,7 +28,12 @@
                         <p style="float: left" class="tabSelector selected translate" data-tab="resultatsNom">{{stringBuscarPerNom}}</p>
                         <p style="float: right" class="tabSelector translate" data-tab="resultatsTema">{{stringBuscarPerTema}}</p>
                     </div>
-                    <input type="text" class="form-control" id="inputBuscar" placeholder="Buscar...">
+                    <input data-toggle="dropdown" type="text" class="form-control" id="inputBuscar" placeholder="Buscar...">
+                    <div class="dropdown">
+                        <ul class="dropdown-menu resultatBuscar" id="resBuscador" aria-labelledby="inputBuscar">
+                            <li>HOLA</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <button type="button" class="btn btn-danger translate" id="buttonBuscar">{{stringBuscar}}</button>

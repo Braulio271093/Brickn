@@ -4,12 +4,13 @@
 
     $idUsuari = $_GET['idUsuari'];
 
-    $sql = "SELECT grup.id, grup.nom, grup.pass FROM grup 
+    $sql = "SELECT grup.id, grup.nom, grup.pass, grup.foto FROM grup 
 	JOIN grup_tema ON grup.id = grup_tema.idGrup 
 	JOIN usuari_grup ON grup.id = usuari_grup.idGrup 
 	WHERE grup.tipus = 0 
 	AND grup_tema.idTema IN (SELECT tema.id FROM tema JOIN usuari_tema ON tema.id = usuari_tema.idTema WHERE usuari_tema.idUsuari = $idUsuari) 
-	AND grup.id NOT IN (SELECT idGrup FROM usuari_grup WHERE idUsuari = $idUsuari)";
+	AND grup.id NOT IN (SELECT idGrup FROM usuari_grup WHERE idUsuari = $idUsuari)
+	GROUP by grup.id";
 
     $resultat = mysqli_query($conn, $sql);
 	$res = [];
@@ -17,7 +18,7 @@
 
 	if (mysqli_num_rows($resultat) > 0) {
 		while ($row = mysqli_fetch_row($resultat)) {
-            $str[$i] = ["idGrup" => $row[0], "nomGrup" => $row[1], "pass" => $row[2]];
+            $str[$i] = ["idGrup" => $row[0], "nomGrup" => $row[1], "pass" => $row[2], "foto" => $row[3]];
 			$i++; 
 		}
 		echo json_encode($str);

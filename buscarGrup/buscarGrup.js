@@ -1,8 +1,12 @@
 require(['Clases/Grup'], function() {
     $(document).ready(function() {
 
-        var grups = []; //ids dels grups al que l'usuari es vol unir;
-        var buscarPerNom = true;
+        let grups = []; //ids dels grups al que l'usuari es vol unir;
+        let buscarPerNom = true;
+        let temasUsuari; 
+        usuari.getTemas(function () {
+           temasUsuari = usuari.temas;
+        });
 
         $('.tabSelector').click(function() {
             $('.tabSelector').removeClass('selected');
@@ -45,7 +49,7 @@ require(['Clases/Grup'], function() {
                     $('#resultatsNom').empty();
                     Grup.buscarGrupByNom(buscar, usuari.idUsuari, function(data) {
                         for (var i = 0; i < data.length && i < 5; i++) {
-                            var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
+                            var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass, data[i].foto);
                             $('#resultatsNom').append(g);
                         }
                         if (data == 0) {
@@ -57,7 +61,7 @@ require(['Clases/Grup'], function() {
                     $('#resultatsTema').empty();
                     Grup.buscarGrupByTema(buscar, usuari.idUsuari, function (data) {
                         for (var i = 0; i < data.length && i < 5; i++) {
-                            var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
+                            var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass, data[i].foto);
                             $('#resultatsTema').append(g);
                         }
                         if (data == 0) {
@@ -72,7 +76,7 @@ require(['Clases/Grup'], function() {
             usuari.getGrupsTema(function(data) {
                 $('#resultatsTema').empty();
                for (var i = 0; i < data.length && i < 5; i++) {
-                   var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass);
+                   var g = Grup.toHtmlForBuscar(data[i].idGrup, data[i].nomGrup, data[i].pass, data[i].foto);
                    $('#resultatsTema').append(g);
                }
                if (data == 0) {
@@ -123,6 +127,29 @@ require(['Clases/Grup'], function() {
                 location.reload();
             });
         });
+        /* PER FER....
+        $('#inputBuscar').keyup(function() {
+            if (!buscarPerNom) { //mostrar dropdown dels teus temas
+                let t = $(this).val();
+                $('#resBuscador').dropdown();
+                if (t != "") {
+                     $.ajax({
+                        type: "POST",
+                        url: urlServer + "/buscar/buscarLike.php?nom=" + t, //retorna tots els gustos amb el nom indicat;
+                        dataType: 'json',
+                        cache: false,
+                        success: function (data) {
+                            $('#resBuscador').append("<li>text</li>");
+                        }
+                    });
+                }
+                else {
+                    $('#resBuscador').find('li').remove();
+                    $('#resBuscador').hide();
+                }
+            }
+        });*/
+
     });
 });
 

@@ -58,7 +58,7 @@ class Grup {
      * @param idGrup
      * @param nomGrup
      */
-    static toHtmlForBuscar(idGrup, nomGrup, pass) {
+    static toHtmlForBuscar(idGrup, nomGrup, pass, foto) {
         var str = '<div class="grup grupBuscar" data-id="' + idGrup + '" data-pass="' + pass + '">';
         str += '<div class="grupPhoto" style="position: relative">';
         if (pass != 0) {
@@ -66,7 +66,7 @@ class Grup {
             str += '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>';
             str += '</span>';
         }
-        str += '<img src="../baseT-css/img/nofoto.png" alt="..." class="img-circle imgGrup" height="60px" width="60px">';
+        str += '<img src="' + urlServer + foto + '" alt="..." class="img-circle imgGrup" height="60px" width="60px">';
         str += '</div>';
         str += '<div class="grupNom">';
         str += '<strong>' + nomGrup + '</strong>';
