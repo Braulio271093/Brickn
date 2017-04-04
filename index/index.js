@@ -12,7 +12,8 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
         usuari.getGrupsPublics(function(grups) { //afegir els grups publics;
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
-                $('#teusGrups').append(g.toHtml(false));
+                $('#mon').append(g.toHtmlEvent());
+              $('#teusGrups').append(g.toHtml(false));
             }
         });
 
@@ -27,9 +28,11 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
         };
         getUltimesPublicacions();
 
-        $(document).on('click', '.publicacioMur', function() {
+         $(document).on('click', '.publicacioMur', function() {
             var ids = $(this).data('id');
-            cambiPag('paginaGrup.html?idGrup=' + ids);  
+                cambiPag('paginaGrup.html?idGrup=' + ids);
+            
+            
         });
 
         function getSolicitutsContacte() {
@@ -231,11 +234,28 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
         });
         $(document).on('mouseup', '.grup', function() {
             if (new Date().getTime() <= (start + longpress)) {
-                var ids = $(this).data('id');
-                cambiPag('paginaGrup.html?idGrup=' + ids);  
+                 var ids = $(this).data('id');
+                if($(this).attr("name")=="grupMostrar"){
+                cambiPag('paginaGrup.html?idGrup=' + ids);
+            }else{
+                /*$.ajax({
+                type: "POST",
+                url: urlServer + "/get/getUltimEvent.php?idGrup="+ids,
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    newLocation(data.coordX,data.coordY);
+                },
+                error: function (xhr, status, error) {
+                    Error.showError(__("{{errorServerOut}}"));
+                }
+                });*/
+                 newLocation(40.7033127,-73.979681);
+            }
             }
         });
-
+        
+        
 
         /**
          * Mostrar la imatge del grup en gran;
