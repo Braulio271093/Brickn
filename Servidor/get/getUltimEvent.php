@@ -16,8 +16,8 @@
 		$row = mysqli_fetch_row($result);
         $publicacio = ["id" => $row[0], "publicador" => $row[1], "imgPublicador" => $row[2], 
                        "dataPublicacio" => $row[3], "nomEvent" => $row[4], 
-                       "descripcioEvent" => $row[5], "dateStart" => $row[6],
-                       "dateEnd" => $row[7]], "coordX" => $row[8]], "coordY" => $row[9]];
+                       "descripcioEvent" => $row[5], "dateStart" => $row[6], 
+                       "dateEnd" => $row[7], "coordX" => $row[8], "coordY" => $row[9]];
         echo json_encode($publicacio);
     }
     mysqli_close($conn);
