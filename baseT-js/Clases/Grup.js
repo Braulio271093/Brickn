@@ -9,7 +9,45 @@ class Grup {
     }
 
     toHtml() {
-        var str = '<div class="grup" data-id="' + this.idGrup + '">';
+        var str = '<div class="grup" name="grupMostrar" data-id="' + this.idGrup + '">';
+        str += '<div class="grupPhoto" style="position: relative">';
+        if (this.notificacions > 0) {
+            str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
+        }
+        str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup">';
+        str += '</div>';
+        str += '<div class="grupNom">';
+        str += '<strong>' + this.nomGrup + '</strong>';
+        str += '</br>';
+        if (this.usuaris.length <= 3) {
+            for (var j = 0; j < this.usuaris.length; j++) {
+                var aux;
+                if (this.usuaris[j] == usuari.nomUsuari) aux = __('stringTu');
+                else aux = this.usuaris[j];
+                if (j == 1 || j == 2) {
+                    str += ', ';
+                    str += aux;
+                }
+                else {
+                    str += aux;
+                }
+            }
+        }
+        else {
+            for (var j = 0; j < 3; j++) {
+                var aux;
+                if (this.usuaris[j] == usuari.nomUsuari) aux = __('stringTu');
+                else aux = this.usuaris[j];
+                str += aux + ', ';
+            }
+            str += '...';
+        }
+        str += '</div></div>';
+        return str;
+    }
+    
+    toHtmlEvent() {
+        var str = '<div class="grup" name="eventMostrar" data-id="' + this.idGrup + '">';
         str += '<div class="grupPhoto" style="position: relative">';
         if (this.notificacions > 0) {
             str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
