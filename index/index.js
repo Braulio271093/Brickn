@@ -206,7 +206,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             start = new Date().getTime();
             var x = $(this);
             setTimeout(function(e) {
-                if (start != 0) {
+                if (start != 0 && $(x).attr('name') == 'grupMostrar') {
                     if (!$(x).hasClass('grupSelected')) {
                         $(x).addClass('grupSelected');
                         var thisId = $(x).data('id');
@@ -238,19 +238,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
                 if($(this).attr("name") == "grupMostrar"){
 					cambiPag('paginaGrup.html?idGrup=' + ids);
 				}
-				else{
-					/*$.ajax({
-					type: "POST",
-					url: urlServer + "/get/getUltimEvent.php?idGrup="+ids,
-					dataType: 'json',
-					cache: false,
-					success: function (data) {
-						newLocation(data.coordX,data.coordY);
-					},
-					error: function (xhr, status, error) {
-						Error.showError(__("{{errorServerOut}}"));
-					}
-					});*/
+				else {
 					 newLocation(40.7033127,-73.979681);
 				}
             }
