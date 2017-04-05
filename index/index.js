@@ -239,7 +239,12 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
 					cambiPag('paginaGrup.html?idGrup=' + ids);
 				}
 				else {
-					 newLocation(40.7033127,-73.979681);
+                    $(this).popover({
+                        content: "HOOOLA",
+                        title: "Event",
+                        placement: 'top'
+                    })
+					newLocation(40.7033127,-73.979681);
 				}
             }
         });
