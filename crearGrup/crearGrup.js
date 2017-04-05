@@ -113,7 +113,8 @@ require(['Clases/Error', 'Clases/Grup', 'Clases/Usuari'], function () {
         $('#btnCrearGrup').click(function () {
             var nomGrup = document.getElementById("inputNomGrup").value;;
             if (nomGrup == "") {
-                //Error.showError("Error al conectar-se al servidor."); xxxx;
+                $('#modalError .modal-content .modal-body').text(__('{{stringNomGrupEnBlanc}}'));
+                $('#modalError').modal();
             } 
             else {
                 var tipus = 0;
@@ -122,7 +123,8 @@ require(['Clases/Error', 'Clases/Grup', 'Clases/Usuari'], function () {
                 }
 
                 if (temesGrup.length == 0 && tipus == 0) {
-                    Error.showError(__("temesLength"));
+                    $('#modalError .modal-content .modal-body').text(__('{{stringGrupPublicNoTemas}}'));
+                    $('#modalError').modal();
                 } 
                 else {
                     if(tipus == 0) { //grup public

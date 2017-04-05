@@ -64,6 +64,16 @@
  	'{ "es"  : "Crear grupo" },' + 
 	'{ "en"  : "Create group"}' + 
  '],' + 
+ '"stringGrupPublicNoTemas" : [' + 
+ 	'{ "cat" : "No es pot crear un grup public sense cap tema." },' + 
+ 	'{ "es"  : "No se puede crear un grupo publico sin temas." },' + 
+	'{ "en"  : "You can not create a public group without topics."}' + 
+ '],' + 
+  '"stringNomGrupEnBlanc" : [' + 
+ 	'{ "cat" : "El nom del grup no pot estar en blanc." },' + 
+ 	'{ "es"  : "El nombre del grupo no puede estar en blanco." },' + 
+	'{ "en"  : "The name is incorrect."}' + 
+ '],' + 
 '"stringNomGrup" : [' + 
  	'{ "cat" : "Nom del grup" },' + 
  	'{ "es"  : "Nombre del grupo" },' + 
