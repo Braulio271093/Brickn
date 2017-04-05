@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta name="format-detection" content="telephone=no">
+        <meta charset="utf-8" /> 
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="../baseT-css/bootstrap/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
+        <link rel="stylesheet" type="text/css" href="../index/index.css">
+        <link rel="stylesheet" type="text/css" href="buscarGrup.css">
+    </head>
+    <body>
+        <div class="miniHeader">
+            <div class="miniHeaderLeft">
+                <button type="button" class="btnBack buttonNoStyle" id="btnBackToIndex">
+                        <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </button>
+                <p class="miniHeaderLeftTitle translate">
+                    {{stringBuscarGrup}}
+                </p>
+            </div>
+        </div>
+        
+        <div class="body">
+            <div style="margin: 10px">
+                <div class="form-group">
+                    <div for="inputNomGrup" class="tabNav" style="font-size: 16px;">
+                        <p style="float: left" class="tabSelector selected translate" data-tab="resultatsNom">{{stringBuscarPerNom}}</p>
+                        <p style="float: right" class="tabSelector translate" data-tab="resultatsTema">{{stringBuscarPerTema}}</p>
+                    </div>
+                    <input data-toggle="dropdown" type="text" class="form-control" id="inputBuscar" placeholder="Buscar...">
+                    <div class="dropdown">
+                        <ul class="dropdown-menu resultatBuscar" id="resBuscador" aria-labelledby="inputBuscar">
+                            <li>HOLA</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-danger translate" id="buttonBuscar">{{stringBuscar}}</button>
+                <button type="button" class="btn btn-danger translate ocult" id="buttonBuscarTeusTemas">{{stringBuscarTeusTemas}}</button>
+
+                <div class="loadingImg ocult">
+                        <img src="../baseT-img/loading_icon.gif" width="70px" height="70px">
+                    </div>
+                <div class="errorShow" style="margin-top: 10px"></div> <!-- En cas de que hi hagi un error es mostra en aquest div -->
+            </div>
+
+            <div style="margin: 10px; border-top: 1px solid rgba(0,0,0,0.125)" id="resultatsNom">
+
+            </div>
+
+            <div style="margin: 10px; border-top: 1px solid rgba(0,0,0,0.125)" class="ocult" id="resultatsTema">
+                
+            </div>
+
+            <div class="input-group bottomBar">
+                <button class="btn btn-danger translate" id="buttonUnirse">{{stringUnirse}}</button>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalPassword" tabindex="-1" role="dialog" data-pass="" data-grup="">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title translate" id="modalPassTitle">{{stringIntroduirPasswordGrup}}</h5>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" placeholder="Password..." id="inputPassword">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default translate" data-dismiss="modal">{{stringTancar}}</button>
+                        <button type="button" class="btn btn-danger translate" id="buttonAcceptarPasswordGrup">{{stringAcceptar}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
+        <script src="../baseT-js/jquery/hammer.js"></script>
+        <script src="../baseT-js/jquery/jquery.hammer.js"></script>
+        <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
+        <script type="text/javascript" src="../baseT-js/baseT.js"></script>
+        <script type="text/javascript" src="buscarGrup.js"></script>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+.crearGrup {
+    text-align: center;
+    padding: 20px;
+}
+
+.buttonsExtra{
+    float:left;
+    font-size: 16px;
+}
+
+.listTots {
+    list-style: none; 
+    font-size: 20px; 
+    margin-top: 10px;
+}
+
+.seleccionarContactesTop {
+    margin: 5px 10px 0px 10px;
+    border-bottom: 1px solid #F2F2F2;
+    height: 35px;
+    text-align: center;
+}
+
+.seleccionarContactesTop div:first-child {
+    float: left;
+    font-size: 20px;
+}
+
+.seleccionarContactesTop div:last-child {
+    float: right;
+
+}
+
+.buttonNextDiv {
+    position:absolute;
+    bottom: 5%;
+    right:5%;
+    text-align: right;;
+    background-color: #D51C1C;
+    padding: 10px 5px 10px 5px;
+    border-radius: 360px;
+}
+
+.buttonNext {
+    font-size: 24px;
+    color: white;
+}
+
+.contactesUsuari, .temasUsuari {
+    margin: 10px;
+    font-size: 18px;
+}
+
+.contactesUsuari div, .temasUsuari div {
+    margin-top: 15px;
+    padding-left: 10px;
+    border-bottom: 1px solid #F2F2F2; 
+}
+
+.contactesGrup, .temasGrup {
+    font-size: 18px;
+    margin: 10px; 
+}
+
+.contactesGrup div:last-child, .temasGrup div:last-child {
+    border-bottom: 1px solid;
+}
+
+.btn{
+    width: 125px;
+}
