@@ -3,7 +3,6 @@ function myMap() {
     var mapProp = {
         center: new google.maps.LatLng(41.388595, 2.172810),
         zoom: 19,
-
     };
 
     map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
@@ -76,6 +75,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
                 $('#teusGrups').append(g.toHtml(true));
             }
         });
+
         setMarkers(usuari.idUsuari);
 
         usuari.getGrupsPublics(function(grups) { //afegir els grups publics;
@@ -184,8 +184,8 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
                     $('.headerBottom').find('.SelectedTab').toggleClass('SelectedTab');
                     $('#headerBottomGrups').addClass('SelectedTab');
                     $('.mon').hide();
-                    $('.teusGrups').removeClass('invisible');
-                    $('.teusGrups').fadeIn();
+                    $('.teusGrups').removeClass('ocult');
+                    $('.teusGrups').fadeIn();            
                     break;
             }
         });
@@ -199,6 +199,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
                     $('.teusGrups').hide();
                     $('.mon').removeClass('invisible');
                     $('.mon').fadeIn();
+                    google.maps.event.trigger(map, 'resize');
                     break;
                 case "resum":
                     $('.headerBottom').find('.SelectedTab').toggleClass('SelectedTab');
@@ -232,6 +233,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             var idGo = $(this).data('id');
             $('.body').find('div.' + idGo).removeClass("invisible");
             $('.body').find('div.' + idGo).fadeIn();
+            google.maps.event.trigger(map, 'resize');
         });
 
         //Funcions dels buttons del menu
