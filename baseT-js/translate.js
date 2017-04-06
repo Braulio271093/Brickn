@@ -509,6 +509,36 @@
  	'{ "es"  : "Fecha final" },' + 
 	'{ "en"  : "End date"}' + 
   '],' +
+  '"stringEventAprop" : [' + 
+	'{ "cat" : "Events aprop teu" },' + 
+ 	'{ "es"  : "Eventos cercanos" },' + 
+	'{ "en"  : "Nearby events"}' + 
+  '],' +
+'"stringDadesDelEvent" : [' + 
+	'{ "cat" : "Dades del event" },' + 
+ 	'{ "es"  : "Datos del evento" },' + 
+	'{ "en"  : "Event info"}' + 
+  '],' +
+'"stringNom" : [' + 
+	'{ "cat" : "Nom" },' + 
+ 	'{ "es"  : "Nombre" },' + 
+	'{ "en"  : "Name"}' + 
+  '],' +
+'"stringPublicatPer" : [' + 
+	'{ "cat" : "Publicat per" },' + 
+ 	'{ "es"  : "Publicado por" },' + 
+	'{ "en"  : "Published by"}' + 
+  '],' +
+  '"stringDesde" : [' + 
+	'{ "cat" : "Desde" },' + 
+ 	'{ "es"  : "De" },' + 
+	'{ "en"  : "From"}' + 
+  '],' +
+  '"stringFins" : [' + 
+	'{ "cat" : "fins" },' + 
+ 	'{ "es"  : "hasta" },' + 
+	'{ "en"  : "to"}' + 
+  '],' +
 '"stringNomDelEvent" : [' + 
 	'{ "cat" : "Nom del event" },' + 
  	'{ "es"  : "Nombre del evento" },' + 

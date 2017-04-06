@@ -76,10 +76,10 @@ class PublicacioEvent {
     }
     static toText(data) {
         var t = "<div style='font-size: 14px'>";
-            t += "<p><strong>Dades del event</strong></p>";
-            t += "<p>Nom: " + data.nomEvent + "</p>";
-            t += "<p>Publicat per: " + data.publicador + "</p>";
-            t += "<p>De: " + data.dateStart + " fins: " + data.dateEnd + "</p>";
+            t += "<p><strong>" + __("{{stringDadesDelEvent}}") + "</strong></p>";
+            t += "<p>" + __("{{stringNom}}") + ": " + data.nomEvent + "</p>";
+            t += "<p>" + __("{{stringPublicatPer}}") + ": " + data.publicador + "</p>";
+            t += "<p>" + __("{{stringDesde}}") + ": " + data.dateStart +  " " + __("{{stringFins}}") + ": " + data.dateEnd + "</p>";
             t += "</div>";
         return t;
     }
