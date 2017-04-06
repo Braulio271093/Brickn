@@ -77,11 +77,18 @@
             </div> <!-- final Grups -->
 
             <div class="mon invisible ocult" id="mon"> <!-- mon start -->
-                <h3 style="padding-top: 0px; margin-top: 0px;">Eventos cercanos</h3>
-                <label for="inputLocation" style="float: left;" class="translate">{{stringLocalitzacio}}</label>
-                <br>
-                <input type="text" class="form-control" style="width:50%; margin-top: 5px; margin-bottom: 5px;" id="txtPlaces" placeholder="Nombre">
-                <div id="googleMap" style="width:100%;height:350px;"></div>
+                <h3>Eventos cercanos</h3>
+                
+                <label for="inputLocation" style="margin-left: 5%; float: left;" class="translate">{{stringLocalitzacio}}</label>
+                
+                <label for="inputLocation" style="float: left;">:</label>
+                
+                <input type="text" class="form-control" style="float: left; width:50%; margin-left: 5%; margin-bottom: 2%;"id="txtPlaces" placeholder="Nombre">
+
+                <div id="googleMap" style="width:100%;height:300px;"></div>
+                
+               
+                
                 
             </div> <!-- final mon -->
 
@@ -118,30 +125,55 @@
         <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
         <script type="text/javascript" src="../baseT-js/baseT.js"></script>
         <script type="text/javascript" src="index.js"></script>
-        <script>
-            var map;
-            function myMap() {
+         <script>
+                var map;
+                function myMap() {
                 var mapProp= {
                     center:new google.maps.LatLng(41.388595,2.172810),
-                    zoom:19,    
+                    zoom:19,
+                    
                 };
                 
                 map=new google.maps.Map(document.getElementById("googleMap"),mapProp);                
+                
+                 $.ajax
+                ({
+                    type: "POST",
+                    url: urlServer+"/get/getEventsUsuari.php?idUsuari=1",
+                    dataType: 'json',
+                    cache: false,
+                    success: function(data)
+                    {
+                        for (i = 0; i < data.length; i++) { 
+                            var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(data[i].coordX,data[i].coordY),
+                            map: map,
+                            icon: '../baseT-css/img/musicIcon.ico',
+                            title:"Evento de musica"
+                            });
+                            marker.setMap(map);
+                        }
+                       
+                    },
+                    error: function(xhr, status, error) {
+                    }
+                });     
+                
+                    
                 var lat = 41.386996;
                 var long =2.170059;
                 var image;
                 var tematica = "skateIcon"
-                if (tematica == "musica"){
-                    image = '../imagenes/musicIcon.ico';
-                }
-                else {
-                   image = '../imagenes/skateIcon.ico';
+                if(tematica == "musica"){
+                    image ='../baseT-css/img/musicIcon.ico';
+                }else{
+                   image = '../baseT-css/img/musicIcon.ico';
                 }
                 var long2 =2.172259;
                 var marker2 = new google.maps.Marker({
                     position: new google.maps.LatLng(lat,long2),
                     map: map,
-                    icon: '../imagenes/musicIcon.ico',
+                    icon: '../baseT-css/img/musicIcon.ico',
                     title:"Evento de skate"
                 });
                     marker2.setMap(map);
@@ -153,25 +185,26 @@
                     title:"Evento de musica"
                 });
                 marker.setMap(map);
-            }
-            function newLocation(newLat,newLng) {
-                map.setCenter({
-                    lat : newLat,
-                    lng : newLng
-                });
-            }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpGYWkqn_ZN7_96-ujeb6nD_BAF5-vf4E&callback=myMap"></script>
+                }
+                function newLocation(newLat,newLng)
+                {
+                    map.setCenter({
+                        lat : newLat,
+                        lng : newLng
+                    });
+                }
+ </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpGYWkqn_ZN7_96-ujeb6nD_BAF5-vf4E&callback=myMap&libraries=places"></script>
         <script type="text/javascript">
             google.maps.event.addDomListener(window, 'load', function () {
-                 var places = new google.maps.places.Autocomplete($('#txtPlaces'));
+                var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
                 google.maps.event.addListener(places, 'place_changed', function () {
                     var place = places.getPlace();
                     var latitude = place.geometry.location.lat();
                     var longitude = place.geometry.location.lng();
                     newLocation(latitude,longitude);
                 });
-            })
+            });
         </script>
     </body>
 </html>
