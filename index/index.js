@@ -73,6 +73,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
                 $('#teusGrups').append(g.toHtml(true));
+                $('#mon').append(g.toHtmlEvent(true));
             }
         });
 
@@ -81,7 +82,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
         usuari.getGrupsPublics(function(grups) { //afegir els grups publics;
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
-                $('#mon').append(g.toHtmlEvent());
+                $('#mon').append(g.toHtmlEvent(false));
 				$('#teusGrups').append(g.toHtml(false));
             }
         });
@@ -231,7 +232,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             $('.headerBottom').find('.SelectedTab').toggleClass('SelectedTab');
             $(this).addClass('SelectedTab');
             var idGo = $(this).data('id');
-            $('.body').find('div.' + idGo).removeClass("invisible");
+            $('.body').find('div.' + idGo).removeClass("ocult");
             $('.body').find('div.' + idGo).fadeIn();
             google.maps.event.trigger(map, 'resize');
         });
