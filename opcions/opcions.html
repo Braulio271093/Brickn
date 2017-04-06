@@ -54,7 +54,9 @@
                 <div class="ocult localitzacio">
                     <div class="form-group" style="padding-top: 5px; padding-left: 10px; padding-right: 10px;">
                         <label for="inputLocalitzacio" class="translate">{{stringIntroduirLocalitzacio}}</label>
-                        <input type="text" placeholder="Ciutat, poble, etc.." class="form-control">
+                        <input id="localitzacio" type="text" placeholder="Ciutat, poble, etc.." class="form-control">
+                        <input type="hidden" id="lat">
+                        <input type="hidden" id="long">
                     </div>
                 </div>
             
@@ -67,5 +69,18 @@
         <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
         <script type="text/javascript" src="../baseT-js/baseT.js"></script>
         <script type="text/javascript" src="opcions.js"></script>
+         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpGYWkqn_ZN7_96-ujeb6nD_BAF5-vf4E&libraries=places"></script>
+        <script type="text/javascript">
+            google.maps.event.addDomListener(window, 'load', function () {
+                var places = new google.maps.places.Autocomplete(document.getElementById('localitzacio'));
+                google.maps.event.addListener(places, 'place_changed', function () {
+                    var place = places.getPlace();
+                    var latitude = place.geometry.location.lat();
+                    var longitude = place.geometry.location.lng();
+                    $("#lat").val(latitude);
+                    $("#long").val(longitude);
+                });
+            });
+        </script>
     </body>
 </html>
