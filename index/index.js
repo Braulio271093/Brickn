@@ -1,3 +1,72 @@
+var map;
+function myMap() {
+    var mapProp = {
+        center: new google.maps.LatLng(41.388595, 2.172810),
+        zoom: 19,
+
+    };
+
+    map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+    var lat = 41.386996;
+    var long = 2.170059;
+    var image;
+    var tematica = "skateIcon"
+    if (tematica == "musica") {
+        image = '../baseT-css/img/musicIcon.ico';
+    } 
+    else {
+        image = '../baseT-css/img/musicIcon.ico';
+    }
+    var long2 = 2.172259;
+    var marker2 = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, long2),
+        map: map,
+        icon: '../baseT-css/img/musicIcon.ico',
+        title: "Evento de skate"
+    });
+    marker2.setMap(map);
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, long),
+        map: map,
+        icon: image,
+        title: "Evento de musica"
+    });
+    marker.setMap(map);
+}
+
+function newLocation(newLat, newLng) {
+    map.setCenter({
+        lat: newLat,
+        lng: newLng
+    });
+}
+
+/**
+ * Set els markers del mapa
+ * @param idUsuari
+ */
+function setMarkers(idUsuari) {
+    $.ajax ({
+        type: "POST",
+        url: urlServer + "/get/getEventsUsuari.php?idUsuari=" + idUsuari,
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+            for (i = 0; i < data.length; i++) {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(data[i].coordX, data[i].coordY),
+                    map: map,
+                    icon: '../baseT-css/img/musicIcon.ico',
+                    title: "Evento de musica"
+                });
+                marker.setMap(map);
+            }
+        },
+    });
+}
+
 require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio', 'Clases/PublicacioEvent'], function () {
     $(document).ready(function () {
         noEnrere(); //deshabilitar el boto de tornar enrere;
@@ -7,7 +76,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
                 $('#teusGrups').append(g.toHtml(true));
             }
         });
-
+        setMarkers(usuari.idUsuari);
 
         usuari.getGrupsPublics(function(grups) { //afegir els grups publics;
             for (var i = 0; i < grups.length; i++) {
@@ -263,6 +332,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
         });
         
         
+       
 
         /**
          * Mostrar la imatge del grup en gran;
