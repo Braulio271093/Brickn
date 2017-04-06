@@ -1,7 +1,6 @@
-require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio'], function () {
+require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio', 'Clases/PublicacioEvent'], function () {
     $(document).ready(function () {
         noEnrere(); //deshabilitar el boto de tornar enrere;
-
         usuari.getGrupsPrivats(function(grups) { //afegir els grups privats
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
@@ -31,8 +30,6 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
          $(document).on('click', '.publicacioMur', function() {
             var ids = $(this).data('id');
                 cambiPag('paginaGrup.html?idGrup=' + ids);
-            
-            
         });
 
         function getSolicitutsContacte() {
@@ -239,12 +236,27 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
 					cambiPag('paginaGrup.html?idGrup=' + ids);
 				}
 				else {
-                    $(this).popover({
-                        content: "HOOOLA",
-                        title: "Event",
-                        placement: 'top'
-                    })
-					newLocation(40.7033127,-73.979681);
+                    let g = $(this);
+					$.ajax({
+                        type: "POST",
+                        url: urlServer + "/get/getUltimEvent.php?idGrup="+ids,
+                        dataType: 'json',
+                        success: function (data) {
+                            lat=data.coordX;
+                            long=data.coordY;
+                            var t = PublicacioEvent.toText(data);
+                             $(g).popover({
+                                content: t,
+                                html: true,
+                                title: "Event",
+                                placement: 'top'
+                            })
+                            newLocation(parseFloat(lat),parseFloat(long)); 
+                        },
+                        error: function (xhr, status, error) {
+                            Error.showError(__("{{errorServerOut}}"));
+                        }
+					});
 				}
             }
         });

@@ -157,3 +157,7 @@
 .acceptarUsuarisUl li:first-child {
     margin-top: 0px;
 }
+
+#mon {
+    padding: 10px;
+}

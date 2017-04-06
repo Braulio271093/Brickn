@@ -74,4 +74,13 @@ class PublicacioEvent {
             }
         });
     }
+    static toText(data) {
+        var t = "<div style='font-size: 14px'>";
+            t += "<p><strong>Dades del event</strong></p>";
+            t += "<p>Nom: " + data.nomEvent + "</p>";
+            t += "<p>Publicat per: " + data.publicador + "</p>";
+            t += "<p>De: " + data.dateStart + " fins: " + data.dateEnd + "</p>";
+            t += "</div>";
+        return t;
+    }
 }

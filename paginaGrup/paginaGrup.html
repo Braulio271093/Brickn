@@ -10,6 +10,21 @@
         <link href="../baseT-css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
         <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
         <link rel="stylesheet" type="text/css" href="paginaGrup.css">
+        <style>
+        .pac-container {
+            background-color: #FFF;
+            z-index: 20;
+            position: fixed;
+            display: inline-block;
+            float: left;
+        }
+        .modal{
+            z-index: 20;   
+        }
+        .modal-backdrop{
+            z-index: 10;        
+            }
+        </style>
         <title>paginaGrup</title>
     </head>
     <body> 
@@ -38,7 +53,6 @@
                     </button>
                 </div>
             </div>
-
             <div class="publicacions">
                 
             </div><!-- final publicacions -->
@@ -182,11 +196,11 @@
                     <hr>
                     <!-- Part inferior -->
                     <div class="form-group">
-                        <div class="checkbox">
-                            <label class="translate" style="margin-left: 5%"><input type="checkbox" id="checkboxEventWithLoc">{{stringEventAmbLocalitzacio}}</label>
-                        </div>
-                        <div class="col-md-6 locDiv ocult">
-                            <input type="text" class="form-control" style="float: left;"id="inputLocEvent" placeholder="Localitzacio">
+                        <label for="inputLocalitzacio" style="margin-left: 5%; float: left; clear: both;" class="translate">{{stringLocalitzacio}}</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" style="float: left;"id="txtPlaces" placeholder="Nombre">
+                            <input type="hidden" class="form-control" style="float: left;"id="lat" placeholder="Nombre">
+                            <input type="hidden" class="form-control" style="float: left;"id="long" placeholder="Nombre">
                         </div>
                     </div>
                     <hr>
@@ -224,5 +238,20 @@
         <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
         <script type="text/javascript" src="../baseT-js/baseT.js"></script>
         <script type="text/javascript" src="paginaGrup.js"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBb0YM8kafxSJixHWWUDm2-Kn0Hf1diUrs&libraries=places"></script>
+        <script type="text/javascript">
+            google.maps.event.addDomListener(window, 'load', function () {
+                var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+                google.maps.event.addListener(places, 'place_changed', function () {
+                    var place = places.getPlace();
+                    var address = place.formatted_address;
+                    var latitude = place.geometry.location.lat();
+                    var longitude = place.geometry.location.lng();
+                    var adreça =address;
+                    $("#lat").val(latitude);
+                    $("#long").val(longitude);
+                });
+            });
+        </script>
     </body>
 </html>

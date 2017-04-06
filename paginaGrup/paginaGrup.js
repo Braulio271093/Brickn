@@ -94,8 +94,10 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
             var nombre = $("#inputNombre").val();
             var descripcio = $("#inputDescripcion").val();
             var idUsuari = usuari.idUsuari;
-            
-            var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio+'&startDate='+dataInicial+'&endDate='+dataFinal+'&idUsuari='+idUsuari+'&idGrup='+idGrup;
+            var lat = $("#lat").val();
+            var long = $("#long").val();
+
+            var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio+'&startDate='+dataInicial+'&endDate='+dataFinal+'&idUsuari='+idUsuari+'&idGrup='+idGrup+'&lat='+lat+'&long='+long;
             if (nombre != '' && descripcio != '') {
                 $.ajax
                 ({
@@ -106,6 +108,12 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                     success: function(data)
                     {
                         $('#modalEvento').modal('hide');
+                        $("#inputNombre").val("");
+                        $("#inputDescripcion").val("");
+                        $("#eventCreat").show();
+                        setTimeout(function() {
+                            $('#eventCreat').fadeOut('slow');
+                        }, 5000);
                         Grup.getUtimEvent(idGrup, function(p) {
                            var event = new PublicacioEvent(p.id, p.publicador, p.dataPublicacio, p.tipus, 0, p.imgPublicador, 0, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent, 0);
                            $('.publicacions').prepend(event.toHtml());
