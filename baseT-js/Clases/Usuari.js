@@ -485,4 +485,18 @@ class Usuari {
             }
         });
     }
+
+
+    setLocalitzacio(local) {
+        this.localitzacio = local;
+        $.ajax({
+            type: "POST",
+            url: urlServer + "/update/updateLocalitzacio.php?idUsuari=" + this.idUsuari + "localitzaio=" + local,
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                alert("HOLA");
+            },
+        });
+    }
 }

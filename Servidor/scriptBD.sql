@@ -10,7 +10,7 @@ create table usuari (
     respostaPregunta VARCHAR(30) not NULL,
     fotoPerfil VARCHAR(100) default '/imgServer/fotosPerfil/nofoto.png',
     localActivada BOOLEAN default 0,
-    localitzacio VARCHAR(50) default 0
+    localitzacio VARCHAR(150) default 0
 );
 /*insert into usuari (nomUsuari, email, pass, respostaPregunta) VALUES ('pau', 'pau', '123', 'Barcelona');*/
 
@@ -41,7 +41,7 @@ create table grup (
     nom VARCHAR(50) not null,
     tipus BOOLEAN not null default 1, /* 1 = privat, 0 = public */
     pass VARCHAR(16) default 0,
-    foto VARCHAR(100) default '/imgServer/fotosGrup/nofoto.png' 
+    foto VARCHAR(100) default '/imgServer/fotosGrup/nofotogrup.png' 
     );
 
 create table usuari_grup ( 

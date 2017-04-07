@@ -30,4 +30,9 @@ $(document).ready(function() {
     $('#cambiarContrasenya').click(function() {
         cambiPag("cambiarContrasenya.html");
     });
+
+    $('#guardarLoca').click(function() {
+        var local = $('#localitzacio').val();
+        usuari.setLocalitzacio(local);
+    });
 })
