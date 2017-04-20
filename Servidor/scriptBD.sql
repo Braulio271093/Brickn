@@ -8,7 +8,9 @@ create table usuari (
     pass VARCHAR(16) not null,
     clau VARCHAR(16) not null, 
     respostaPregunta VARCHAR(30) not NULL,
-    fotoPerfil VARCHAR(100) default '/imgServer/fotosPerfil/nofoto.png'
+    fotoPerfil VARCHAR(100) default '/imgServer/fotosPerfil/nofoto.png',
+    localActivada BOOLEAN default 0,
+    localitzacio VARCHAR(50) default 0
 );
 /*insert into usuari (nomUsuari, email, pass, respostaPregunta) VALUES ('pau', 'pau', '123', 'Barcelona');*/
 
@@ -59,28 +61,41 @@ create table grup_tema (
     FOREIGN KEY (idTema) REFERENCES tema(id) ON DELETE CASCADE
 );
 
-
-create table publicacio (
+create table grup_publicacions ( /* publicacions i events */
     id INT(6) unsigned PRIMARY KEY auto_increment,
-    idGrup INT(6) unsigned not null,
+    idGrup INT(6) unsigned,
     idUsuari INT(6) unsigned not null,
-    publicacio VARCHAR(300) not null,
+    tipus TINYINT(1) unsigned not null default 0, /* 0 = text, 1 = imatge, 2 = event */
     dataPublicacio DATETIME not null,
-    tipus TINYINT(1) unsigned not null default 0, 
     FOREIGN KEY (idGrup) REFERENCES grup(id) ON DELETE CASCADE,
     FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE
 );
 
+create table publicacio (
+    id INT(6) unsigned PRIMARY KEY not null,
+    publicacio VARCHAR(300) not null,
+    FOREIGN KEY (id) REFERENCES grup_publicacions(id) ON DELETE CASCADE
+);
+
 create table event (
     id INT(6) unsigned PRIMARY KEY auto_increment,
-    idGrup INT(6) unsigned not null,
-    idUsuari INT (6) unsigned not null,
     nom VARCHAR(50) not null,
     descripcio VARCHAR(120) not null,
     dateStart DATETIME not null,
     dateEnd DATETIME not null,
-    FOREIGN KEY (idGrup) REFERENCES grup(id) ON DELETE CASCADE,
-    FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE
+    coordX DECIMAL(11, 8) default 0,
+    coordY DECIMAL(11, 8) default 0,
+    icon VARCHAR(50) default 0,
+    FOREIGN KEY (id) REFERENCES grup_publicacions(id) ON DELETE CASCADE
+);
+
+create table usuari_event (
+    idUsuari INT(6) unsigned NOT NULL,
+    idEvent INT(6) unsigned NOT NULL,
+    acceptat BOOLEAN not null default 0,
+    PRIMARY KEY(idUsuari, idEvent),
+    FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE,
+    FOREIGN KEY (idEvent) REFERENCES event(id) ON DELETE CASCADE
 );
 
 
@@ -89,7 +104,7 @@ create table comentari (
     idUsuari INT(6) unsigned not null,
     comentari VARCHAR(200) not null, 
     dataComentari DATETIME not null,
-    FOREIGN KEY (idPublicacio) REFERENCES publicacio(id) ON DELETE CASCADE, 
+    FOREIGN KEY (idPublicacio) REFERENCES grup_publicacions(id) ON DELETE CASCADE, 
     FOREIGN KEY (idUsuari) REFERENCES usuari(id) ON DELETE CASCADE
 );
 

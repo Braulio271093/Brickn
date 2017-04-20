@@ -23,7 +23,8 @@
 				$j++;
 			}
 			$numNotificacions = getNotificacions($conn, $idGrup, $idUsuari);
-			$str[$i] = ["idGrup" => $row[0], "nomGrup" => $row[1], "fotoGrup" => $row[2], "usuaris" => $usuaris, "notificacions" => $numNotificacions];
+			$numEvents = getEvents($conn, $idGrup);
+			$str[$i] = ["idGrup" => $row[0], "nomGrup" => $row[1], "fotoGrup" => $row[2], "usuaris" => $usuaris, "notificacions" => $numNotificacions, "numEvents" => $numEvents];
 			$i++;
 		}
 		echo json_encode($str);
@@ -41,10 +42,19 @@
 		$dateUltimaEntrada = $row[0];
 		
 		
-		$sql = "SELECT COUNT(*) FROM publicacio WHERE dataPublicacio > '$dateUltimaEntrada' AND idUsuari != $idUsuari AND idGrup = $idGrup";
+		$sql = "SELECT COUNT(*) FROM grup_publicacions WHERE dataPublicacio > '$dateUltimaEntrada' AND idUsuari != $idUsuari AND idGrup = $idGrup";
 		$result = mysqli_query($conn, $sql);
 		$row =  mysqli_fetch_row($result);
 		$numPublicacions = $row[0];
 		return $numPublicacions;
+	}
+
+	function getEvents($conn, $idGrup) {
+		//obtenir si te events;
+		$sql = "SELECT COUNT(*) FROM event JOIN grup_publicacions ON grup_publicacions.id = event.id WHERE grup_publicacions.idGrup = $idGrup";
+		$result = mysqli_query($conn, $sql);
+		$row =  mysqli_fetch_row($result);
+		$numEvents = $row[0];
+		return $numEvents;
 	}
 ?>

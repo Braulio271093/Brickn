@@ -1,16 +1,20 @@
 <?php
+/*
+  Obtenir les ultimes publicacions de cada grup per mostrar-les al index;  
+*/
     require '../connectDB.php';
     header("Access-Control-Allow-Origin: *");
 
     $idUsuari = $_GET['idUsuari'];
 
-    $sql = "SELECT usuari.nomUsuari, grup.nom, publicacio.publicacio, publicacio.tipus, grup.id, publicacio.dataPublicacio FROM publicacio 
-            JOIN usuari ON publicacio.idUsuari = usuari.id 
-            JOIN grup ON grup.id = publicacio.idGrup 
-            WHERE publicacio.dataPublicacio IN (SELECT max(dataPublicacio) FROM publicacio WHERE publicacio.idGrup = idGrup GROUP BY idGrup) 
-            AND publicacio.idUsuari != $idUsuari
+    $sql = "SELECT usuari.nomUsuari, grup.nom, publicacio.publicacio, grup_publicacions.tipus, grup.id, grup_publicacions.dataPublicacio FROM grup_publicacions 
+            JOIN usuari ON grup_publicacions.idUsuari = usuari.id 
+            JOIN grup ON grup.id = grup_publicacions.idGrup
+            JOIN publicacio ON publicacio.id = grup_publicacions.id 
+            WHERE grup_publicacions.dataPublicacio IN (SELECT max(dataPublicacio) FROM grup_publicacions WHERE grup_publicacions.idGrup = idGrup GROUP BY idGrup) 
+            AND grup_publicacions.idUsuari != $idUsuari
             AND $idUsuari IN (SELECT idUsuari FROM usuari_grup WHERE idGrup = grup.id)
-            ORDER BY publicacio.dataPublicacio DESC";
+            ORDER BY grup_publicacions.dataPublicacio DESC";
     
     $result = mysqli_query($conn, $sql);
     $res = []; //publicacions
