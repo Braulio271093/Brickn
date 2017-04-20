@@ -64,6 +64,16 @@
  	'{ "es"  : "Crear grupo" },' + 
 	'{ "en"  : "Create group"}' + 
  '],' + 
+ '"stringGrupPublicNoTemas" : [' + 
+ 	'{ "cat" : "No es pot crear un grup public sense cap tema." },' + 
+ 	'{ "es"  : "No se puede crear un grupo publico sin temas." },' + 
+	'{ "en"  : "You can not create a public group without topics."}' + 
+ '],' + 
+  '"stringNomGrupEnBlanc" : [' + 
+ 	'{ "cat" : "El nom del grup no pot estar en blanc." },' + 
+ 	'{ "es"  : "El nombre del grupo no puede estar en blanco." },' + 
+	'{ "en"  : "The name is incorrect."}' + 
+ '],' + 
 '"stringNomGrup" : [' + 
  	'{ "cat" : "Nom del grup" },' + 
  	'{ "es"  : "Nombre del grupo" },' + 
@@ -499,6 +509,36 @@
  	'{ "es"  : "Fecha final" },' + 
 	'{ "en"  : "End date"}' + 
   '],' +
+  '"stringEventAprop" : [' + 
+	'{ "cat" : "Events aprop teu" },' + 
+ 	'{ "es"  : "Eventos cercanos" },' + 
+	'{ "en"  : "Nearby events"}' + 
+  '],' +
+'"stringDadesDelEvent" : [' + 
+	'{ "cat" : "Dades del event" },' + 
+ 	'{ "es"  : "Datos del evento" },' + 
+	'{ "en"  : "Event info"}' + 
+  '],' +
+'"stringNom" : [' + 
+	'{ "cat" : "Nom" },' + 
+ 	'{ "es"  : "Nombre" },' + 
+	'{ "en"  : "Name"}' + 
+  '],' +
+'"stringPublicatPer" : [' + 
+	'{ "cat" : "Publicat per" },' + 
+ 	'{ "es"  : "Publicado por" },' + 
+	'{ "en"  : "Published by"}' + 
+  '],' +
+  '"stringDesde" : [' + 
+	'{ "cat" : "Desde" },' + 
+ 	'{ "es"  : "De" },' + 
+	'{ "en"  : "From"}' + 
+  '],' +
+  '"stringFins" : [' + 
+	'{ "cat" : "fins" },' + 
+ 	'{ "es"  : "hasta" },' + 
+	'{ "en"  : "to"}' + 
+  '],' +
 '"stringNomDelEvent" : [' + 
 	'{ "cat" : "Nom del event" },' + 
  	'{ "es"  : "Nombre del evento" },' + 
@@ -533,11 +573,6 @@
 	'{ "cat" : "Borrar grup" },' + 
  	'{ "es"  : "Borrar grupo" },' + 
 	'{ "en"  : "Delete group"}' + 
-  '],' +
-'"stringEventCreatCorrecte" : [' + 
-	'{ "cat" : "Event creat correctament" },' + 
- 	'{ "es"  : "Evento creado correctamente" },' + 
-	'{ "en"  : "The event is successfully created"}' + 
   '],' +
   '"stringGrupAmbContrasenya" : [' + 
 	'{ "cat" : "Grup amb contrasenya" },' + 

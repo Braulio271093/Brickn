@@ -6,7 +6,7 @@
  *  CONFIGURACIÓ
  *  Per canviar la configuracio de la base de dades anar al script connectDB.php;
  */
-var urlServer = "http://localhost/Brickn-master/Servidor" //url del servidor; http://pro1234brik.sytes.net"
+var urlServer = "http://192.168.3.3/Brickn/Servidor" //url del servidor; http://pro1234brik.sytes.net"
 var debug = true;
 var storage = window.localStorage; //base de dades local;
 var idioma = storage.getItem("idioma");
@@ -46,6 +46,10 @@ require(['translate', 'Clases/Utils' ,'Clases/Usuari'], function () {
             var idioma = $(this).data('id');
             storage.setItem("idioma", idioma);
             location.reload();
+        });
+
+        $('.pagInfoButton').click(function() {
+            $('#modalInfo').modal();
         });
     });
 });

@@ -8,13 +8,11 @@ class Grup {
         this.notificacions = notificacions;
     }
   
-    toHtmlEvent() {
-       var str = '<div class="grup" name="eventMostrar" data-id="' + this.idGrup + '">';
+    toHtmlEvent(privat) {
+       var str = '<div class="grup" name="eventMostrar" data-id="' + this.idGrup + '" data-toggle="popover">';
         str += '<div class="grupPhoto" style="position: relative">';
-        if (this.notificacions > 0) {
-            str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
-        }
-        str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup">';
+        if (privat) str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup" style="border: 2px solid #D51C1C;;">';
+        else        str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup" style="border: 2px solid #088A08;">';
         str += '</div>';
         str += '<div class="grupNom">';
         str += '<strong>' + this.nomGrup + '</strong>';
