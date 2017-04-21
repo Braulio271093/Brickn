@@ -57,7 +57,7 @@ function setMarkers(idUsuari) {
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(data[i].coordX, data[i].coordY),
                     map: map,
-                    icon: '../baseT-css/img/musicIcon.ico',
+                    icon: data[i].icon,
                     title: "Evento de musica"
                 });
                 marker.setMap(map);
