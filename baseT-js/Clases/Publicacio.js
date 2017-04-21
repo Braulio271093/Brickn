@@ -128,9 +128,14 @@ class Publicacio {
      * @return date
      */
     static dateEvent(date) {
-        var aux = date.substring(0, date.lastIndexOf(':'));
-        var days = date.substring(0, date.lastIndexOf(' '));
-        var lan = storage.getItem("idioma");
+        if (date != null) {
+            var aux = date.substring(0, date.lastIndexOf(':'));
+            var days = date.substring(0, date.lastIndexOf(' '));
+            var lan = storage.getItem("idioma");
+        }
+        else {
+            date = "";
+        }
         //Falta fer per les dates amb angles;
         return aux;
     }

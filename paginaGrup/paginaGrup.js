@@ -75,12 +75,12 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
         });
         
         //event amb localitzacio;
-        $('#checkboxEventWithLoc').click(function() {
+        $(document).on('click', '#iconoCheck', function() {
             if ($(this).is(':checked')) {
-                $('.locDiv').fadeIn();
+                $('#divIconos').fadeIn();
             }
             else {
-                $('.locDiv').hide();
+                $('#divIconos').hide();
                 $('#inputLocEvent').val('');
             }
         });
@@ -96,18 +96,22 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
             var idUsuari = usuari.idUsuari;
             var lat = $("#lat").val();
             var long = $("#long").val();
-
-            var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio+'&startDate='+dataInicial+'&endDate='+dataFinal+'&idUsuari='+idUsuari+'&idGrup='+idGrup+'&lat='+lat+'&long='+long;
+            var ico = $('input[name=radioIcono]:checked', '#form').val();
+            if (long == '') long = 0;
+            if (lat == '') lat = 0;
+            if (ico == 'undefined') ico = '0';
+            var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio ; 
+                url += '&startDate='+ dataInicial + '&endDate=' + dataFinal + '&idUsuari=' + idUsuari + '&idGrup=' + idGrup
+                url += '&lat=' + lat + '&long=' + long + "&icono="+ ico;
             if (nombre != '' && descripcio != '') {
-                $.ajax
-                ({
+                $('#modalEvento').modal('hide');
+                $.ajax ({
                     type: "POST",
                     url: url,
                     dataType: 'json',
                     cache: false,
                     success: function(data)
                     {
-                        $('#modalEvento').modal('hide');
                         $("#inputNombre").val("");
                         $("#inputDescripcion").val("");
                         $("#eventCreat").show();
@@ -128,16 +132,16 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
 
         $(document).ready(function () {
 
-            //NO SE PERQUE NO FUNCIONA;
-            /*setInterval(function() { //obtenir la ultima publicació cada minut;
+            //id, publicador, dataPublicacio, publicacio, tipus, numComentaris, imgPublicador
+           setInterval(function() { //obtenir la ultima publicació ;
                 Grup.getUltimaPublicacio(idGrup, function(publicacio) {
                     var lastId = $('.publicacions').find('.publicacio').first().data('id');
                     if (lastId != publicacio.id) {
-                        var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0)
+                        var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador);
                         $('.publicacions').prepend(p.publicacioToHtml());
                     }
                 });
-            }, 1000 * 1);*/
+            }, 5000 * 1);
 
 
             $('#btnBackToIndex').click(function () {

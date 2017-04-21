@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="format-detection" content="telephone=no">
-        <meta charset="utf-8" /> 
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="../baseT-css/bootstrap/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
-        <link href="../baseT-css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
-        <link rel="stylesheet" type="text/css" href="paginaGrup.css">
-        <style>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="utf-8" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="../baseT-css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+    <link href="../baseT-css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
+    <link rel="stylesheet" type="text/css" href="paginaGrup.css">
+    <style>
         .pac-container {
             background-color: #FFF;
             z-index: 20;
@@ -18,228 +19,243 @@
             display: inline-block;
             float: left;
         }
-        .modal{
-            z-index: 20;   
+        
+        .modal {
+            z-index: 20;
         }
-        .modal-backdrop{
-            z-index: 10;        
-            }
-        </style>
-        <title>paginaGrup</title>
-    </head>
-    <body> 
-        <div id="grup">
-            <div class="miniHeader navbar navbar-fixed-top">
-                <div class="miniHeaderLeft">
-                    <button type="button" class="btnBack buttonNoStyle" id="btnBackToIndex">
+        
+        .modal-backdrop {
+            z-index: 10;
+        }
+    </style>
+    <title>paginaGrup</title>
+</head>
+
+<body>
+    <div id="grup">
+        <div class="miniHeader navbar navbar-fixed-top">
+            <div class="miniHeaderLeft">
+                <button type="button" class="btnBack buttonNoStyle" id="btnBackToIndex">
                         <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
                     </button>
-                    <p class="miniHeaderLeftTitle" id="nomGrupTitle">
-                        Nom del grup
-                    </p>
-                </div>
-                <div class="miniHeaderRight">
-                    <!-- Menu d'opcions del grup -->
-                    <div class="dropdown">
-                        <button type="button" class="buttonNoStyle" aria-label="Left Align" id="buttonOpcionsGrup" data-toggle="dropdown">
+                <p class="miniHeaderLeftTitle" id="nomGrupTitle">
+                    Nom del grup
+                </p>
+            </div>
+            <div class="miniHeaderRight">
+                <!-- Menu d'opcions del grup -->
+                <div class="dropdown">
+                    <button type="button" class="buttonNoStyle" aria-label="Left Align" id="buttonOpcionsGrup" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span>
                         </button>
-                        <ul class="dropdown-menu pull-right" aria-labelledby="buttonOpcionsGrup" style="color: black; padding: 10px; font-size: 16px; ">
-                            <li class="buttonMenuOpcions translate" data-id="1">{{stringInfoDelGrup}}</li>
-                        </ul>
-                    </div>
-                    <button type="button" class="buttonNoStyle" aria-label="Left Align" data-toggle="modal" data-target="#modalEvento">
+                    <ul class="dropdown-menu pull-right" aria-labelledby="buttonOpcionsGrup" style="color: black; padding: 10px; font-size: 16px; ">
+                        <li class="buttonMenuOpcions translate" data-id="1">{{stringInfoDelGrup}}</li>
+                    </ul>
+                </div>
+                <button type="button" class="buttonNoStyle" aria-label="Left Align" data-toggle="modal" data-target="#modalEvento">
                         <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                     </button>
-                </div>
             </div>
-            <div class="publicacions">
-                
-            </div><!-- final publicacions -->
+        </div>
+        <div class="publicacions">
 
-            <!-- Bottom bar -->
-            <div class="input-group bottomBar">
-                <input type="text" class="form-control" id="inputPublicar" placeholder="...">
-                <span class="input-group-btn">
+        </div>
+        <!-- final publicacions -->
+
+        <!-- Bottom bar -->
+        <div class="input-group bottomBar">
+            <input type="text" class="form-control" id="inputPublicar" placeholder="...">
+            <span class="input-group-btn">
                     <button type="button" class="btn btn-danger" id="buttonPublicarFoto" data-toggle="popover" data-placement="left">
                             <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-                    </button>
-                    <button class="btn btn-danger translate" type="button" id="buttonPublicar">{{stringPublicar}}</button>
-                </span>
-            </div>
+            </button>
+            <button class="btn btn-danger translate" type="button" id="buttonPublicar">{{stringPublicar}}</button>
+            </span>
+        </div>
 
-            <div class="modal fade" id="modalLoading" tabindex="-1" role="dialog" style="text-align: center;">
-                <div class="modal-dialog modal-sm modalImg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body" style="text-align: center; ">
-                            <img src="../baseT-css/img/loading_icon.gif" width="120px" height="120px">
-                        </div>
+        <div class="modal fade" id="modalLoading" tabindex="-1" role="dialog" style="text-align: center;">
+            <div class="modal-dialog modal-sm modalImg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="text-align: center; ">
+                        <img src="../baseT-css/img/loading_icon.gif" width="120px" height="120px">
                     </div>
                 </div>
             </div>
+        </div>
+
+    </div>
+
+    <!-- Info del grup -->
+    <div id="infoGrup" style="display: none">
+        <div id="imgGrupDiv">
+            <button type="button" class="btnBack buttonNoStyle" id="buttonBackToGrup" style="color:white;">
+                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </button>
+            <button type="button" class="btnBack buttonNoStyle" id="buttonChangeFotoGrup" style="color:white;">
+                    <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                </button>
+            <img id="imgGrup" src="../baseT-css/img/nofoto.png">
 
         </div>
 
-        <!-- Info del grup -->
-        <div id="infoGrup" style="display: none">
-            <div id="imgGrupDiv">
-                <button type="button" class="btnBack buttonNoStyle" id="buttonBackToGrup" style="color:white;">
-                    <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btnBack buttonNoStyle" id="buttonChangeFotoGrup" style="color:white;">
-                    <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <img id="imgGrup" src="../baseT-css/img/nofoto.png" >
-                
-            </div>
+        <div id="participantsGrupDiv">
+            <p class="translate">{{stringParticipants}}</p>
+            <ul>
 
-            <div id="participantsGrupDiv">
-                <p class="translate">{{stringParticipants}}</p>
-                <ul>
-                    
-                </ul>
-            </div>
+            </ul>
+        </div>
 
-            <div id="afegirAlGrup" class="boxOpcions ocult opcioAdmin">
-                <button type="button" class="buttonNoStyle translate" id="buttonAddUsuariGrup" aria-label="Left Align" style="font-size: 24px">
+        <div id="afegirAlGrup" class="boxOpcions ocult opcioAdmin">
+            <button type="button" class="buttonNoStyle translate" id="buttonAddUsuariGrup" aria-label="Left Align" style="font-size: 24px">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                     {{stringAfegirContactes}}
                 </button>
-            </div>
+        </div>
 
-            <div id="borrarGrup" class="boxOpcions ocult opcioAdmin">
-                <button type="button" class="buttonNoStyle translate" id="buttonBorrarGrup" aria-label="Left Align" style="font-size: 24px">
+        <div id="borrarGrup" class="boxOpcions ocult opcioAdmin">
+            <button type="button" class="buttonNoStyle translate" id="buttonBorrarGrup" aria-label="Left Align" style="font-size: 24px">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     {{stringBorrarGrup}}
                 </button>
-            </div>
+        </div>
 
-            <div class="boxOpcions" id="eliminarseGrup">
-                <button type="button" class="buttonNoStyle translate" id="buttonSortirGrup" aria-label="Left Align" style="font-size: 24px">
+        <div class="boxOpcions" id="eliminarseGrup">
+            <button type="button" class="buttonNoStyle translate" id="buttonSortirGrup" aria-label="Left Align" style="font-size: 24px">
                     <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                     {{stringSortirGrup}}
                 </button>
-            </div>
         </div>
+    </div>
 
-        <!-- Lista dels contactes del admin -->
-        <div id="listContactesAfegir" class="ocult" style="background-color: white; margin: 0px; padding: 0px;">
-            <div class="miniHeader">
-                <div class="miniHeaderLeft">
-                    <button type="button" class="btnBack buttonNoStyle" id="btnBackToGrup">
+    <!-- Lista dels contactes del admin -->
+    <div id="listContactesAfegir" class="ocult" style="background-color: white; margin: 0px; padding: 0px;">
+        <div class="miniHeader">
+            <div class="miniHeaderLeft">
+                <button type="button" class="btnBack buttonNoStyle" id="btnBackToGrup">
                         <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
                     </button>
-                    <p class="miniHeaderLeftTitle translate">
-                        {{stringAfegirContactes}}
-                    </p>
-                </div>
+                <p class="miniHeaderLeftTitle translate">
+                    {{stringAfegirContactes}}
+                </p>
             </div>
-            
-            <div class="seleccionarContactesDiv">
-                <div class="seleccionarContactesTop">
-                    <div class="translate">{{stringAfegirContactes}}</div>
-                    <div>
-                        <button type="button" class="buttonNoStyle" aria-label="Left Align">
+        </div>
+
+        <div class="seleccionarContactesDiv">
+            <div class="seleccionarContactesTop">
+                <div class="translate">{{stringAfegirContactes}}</div>
+                <div>
+                    <button type="button" class="buttonNoStyle" aria-label="Left Align">
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         </button>
-                    </div>
                 </div>
-                <div class="contactesGrup">
+            </div>
+            <div class="contactesGrup">
 
-                </div>
-                <div class="contactesUsuari">
+            </div>
+            <div class="contactesUsuari">
 
-                </div>
-                <div class="buttonNextDiv">
-                    <button class="buttonNoStyle buttonNext" type="button" id="buttonAfegirContactes" >
+            </div>
+            <div class="buttonNextDiv">
+                <button class="buttonNoStyle buttonNext" type="button" id="buttonAfegirContactes">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal (per mostrar la foto en gran) -->
+    <div class="modal fade" id="modalImg" tabindex="-1" role="dialog" style="text-align: center">
+        <div class="modal-dialog modal-sm modalImg" role="document">
+            <div class="modal-content">
+                <div class="modal-body" style="text-align: center">
+                    <img src="../baseT-css/img/nofoto.png" width="160px" height="160px" id="modalImgSrc" alt="Processan...">
                 </div>
             </div>
         </div>
+    </div>
 
-<!-- Modal (per mostrar la foto en gran) -->
-<div class="modal fade" id="modalImg" tabindex="-1" role="dialog" style="text-align: center">
-    <div class="modal-dialog modal-sm modalImg" role="document">
-        <div class="modal-content">
-            <div class="modal-body" style="text-align: center">
-                <img src="../baseT-css/img/nofoto.png" width="160px" height="160px" id="modalImgSrc" alt="Processan...">
+    <!-- Modal dels events -->
+    <div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title translate" id="myModalLabel">{{stringNouEvent}}</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="form" class="form-horizontal" role="form">
+                        <!-- Date pickers -->
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6" style="margin-left: 20%">
+                                    <label for="InputName" style="margin-left: 60px" class="translate">{{stringStartDate}}</label>
+                                    <div id="startDate"></div>
+                                </div>
+                                <hr style="width: 50%; color: #D51C1C;">
+                                <div class="col-md-6" style="margin-left: 20%">
+                                    <label for="InputName" style="margin-left: 60px" class="translate">{{stringEndDate}}</label>
+                                    <div id="endDate"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- Part inferior -->
+                        <div class="form-group">
+                            <label for="inputNombre" style="margin-left: 5%; float: left; clear: both;" class="translate">{{stringNomDelEvent}}</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" style="float: left;" id="inputNombre" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="inputDescripcion" style="margin-left: 5%;" class="translate">{{stringDescripcio}}</label>
+                            <br>
+                            <div class="col-md-6">
+                                <textarea id="inputDescripcion" class="form-control" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                            <label for="inputLocalitzacio" style="margin-left: 5%; float: left; clear: both;" class="translate">{{stringLocalitzacio}}</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" style="float: left;" id="txtPlaces" placeholder="Nombre">
+                                <input type="hidden" class="form-control" style="float: left;" id="lat" placeholder="Nombre">
+                                <input type="hidden" class="form-control" style="float: left;" id="long" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <label class="checkbox-inline" id="checkboxEventWithLoc">
+                            <input type="checkbox" id="iconoCheck" value="option1"/>Event amb icona:
+                        </label>
+                        <div class="radio ocult" id="divIconos">
+                            <label class="radio-inline">
+                                <input type="radio" name="radioIcono" id="inlineRadio1" value="../baseT-css/img/musicIcon.ico"> <img src="../baseT-css/img/musicIcon.ico">
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="radioIcono" id="inlineRadio2" value="../baseT-css/img/skateIcon.ico"> <img src="../baseT-css/img/skateIcon.ico">
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default translate" data-dismiss="modal">{{stringTancar}}</button>
+                    <button type="button" class="btn btn-danger translate" id="submitEvento">{{stringCrearEvent}}</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modal dels events -->
-<div class="modal fade" id="modalEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title translate" id="myModalLabel">{{stringNouEvent}}</h4>
-            </div>
-            <div class="modal-body">
-                <form action="" class="form-horizontal" role="form">
-                    <!-- Date pickers -->
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6" style="margin-left: 20%">
-                                <label for="InputName" style="margin-left: 60px" class="translate">{{stringStartDate}}</label>
-                                <div id="startDate"></div>
-                            </div>
-                            <hr style="width: 50%; color: #D51C1C;">
-                            <div class="col-md-6" style="margin-left: 20%">
-                                <label for="InputName" style="margin-left: 60px" class="translate">{{stringEndDate}}</label>
-                                <div id="endDate"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <!-- Part inferior -->
-                    <div class="form-group">
-                        <label for="inputLocalitzacio" style="margin-left: 5%; float: left; clear: both;" class="translate">{{stringLocalitzacio}}</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" style="float: left;"id="txtPlaces" placeholder="Nombre">
-                            <input type="hidden" class="form-control" style="float: left;"id="lat" placeholder="Nombre">
-                            <input type="hidden" class="form-control" style="float: left;"id="long" placeholder="Nombre">
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <label for="inputNombre" style="margin-left: 5%; float: left; clear: both;" class="translate">{{stringNomDelEvent}}</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" style="float: left;"id="inputNombre" placeholder="Nombre">
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <label for="inputDescripcion" style="margin-left: 5%;" class="translate">{{stringDescripcio}}</label>
-                        <br>
-                        <div class="col-md-6">
-                            <textarea id="inputDescripcion" class="form-control" rows="5"></textarea>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default translate" data-dismiss="modal">{{stringTancar}}</button>
-                <button type="button" class="btn btn-danger translate" id="submitEvento">{{stringCrearEvent}}</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-        <script type="text/javascript" src="../cordova.js"></script>
-        <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
-        <script src="https://hammerjs.github.io/dist/hammer.js"></script>
-        <script src="../baseT-js/jquery/jquery.hammer.js"></script>
-        <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-        <script type="text/javascript" src="../baseT-js/bootstrap/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
-        <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
-        <script type="text/javascript" src="../baseT-js/baseT.js"></script>
-        <script type="text/javascript" src="paginaGrup.js"></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBb0YM8kafxSJixHWWUDm2-Kn0Hf1diUrs&libraries=places"></script>
-        <script type="text/javascript">
+    <script type="text/javascript" src="../cordova.js"></script>
+    <script type="text/javascript" src="../baseT-js/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap.min.js"></script>
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <script src="../baseT-js/jquery/jquery.hammer.js"></script>
+    <script type="text/javascript" src="../baseT-js/bootstrap/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../baseT-js/bootstrap/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+    <script data-main="../baseT-js/main" src="../baseT-js/require.js"></script>
+    <script type="text/javascript" src="../baseT-js/baseT.js"></script>
+    <script type="text/javascript" src="paginaGrup.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBb0YM8kafxSJixHWWUDm2-Kn0Hf1diUrs&libraries=places"></script>
+    <script type="text/javascript">
             google.maps.event.addDomListener(window, 'load', function () {
                 var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
                 google.maps.event.addListener(places, 'place_changed', function () {
@@ -253,5 +269,6 @@
                 });
             });
         </script>
-    </body>
+</body>
+
 </html>

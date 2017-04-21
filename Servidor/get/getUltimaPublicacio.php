@@ -7,7 +7,7 @@
     $sql = "SELECT publicacio.id, usuari.nomUsuari, grup_publicacions.dataPublicacio, publicacio.publicacio, grup_publicacions.tipus, usuari.fotoPerfil FROM grup_publicacions 
             JOIN usuari ON grup_publicacions.idUsuari = usuari.id
             JOIN publicacio ON grup_publicacions.id = publicacio.id
-            WHERE grup_publicacions.idGrup = $idGrup
+            WHERE grup_publicacions.idGrup = 1
             ORDER BY grup_publicacions.dataPublicacio DESC LIMIT 1";
    $result = mysqli_query($conn, $sql);
 	if (mysqli_num_rows($result) > 0) {
