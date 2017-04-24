@@ -134,11 +134,11 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
 
             //id, publicador, dataPublicacio, publicacio, tipus, numComentaris, imgPublicador
            setInterval(function() { //obtenir la ultima publicació ;
-                Grup.getUltimaPublicacio(idGrup, function(publicacio) {
-                    var lastId = $('.publicacions').find('.publicacio').first().data('id');
+               var lastId = $('.publicacions').find('.publicacio').first().data('id');
+                Grup.getUltimaPublicacio(idGrup, function(publicacio) { 
                     if (lastId != publicacio.id) {
-                        var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador);
-                        $('.publicacions').prepend(p.publicacioToHtml());
+                        var a = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador);
+                        $('.publicacions').prepend(a.publicacioToHtml());
                     }
                 });
             }, 5000 * 1);

@@ -69,6 +69,7 @@ function setMarkers(idUsuari) {
 require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio', 'Clases/PublicacioEvent'], function () {
     $(document).ready(function () {
         noEnrere(); //deshabilitar el boto de tornar enrere;
+        
         usuari.getGrupsPrivats(function(grups) { //afegir els grups privats
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
