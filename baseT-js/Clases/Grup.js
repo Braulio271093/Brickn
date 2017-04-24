@@ -101,7 +101,7 @@ class Grup {
             str += '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>';
             str += '</span>';
         }
-        str += '<img src="' + urlServer + foto + '" alt="..." class="img-circle imgGrup" height="60px" width="60px">';
+        str += '<img src="' + urlServer + foto + '" alt="..." class="img-circle imgGrup" height="60px" width="60px" style="border: 2px solid #088A08;">';
         str += '</div>';
         str += '<div class="grupNom">';
         str += '<strong>' + nomGrup + '</strong>';
@@ -113,7 +113,7 @@ class Grup {
     static toHtmlForBuscarWithTema(idGrup, nomGrup, tema) {
         var str = '<div class="grup grupBuscar" data-id="' + idGrup + '">';
         str += '<div class="grupPhoto">';
-        str += '<img src="../baseT-css/img/nofoto.png" alt="..." class="img-circle imgGrup" height="60px" width="60px">';
+        str += '<img src="../baseT-css/img/nofotogrup.png" alt="..." class="img-circle imgGrup" height="60px" width="60px">';
         str += '</div>';
         str += '<div class="grupNom">';
         str += '<strong>' + nomGrup + '</strong>';
