@@ -9,7 +9,7 @@
             FROM grup_publicacions 
             JOIN usuari ON grup_publicacions.idUsuari = usuari.id
             JOIN event ON grup_publicacions.id = event.id
-            WHERE grup_publicacions.idGrup = 1
+            WHERE grup_publicacions.idGrup = $idGrup
             ORDER BY grup_publicacions.dataPublicacio DESC LIMIT 1";
    $result = mysqli_query($conn, $sql);
 	if (mysqli_num_rows($result) > 0) {
