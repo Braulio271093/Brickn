@@ -243,3 +243,20 @@ body {
 .contactesGrup div:last-child, .temasGrup div:last-child {
     border-bottom: 1px solid;
 }
+
+
+.pac-container {
+            background-color: #FFF;
+            z-index: 20;
+            position: fixed;
+            display: inline-block;
+            float: left;
+        }
+        
+        .modal {
+            z-index: 20;
+        }
+        
+        .modal-backdrop {
+            z-index: 10;
+        }
