@@ -24,6 +24,11 @@
  	'{ "es"  : "Introduce la nueva contraseña" },' + 
 	'{ "en"  : "Enter the new password"}' + 
  '],' + 
+ '"stringGuardar" : [' + 
+ 	'{ "cat" : "Guardar" },' + 
+ 	'{ "es"  : "Guardar" },' + 
+	'{ "en"  : "Save"}' + 
+ '],' + 
 '"stringIntroduirAntigaContrasenya" : [' + 
  	'{ "cat" : "Introdueix la teva contrasenya actual" },' + 
  	'{ "es"  : "Introduce tu contraseña actual" },' + 
