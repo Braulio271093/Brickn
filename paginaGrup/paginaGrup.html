@@ -11,6 +11,23 @@
     <link href="../baseT-css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" type="text/css" href="../baseT-css/baseT.css">
     <link rel="stylesheet" type="text/css" href="paginaGrup.css">
+    <style>
+        .pac-container {
+            background-color: #FFF;
+            z-index: 20;
+            position: fixed;
+            display: inline-block;
+            float: left;
+        }
+        
+        .modal {
+            z-index: 20;
+        }
+        
+        .modal-backdrop {
+            z-index: 10;
+        }
+    </style>
     <title>paginaGrup</title>
 </head>
 
@@ -22,7 +39,7 @@
                         <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
                     </button>
                 <p class="miniHeaderLeftTitle" id="nomGrupTitle">
-                    
+                    Nom del grup
                 </p>
             </div>
             <div class="miniHeaderRight">
@@ -40,9 +57,14 @@
                     </button>
             </div>
         </div>
+        
         <div class="publicacions">
-
+            <br>
+            <br>
+            <div id="eventCreat" class="alert alert-success" role="alert" class="translate">{{stringEventCreatCorrecte}}</div>
         </div>
+        
+            <div class="publicacions">
         <!-- final publicacions -->
 
         <!-- Bottom bar -->
@@ -206,10 +228,22 @@
                                 <input type="hidden" class="form-control" style="float: left;" id="long" placeholder="Nombre">
                             </div>
                         </div>
-                        <label class="checkbox-inline" id="checkboxEventWithLoc">
-                            <input type="checkbox" id="iconoCheck" value="option1"/>Event amb icona:
-                        </label>
-                        <div class="radio ocult" id="divIconos">
+                        
+                        
+                        
+                        <div class="radio" id="divIconos">
+                            
+                            <label class="radio-inline">
+                                <input type="radio"  name="radioIcono" id="inlineRadio7" value="../baseT-css/img/commonIcon.ico"> <img src="../baseT-css/img/commonIcon.ico">
+                            </label>
+                        
+                            
+                            <label class="radio-inline">
+                                <input type="radio" name="radioIcono" id="inlineRadio4" value=".../baseT-css/img/weedIcon.ico"> <img src="../baseT-css/img/weedIcon.ico">
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="radioIcono" id="inlineRadio3" value="../baseT-css/img/BeerIcon.ico"> <img src="../baseT-css/img/BeerIcon.ico">
+                            </label>
                             <label class="radio-inline">
                                 <input type="radio" name="radioIcono" id="inlineRadio1" value="../baseT-css/img/musicIcon.ico"> <img src="../baseT-css/img/musicIcon.ico">
                             </label>

@@ -5,7 +5,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
     var publicacions = [];
     var isAdmin; //si el usuari es admin;
     var membresGrup; //noms dels membres del grupp;
-
+    $("#eventCreat").hide();
     //Cargar les opcions del admin si ho és;
     usuari.isAdmin(idGrup, function(a) {
         isAdmin = a;
@@ -74,17 +74,6 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
             format: 'yyyy-mm-dd hh:ii',
         });
         
-        //event amb localitzacio;
-        $(document).on('click', '#iconoCheck', function() {
-            if ($(this).is(':checked')) {
-                $('#divIconos').fadeIn();
-            }
-            else {
-                $('#divIconos').hide();
-                $('#inputLocEvent').val('');
-            }
-        });
-
        //para crear el evento
         $('#submitEvento').click(function() {
             //date format: YYYY-MM-dd HH:mm
@@ -117,7 +106,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                         $("#eventCreat").show();
                         setTimeout(function() {
                             $('#eventCreat').fadeOut('slow');
-                        }, 5000);
+                        }, 2500);
                         Grup.getUtimEvent(idGrup, function(p) {
                            var event = new PublicacioEvent(p.id, p.publicador, p.dataPublicacio, p.tipus, 0, p.imgPublicador, 0, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent, 0);
                            $('.publicacions').prepend(event.toHtml());
@@ -134,11 +123,11 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
 
             //id, publicador, dataPublicacio, publicacio, tipus, numComentaris, imgPublicador
            setInterval(function() { //obtenir la ultima publicació ;
-               var lastId = $('.publicacions').find('.publicacio').first().data('id');
-                Grup.getUltimaPublicacio(idGrup, function(publicacio) { 
+                Grup.getUltimaPublicacio(idGrup, function(publicacio) {
+                    var lastId = $('.publicacions').find('.publicacio').first().data('id');
                     if (lastId != publicacio.id) {
-                        var a = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador);
-                        $('.publicacions').prepend(a.publicacioToHtml());
+                        var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador);
+                        $('.publicacions').prepend(p.publicacioToHtml());
                     }
                 });
             }, 5000 * 1);
