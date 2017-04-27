@@ -7,32 +7,6 @@ function myMap() {
 
     map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-    var lat = 41.386996;
-    var long = 2.170059;
-    var image;
-    var tematica = "skateIcon"
-    if (tematica == "musica") {
-        image = '../baseT-css/img/musicIcon.ico';
-    } 
-    else {
-        image = '../baseT-css/img/musicIcon.ico';
-    }
-    var long2 = 2.172259;
-    var marker2 = new google.maps.Marker({
-        position: new google.maps.LatLng(lat, long2),
-        map: map,
-        icon: '../baseT-css/img/musicIcon.ico',
-        title: "Evento de skate"
-    });
-    marker2.setMap(map);
-
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(lat, long),
-        map: map,
-        icon: image,
-        title: "Evento de musica"
-    });
-    marker.setMap(map);
 }
 
 function newLocation(newLat, newLng) {
@@ -69,7 +43,6 @@ function setMarkers(idUsuari) {
 require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio', 'Clases/PublicacioEvent'], function () {
     $(document).ready(function () {
         noEnrere(); //deshabilitar el boto de tornar enrere;
-        
         usuari.getGrupsPrivats(function(grups) { //afegir els grups privats
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);
