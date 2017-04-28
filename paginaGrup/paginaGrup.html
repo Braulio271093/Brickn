@@ -39,7 +39,7 @@
                         <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
                     </button>
                 <p class="miniHeaderLeftTitle" id="nomGrupTitle">
-                    Nom del grup
+                    
                 </p>
             </div>
             <div class="miniHeaderRight">
@@ -59,13 +59,8 @@
         </div>
         
         <div class="publicacions">
-            <br>
-            <br>
-            <div id="eventCreat" class="alert alert-success" role="alert" class="translate">{{stringEventCreatCorrecte}}</div>
-        </div>
-        
-            <div class="publicacions">
-        <!-- final publicacions -->
+            
+        </div> <!-- final publicacions -->
 
         <!-- Bottom bar -->
         <div class="input-group bottomBar">
@@ -188,21 +183,21 @@
                     <h4 class="modal-title translate" id="myModalLabel">{{stringNouEvent}}</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="" id="form" class="form-horizontal" role="form">
                         <!-- Date pickers -->
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6" style="margin-left: 20%">
+                            <div class="row" >
+                                <div class="col-md-4"></div>
+                                <div class="col-md-8" >
                                     <label for="InputName" style="margin-left: 60px" class="translate">{{stringStartDate}}</label>
                                     <div id="startDate"></div>
                                 </div>
-                                <hr style="width: 50%; color: #D51C1C;">
-                                <div class="col-md-6" style="margin-left: 20%">
+                            </div>
+                            <hr style="width: 50%; color: #D51C1C;">
+                            <div class="row">
+                                <div class="col-md-4">
                                     <label for="InputName" style="margin-left: 60px" class="translate">{{stringEndDate}}</label>
                                     <div id="endDate"></div>
                                 </div>
                             </div>
-                        </div>
                         <hr>
                         <!-- Part inferior -->
                         <div class="form-group">
@@ -231,7 +226,7 @@
                         
                         
                         
-                        <div class="radio" id="divIconos">
+                        <div class="radio" id="divIconos" >
                             
                             <label class="radio-inline">
                                 <input type="radio"  name="radioIcono" id="inlineRadio7" value="../baseT-css/img/commonIcon.ico"> <img src="../baseT-css/img/commonIcon.ico">
@@ -251,7 +246,6 @@
                                 <input type="radio" name="radioIcono" id="inlineRadio2" value="../baseT-css/img/skateIcon.ico"> <img src="../baseT-css/img/skateIcon.ico">
                             </label>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default translate" data-dismiss="modal">{{stringTancar}}</button>
