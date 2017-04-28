@@ -20,23 +20,26 @@ function newLocation(newLat, newLng) {
  * Set els markers del mapa
  * @param idUsuari
  */
+var marker = [];
 function setMarkers(idUsuari) {
     $.ajax ({
-        type: "POST",
+        type: "GET",
         url: urlServer + "/get/getEventsUsuari.php?idUsuari=" + idUsuari,
         dataType: 'json',
         cache: false,
         success: function (data) {
             for (i = 0; i < data.length; i++) {
-                var marker = new google.maps.Marker({
+               marker[i] = new google.maps.Marker({
                     position: new google.maps.LatLng(data[i].coordX, data[i].coordY),
-                    map: map,
-                    icon: data[i].icon,
-                    title: "Evento de musica"
+                    map: map, 
+                    icon: data[i].icon
                 });
-                marker.setMap(map);
+                marker[i].setIcon(data[i].icon);
             }
         },
+        error: function() {
+            alert("ERROR");
+        }
     });
 }
 
@@ -54,7 +57,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
         });
 
         setMarkers(usuari.idUsuari);
-
+        
         usuari.getGrupsPublics(function(grups) { //afegir els grups publics;
             for (var i = 0; i < grups.length; i++) {
                 var g = new Grup(grups[i].idGrup, grups[i].nomGrup, grups[i].fotoGrup, grups[i].usuaris, grups[i].notificacions);

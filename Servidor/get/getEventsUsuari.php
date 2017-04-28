@@ -1,11 +1,11 @@
 <?php
     require '../connectDB.php';
 	header("Access-Control-Allow-Origin: *");
-    $idUsari = $_GET['idUsuari'];
+    $idUsuari = $_GET['idUsuari'];
 
     $sql = "SELECT event.id, coordX, coordY, icon FROM event
             JOIN grup_publicacions ON grup_publicacions.id = event.id 
-            WHERE idUsuari = $idUsari";
+            WHERE grup_publicacions.idUsuari = $idUsuari";
     
     $result = mysqli_query($conn, $sql);
     $res = []; //publicacions
