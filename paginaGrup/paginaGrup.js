@@ -178,16 +178,22 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
             //Publicar una foto;
             $(document).on('click', "#photoFromLibrary", function() {
                 getPhoto(pictureSource.PHOTOLIBRARY ,function(imageUri) {
+                    $('#modalLoading').modal('show');
                     uploadPhoto(imageUri, function(nomFoto) {
-                        Publicacio.afegirPublicacio(idGrup, usuari.idUsuari, "/imgServer/" + nomFoto, 1);
+                        Publicacio.afegirPublicacio(idGrup, usuari.idUsuari, "/imgServer/" + nomFoto, 1, function() {
+                            $('#modalLoading').modal('hide');
+                        });
                     });
                 });
             });
 
             $(document).on('click', '#photoFromCamera', function() {
                 capturePhoto(function(imageUri) {
+                    $('#modalLoading').modal('show');
                     uploadPhoto(imageUri, function(nomFoto) {
-                        Publicacio.afegirPublicacio(idGrup, usuari.idUsuari, "/imgServer/" + nomFoto, 1);
+                        Publicacio.afegirPublicacio(idGrup, usuari.idUsuari, "/imgServer/" + nomFoto, 1, function() {
+                            $('#modalLoading').modal('hide');
+                        });
                     })
                 })
             });

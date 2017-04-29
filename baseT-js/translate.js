@@ -155,9 +155,9 @@
 	'{ "en"  : "GROUPS"}' + 
  '],' + 
 '"stringMon" : [' + 
- 	'{ "cat" : "MÓN" },' + 
- 	'{ "es"  : "MUNDO" },' + 
-	'{ "en"  : "WORLD"}' + 
+ 	'{ "cat" : "EVENTS" },' + 
+ 	'{ "es"  : "EVENTOS" },' + 
+	'{ "en"  : "EVENTS"}' + 
  '],' + 
 '"stringRegistrarse" : [' + 
  	'{ "cat" : "Registrar-se" },' + 
