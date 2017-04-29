@@ -5,7 +5,6 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
     var publicacions = [];
     var isAdmin; //si el usuari es admin;
     var membresGrup; //noms dels membres del grupp;
-    $("#eventCreat").hide();
     //Cargar les opcions del admin si ho és;
     usuari.isAdmin(idGrup, function(a) {
         isAdmin = a;
@@ -103,10 +102,6 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                     {
                         $("#inputNombre").val("");
                         $("#inputDescripcion").val("");
-                        $("#eventCreat").show();
-                        setTimeout(function() {
-                            $('#eventCreat').fadeOut('slow');
-                        }, 2500);
                         Grup.getUtimEvent(idGrup, function(p) {
                            var event = new PublicacioEvent(p.id, p.publicador, p.dataPublicacio, p.tipus, 0, p.imgPublicador, 0, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent, 0);
                            $('.publicacions').prepend(event.toHtml());
@@ -120,7 +115,6 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
         });           
 
         $(document).ready(function () {
-
             //id, publicador, dataPublicacio, publicacio, tipus, numComentaris, imgPublicador
            setInterval(function() { //obtenir la ultima publicació ;
                 Grup.getUltimaPublicacio(idGrup, function(publicacio) {
@@ -128,6 +122,9 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                     if (lastId != publicacio.id) {
                         var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador);
                         $('.publicacions').prepend(p.publicacioToHtml());
+                    }
+                    else {
+                        
                     }
                 });
             }, 5000 * 1);
@@ -260,14 +257,19 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                 var idPublicacio = $(this).parent().parent().data('id');
                 var x = $(this);
                 PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 1,  function(data) {
-                    location.reload();
+                    //location.reload();
+                    var a = parseInt($(x).find('.spanNumPersonesAcceptat').text());
+                    $(x).find('.spanNumPersonesAcceptat').text(a + 1);
                 });
             });
             //Declinar anar a un event
             $(document).on('click', '.buttonDeclinarEvent', function() {
                 var idPublicacio = $(this).parent().parent().data('id');
+                var x = $(this);
                 PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 0, function(data) {
-                    location.reload();
+                    //location.reload();
+                    var a = parseInt($(x).find('.spanNumPersonesDeclinat').text());
+                    $(x).find('.spanNumPersonesDeclinat').text(a + 1);
                 });
             });
 

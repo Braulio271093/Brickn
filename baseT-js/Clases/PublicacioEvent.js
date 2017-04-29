@@ -39,11 +39,11 @@ class PublicacioEvent {
         str +=      "</button>";
         str +=      "<button class='buttonNoStyle buttonAcceptarEvent' style='font-size: 20px;'>";
         str +=          "<span class='glyphicon glyphicon-hand-up' aria-hidden='true'></span>";
-        str +=          '<span class="badge" style="z-index: 1; position: relative; bottom: 15px; left: -7px; background-color: #D51C1C;">' + this.numPersones + '</span>';
+        str +=          '<span class="badge spanNumPersonesAcceptat" style="z-index: 1; position: relative; bottom: 15px; left: -7px; background-color: #D51C1C;" >' + this.numPersones + '</span>';
         str +=      "</button>";
         str +=      "<button class='buttonNoStyle buttonDeclinarEvent' style='font-size: 20px;'>";
         str +=          "<span class='glyphicon glyphicon-hand-down' aria-hidden='true'></span>";
-        str +=          '<span class="badge" style="z-index: 1; position: relative; bottom: 15px; left: -7px; background-color: #D51C1C;">' + this.numPersonesDec + '</span>';
+        str +=          '<span class="badge spanNumPersonesDeclinat" style="z-index: 1; position: relative; bottom: 15px; left: -7px; background-color: #D51C1C;">' + this.numPersonesDec + '</span>';
         str +=      "</button>";
         str +=   "</div>";
         str +=   "<div class='comentarisPublicacio' style='display: none;'>";

@@ -18,7 +18,6 @@ class Publicacio {
         let str = ''; 
         if (this.tipus == 1) {
             var rutaFoto = this.publicacio;
-            rutaFoto += '.jpg';
             body = "<img class='imatgePublicacio' src=" + urlServer + "/" + rutaFoto + ">";
         }
         str += "<div class='publicacio' data-id='" + this.id + "'>";
@@ -62,7 +61,15 @@ class Publicacio {
                 '</div>';
         }
         else if (tipus == 1) {
-            //si la publicacio és una foto;
+            str = '<div class="publicacioMur" data-id="' + idGrup + '">'+  
+                    '<p class="publicacioMurHeader">'+
+                       '<p>De <strong>' + nomPublicador + "</strong> desde <strong>" + nomGrup + '</strong>:</p>' +
+                       '<p style="float: right; position: relative; bottom: 33px; color: gray; font-size: 14px">' +  Publicacio.convertirData(dataPublicacio) +'</p>'  +   
+                    '</p>' +
+                    '<p class="publicacioMurBody">'+
+                        '<img src="' + urlServer + publicacio + '" width="95%" heigth="80%">'
+                    '</p>' +
+                '</div>';
         }
         return str;
     }

@@ -45,6 +45,15 @@ function setMarkers(idUsuari) {
 
 require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio', 'Clases/PublicacioEvent'], function () {
     $(document).ready(function () {
+
+
+        setInterval(function() {
+            getUltimesPublicacions();
+            getSolicitutsContacte();
+            console.log("reload publicacions + solicituts");
+        }, 30000 * 1)
+
+
         noEnrere(); //deshabilitar el boto de tornar enrere;
         usuari.getGrupsPrivats(function(grups) { //afegir els grups privats
             for (var i = 0; i < grups.length; i++) {
