@@ -27,3 +27,53 @@ ul .elementOpcions, .elementOpcionsSub {
     padding: 10px;
 
 }
+
+
+/** textos i tituls **/
+
+.text-titul {
+    padding: 10px;
+
+}
+
+.p-texto {
+     margin-right: 10px;
+}
+
+/** canviar buttons de blau a vermell **/
+.btn  {
+    display:block;
+    padding: 10px;
+    margin: 10px;
+}
+
+.textInfo {
+   padding-left: 10px;
+    margin-left: 10px;
+}
+
+.btn-info:focus, .btn-info.focus, .btn-info:hover{
+     color: #fff;
+    background-color: #9f1515;
+    border-color: #9f1515;
+}
+
+
+.btn-info {
+    color: #fff;
+    background-color: #D51C1C;
+    border-color: #9f1515;
+}
+
+.btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
+    color: #fff;
+    background-color: #C62121;
+    border-color: #9f1515;
+}
+
+
+.btn-info:active:hover, .btn-info.active:hover, .open > .dropdown-toggle.btn-info:hover, .btn-info:active:focus, .btn-info.active:focus, .open > .dropdown-toggle.btn-info:focus, .btn-info:active.focus, .btn-info.active.focus, .open > .dropdown-toggle.btn-info.focus {
+    color: #fff;
+    background-color: #C62121;
+    border-color: #9f1515;
+}
