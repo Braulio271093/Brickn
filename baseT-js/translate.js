@@ -583,7 +583,65 @@
 	'{ "cat" : "Grup amb contrasenya" },' + 
  	'{ "es"  : "Grupo con contraseña" },' + 
 	'{ "en"  : "Group with password"}' + 
-  ']' +
+  '],' +
+    '"stringInformacioiAjuda" : [' + 
+	'{ "cat" : "Informació i ajuda" },' + 
+ 	'{ "es"  : "Información y ayuda" },' + 
+	'{ "en"  : "Information and help"}' + 
+  '],' + 
+  
+      '"stringFeaturesApp" : [' + 
+	'{ "cat" : "Característiques de la aplicació" },' + 
+ 	'{ "es"  : "Características de la aplicación" },' + 
+	'{ "en"  : "Features of the application"}' + 
+    '],' +  
+     '"stringTextFeaturesApp" : [' + 
+	'{ "cat" : "Les característiques principals de Brickn són les següents:-Els usuaris es poden registrar, fer login, pujar una foto, canviar el nom d\'usuari, canviar la contrasenya, seleccionar la seva localització, eliminar el compte, etc. - Els usuaris poden afegir / eliminar contactes i poden afegir / eliminar temes d\'interès.- Els usuaris poden crear grups públics i privats. En els grups privats, els usuaris seleccionen el tema o temes, i a més poden afegir contactes al grup. En canvi, en els grups públics els usuaris seleccionen el tema o temes, i els integrants s\'aniran afegint al grup si els interessa el tema o els temes. - Dins d\'un grup, els usuaris poden escriure publicacions (text i fotos) i afegir events. L\'usuari que ha creat el grup (admin) pot afegir i eliminar usuaris, a més d\'esborrar el grup." },' + 
+ 	'{ "es"  : "Las características principales de Brickn son las siguientes:-Los usuarios se pueden registrar, hacer login, subir una foto, cambiar el nombre de usuario, cambiar la contraseña, seleccionar su localización, eliminar la cuenta, etc. - Los usuarios pueden añadir/eliminar contactos y pueden añadir/eliminar temas de interés.- Los usuarios pueden crear grupos públicos y privados. En los grupos privados, los usuarios seleccionan el tema o temas, y además pueden añadir contactos al grupo. En cambio, en los grupos públicos los usuarios seleccionan el tema o temas, y los integrantes se irán añadiendo al grupo si les interesa el tema o los temas. - Dentro de un grupo, los usuarios pueden escribir publicaciones (texto y fotos) y añadir eventos. El usuario que ha creado el grupo (admin) puede añadir y eliminar usuarios, además de borrar el grupo." },' + 
+	'{ "en"  : "Main features of Brickn are as follows:-Users can register, log in, upload a photo, change the username, change the password, select their location, delete the account, etc. - Users can Add / delete contacts, and add / remove topics of interest. - Users can create public and private groups. In private groups, users can select the topic or themes, and can add contacts to the group. However, in public groups, users can select the topic or themes, and members will be added to the group if they are interested in the topic or themes. - Inside of group, users can write posts (text and photos) and can add events. The user who created the group (admin) can add an delete users, as well as delete the group."}' + 
+  '],' +
+      '"stringSecurity" : [' + 
+	'{ "cat" : "Seguretat de les dades" },' + 
+ 	'{ "es"  : "Seguridad de los datos" },' + 
+	'{ "en"  : "Security"}' + 
+  '],' + 
+     '"stringTextSecurity" : [' + 
+	'{ "cat" : "Els comptes d\'usuari són totalment segures en la nostra aplicació, la contrasenya s\'encripta abans de guardar-la i ni tan sols nosaltres podem saber-la." },' + 
+ 	'{ "es"  : "Las cuentas de usuario son totalmente seguras en nuestra aplicación, la contraseña se encripta antes de guardarla y ni siquiera nosotros podemos saberla." },' + 
+	'{ "en"  : "The user accounts are completely safe in our application, the password is encrypted before saving it and even we can not know it."}' + 
+  '],' + 
+     
+     '"stringLenguages" : [' + 
+	'{ "cat" : "Llenguatges disponibles" },' + 
+ 	'{ "es"  : "Lenguages disponibles" },' + 
+	'{ "en"  : "Lenguages availables"}' + 
+  '],' + 
+     '"stringTextLenguages" : [' + 
+	'{ "cat" : "Brickn està disponible en tres idiomes: Català, Espanyol i Anglès." },' + 
+ 	'{ "es"  : "Brickn está disponible en tres idiomas: Catalán, Español e Inglés." },' + 
+	'{ "en"  : "Brickn is available in three lenguages: Catalan, Spanish and English."}' + 
+  '],' + 
+      '"stringPlatforms" : [' + 
+	'{ "cat" : "Plataformes disponibles per l\'app" },' + 
+ 	'{ "es"  : "Plataformas disponibles para la app" },' + 
+	'{ "en"  : "Platforms availables for the app"}' + 
+  '],' +
+     '"stringTextPlatforms" : [' + 
+	'{ "cat" : "Brickn és multiplataforma, està disponible per qualsevol dispositiu amb qualsevol sistema operatiu: Android, iOS..." },' + 
+ 	'{ "es"  : "Brickn es multiplataforma, está disponible para cualquier dispositivo con qualquier sistema operativo: Android, iOS..." },' + 
+	'{ "en"  : "Brickn is multiplatform, so it is available for any device with any operating system: Android, iOS..."}' + 
+  '],' +
+     
+      '"stringAboutUs" : [' + 
+	'{ "cat" : "Sobre nosaltres" },' + 
+ 	'{ "es"  : "Acerca de nosotros" },' + 
+	'{ "en"  : "About us"}' + 
+  '],' + 
+     '"stringTextAboutUs" : [' + 
+	'{ "cat" : "Brickn som un grup de quatre persones, Braulio, Cristina, Lluc i Pau que ha desenvolupat com a projecte final de curs (Desenvolupament d\'Aplicacions Multiplataforma) una xarxa social enfocada a unir grups d\'usuaris segons els seus gustos i interessos." },' + 
+ 	'{ "es"  : "Brickn somos un grupo de cuatro personas, Braulio, Cristina, Lluc y Pau que ha desarrollado como proyecto final de curso (Desarrollo de Aplicaciones Multiplataforma) una red social enfocada a unir grupos de usuarios segun sus gustos e intereses." },' + 
+	'{ "en"  : "Brickn is a group of four people, Braulio, Cristina, Lluc and Pau who has developed as a final course project (Multiplatform Application Development) a social network focused on joining groups of users according to their likes and interests."}' + 
+  ']' +  
 '}';
 
 
