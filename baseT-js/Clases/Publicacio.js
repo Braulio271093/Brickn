@@ -20,7 +20,7 @@ class Publicacio {
             var rutaFoto = this.publicacio;
             body = "<img class='imatgePublicacio' src=" + urlServer + "/" + rutaFoto + ">";
         }
-        str += "<div class='publicacio' data-id='" + this.id + "'>";
+        str += "<div class='publicacio animated fadeIn' data-id='" + this.id + "'>";
         str +=   "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + this.imgPublicador + "'></div>";
         str +=   "<div class='titolPublicacio'>";
         str +=       "<p>" + this.publicador + "</p>"; 

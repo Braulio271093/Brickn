@@ -23,7 +23,7 @@ class PublicacioEvent {
         body += "<p style='rgba(0,0,0,0.5); margin-left: 80px; margin-top: 0px;'>-" + this.descripcioEvent + "</p>";
         body += "</div>";
 
-        str += "<div class='publicacio' data-id='" + this.id + "'>";
+        str += "<div class='publicacio event animated swing' data-id='" + this.id + "'>";
         str +=   "<div class='fotoPublicador' style='float: left'><img class='img-circle fotoPublicadorImg' src='" + urlServer + this.imgPublicador + "'></div>";
         str +=   "<div class='titolPublicacio'>";
         str +=       "<p>" + this.publicador + "</p>"; 

@@ -32,7 +32,10 @@ require(['translate', 'Clases/Utils' ,'Clases/Usuari'], function () {
     $(document).ready(function () { 
 
         $('.ocult').hide(); //ocultem tots els div que tenen la clase ocult;
-        $('body').fadeIn('fast');
+        //css
+        $('body').css('display', '');
+        $('body').fadeIn();
+        $('body').addClass('animated fadeIn');
 
         $('#btnBackToOpcions').click(function () {
             cambiPag("opcions.html");

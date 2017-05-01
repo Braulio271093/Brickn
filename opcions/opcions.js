@@ -33,6 +33,10 @@ $(document).ready(function() {
 
     $('#guardarLoca').click(function() {
         var local = $('#localitzacio').val();
-        usuari.setLocalitzacio(local);
+        var lat = $('#lat').val();
+        var lon = $('#long').val();
+        usuari.setLocalitzacio(local, lat, lon, function() {
+            cambiPag('index.html');
+        });
     });
 })

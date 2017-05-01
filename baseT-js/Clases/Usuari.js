@@ -487,15 +487,18 @@ class Usuari {
     }
 
 
-    setLocalitzacio(local) {
+    setLocalitzacio(local, lat, lon, onSucces) {
         this.localitzacio = local;
         $.ajax({
             type: "POST",
-            url: urlServer + "/update/updateLocalitzacio.php?idUsuari=" + this.idUsuari + "localitzaio=" + local,
+            url: urlServer + "/update/updateLocalitzacio.php?idUsuari=" + this.idUsuari + "&localitzacio=" + local,
             dataType: 'json',
             cache: false,
             success: function (data) {
-                alert("HOLA");
+                storage.setItem("localitzacio", local);
+                storage.setItem("lat", lat);
+                storage.setItem("lon", lon);
+                onSucces();
             },
         });
     }

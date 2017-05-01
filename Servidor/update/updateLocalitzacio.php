@@ -5,7 +5,7 @@
     $idUsuari = $_GET['idUsuari'];
 	$localitzacio = $_GET['localitzacio'];
 
-	$sql = "UPDATE usuari SET localitzacio = $localitzacio WHERE id = $idUsuari";
+	$sql = "UPDATE usuari SET localitzacio = '$localitzacio' WHERE id = $idUsuari";
 
 	$result = mysqli_query($conn, $sql);
 

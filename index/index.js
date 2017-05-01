@@ -246,7 +246,9 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             $('.grupPhoto').toggleClass('enLinia');
             $('.grupNom').toggleClass('enLinia');
             $('.grup').fadeIn();
+
         });
+
 
         $('#buttonSortir').click(function () {
             storage.removeItem('idUsuari');

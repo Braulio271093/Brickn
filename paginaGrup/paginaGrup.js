@@ -72,60 +72,77 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
             todayHighlight: 1,
             format: 'yyyy-mm-dd hh:ii',
         });
+
+        
         
        //para crear el evento
         $('#submitEvento').click(function() {
             //date format: YYYY-MM-dd HH:mm
             var dataInicial = Utils.transfromDate($("#startDate").datetimepicker('getDate'));              
             var dataFinal =  Utils.transfromDate($("#endDate").datetimepicker('getDate'));
-
-            var nombre = $("#inputNombre").val();
-            var descripcio = $("#inputDescripcion").val();
-            var idUsuari = usuari.idUsuari;
-            var lat = $("#lat").val();
-            var long = $("#long").val();
-            var ico = $('input[name=radioIcono]:checked').val();
-            if (long == '') long = 0;
-            if (lat == '') lat = 0;
-            if (ico == 'undefined') ico = '0';
-            var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio ; 
-                url += '&startDate='+ dataInicial + '&endDate=' + dataFinal + '&idUsuari=' + idUsuari + '&idGrup=' + idGrup
-                url += '&lat=' + lat + '&long=' + long + "&icono="+ ico;
-            if (nombre != '' && descripcio != '') {
-                $('#modalEvento').modal('hide');
-                $.ajax ({
-                    type: "POST",
-                    url: url,
-                    dataType: 'json',
-                    cache: false,
-                    success: function(data)
-                    {
-                        location.reload();  
-                        $("#inputNombre").val("");
-                        $("#inputDescripcion").val("");
-                        Grup.getUtimEvent(idGrup, function(p) {
-                           var event = new PublicacioEvent(p.id, p.publicador, p.dataPublicacio, p.tipus, 0, p.imgPublicador, 0, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent, 0);
-                           $('.publicacions').prepend(event.toHtml());
-                       });
-                    },
-                    error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
-                        location.reload();   
+            if (dataInicial > dataFinal || dataInicial == dataFinal) {            
+                var nombre = $("#inputNombre").val();
+                var descripcio = $("#inputDescripcion").val();
+                var idUsuari = usuari.idUsuari;
+                var lat = $("#lat").val();
+                var long = $("#long").val();
+                var ico = $('input[name=radioIcono]:checked').val();
+                if (long == '') {
+                    long = storage.getItem("lon");
+                    if (long == 0 || long == null || long == "undefined") {
+                        long = 0;
                     }
-                }); 
-            } 
+                }
+                if (lat == '') {
+                    lat = storage.getItem("lat");
+                    if (lat == null) {
+                        lat = 0;
+                    }
+                }
+                if (ico == 'undefined') ico = '0';
+                var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio ; 
+                    url += '&startDate='+ dataInicial + '&endDate=' + dataFinal + '&idUsuari=' + idUsuari + '&idGrup=' + idGrup
+                    url += '&lat=' + lat + '&long=' + long + "&icono="+ ico;
+                if (nombre != '' && descripcio != '') {
+                    $('#modalEvento').modal('hide');
+                    $.ajax ({
+                        type: "POST",
+                        url: url,
+                        dataType: 'json',
+                        cache: false,
+                        success: function(data)
+                        {
+                            location.reload();  
+                            $("#inputNombre").val("");
+                            $("#inputDescripcion").val("");
+                            Grup.getUtimEvent(idGrup, function(p) {
+                            var event = new PublicacioEvent(p.id, p.publicador, p.dataPublicacio, p.tipus, 0, p.imgPublicador, 0, p.dateStart, p.dateEnd, p.nomEvent, p.descripcioEvent, 0);
+                            $('.publicacions').prepend(event.toHtml());
+                        });
+                        },
+                        error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
+                            location.reload();   
+                        }
+                    }); 
+                } 
+            }
+            else {
+                alert(__("{{stringDatesMalPosades}}"));
+            }
         });           
 
         $(document).ready(function () {
+
             //id, publicador, dataPublicacio, publicacio, tipus, numComentaris, imgPublicador
            setInterval(function() { //obtenir la ultima publicació ;
                 Grup.getUltimaPublicacio(idGrup, function(publicacio) {
-                    var lastId = $('.publicacions').find('.publicacio').first().data('id');
-                    if (lastId != publicacio.id) {
-                        var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador);
-                        $('.publicacions').prepend(p.publicacioToHtml());
-                    }
-                    else {
-                        
+                    var first = $('.publicacions').find('.publicacio').first();
+                    if (!$(first).hasClass('event')) {
+                        var lastId = $('.publicacions').find('.publicacio').first().data('id');
+                        if (lastId != publicacio.id )  {
+                            var p = new Publicacio(publicacio.id, publicacio.publicador, publicacio.dataPublicacio, publicacio.publicacio, publicacio.tipus, 0, publicacio.imgPublicador);
+                            $('.publicacions').prepend(p.publicacioToHtml());
+                        }
                     }
                 });
             }, 5000 * 1);
