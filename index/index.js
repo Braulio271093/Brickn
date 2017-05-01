@@ -15,11 +15,21 @@ function newLocation(newLat, newLng) {
         lng: newLng
     });
 }
+function create_marker(lat, lng, ico) {
+    if (ico == "undefined" || ico == null) ico = "../baseT-css/img/commonIcon.ico";
+    var point = new google.maps.LatLng(lat,lng);
+    var marker =    new google.maps.Marker({
+        position: point,
+        map: map,
+        icon: ico,
+    });
+}
+
 
 /**
  * Set els markers del mapa
  * @param idUsuari
- */
+ 
 var marker = [];
 function setMarkers(idUsuari) {
     $.ajax ({
@@ -34,14 +44,15 @@ function setMarkers(idUsuari) {
                     map: map, 
                     icon: data[i].icon
                 });
-                marker[i].setIcon(data[i].icon);
+                marker[i].setIcon('../baseT-css/img/BeerIcon.ico');
+                alert(data[i].icon);
             }
         },
         error: function() {
             alert("ERROR");
         }
     });
-}
+}*/
 
 require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio', 'Clases/PublicacioEvent'], function () {
     $(document).ready(function () {
@@ -64,8 +75,8 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
                 }
             }
         });
-
-        setMarkers(usuari.idUsuari);
+        myMap();
+        //setMarkers(usuari.idUsuari);
         
         usuari.getGrupsPublics(function(grups) { //afegir els grups publics;
             for (var i = 0; i < grups.length; i++) {
@@ -314,7 +325,8 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
                                 title: "Event",
                                 placement: 'top'
                             })
-                            newLocation(parseFloat(lat),parseFloat(long)); 
+                            newLocation(parseFloat(lat),parseFloat(long));
+                            create_marker(parseFloat(lat),parseFloat(long), data.icon); 
                         },
                         error: function (xhr, status, error) {
                             Error.showError(__("{{errorServerOut}}"));

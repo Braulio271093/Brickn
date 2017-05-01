@@ -84,7 +84,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
             var idUsuari = usuari.idUsuari;
             var lat = $("#lat").val();
             var long = $("#long").val();
-            var ico = $('input[name=radioIcono]:checked', '#form').val();
+            var ico = $('input[name=radioIcono]:checked').val();
             if (long == '') long = 0;
             if (lat == '') lat = 0;
             if (ico == 'undefined') ico = '0';
@@ -100,6 +100,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                     cache: false,
                     success: function(data)
                     {
+                        location.reload();  
                         $("#inputNombre").val("");
                         $("#inputDescripcion").val("");
                         Grup.getUtimEvent(idGrup, function(p) {
@@ -108,9 +109,9 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                        });
                     },
                     error: function(xhr, status, error) { //si hi ha un error al connectar-se al servidor;
-                        
+                        location.reload();   
                     }
-                });
+                }); 
             } 
         });           
 
@@ -264,7 +265,10 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                 var x = $(this);
                 PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 1,  function(data) {
                     //location.reload();
-                    var a = parseInt($(x).find('.spanNumPersonesAcceptat').text());
+                    var a = parseInt($(x).find('.spanNumPersonesDeclinat').text());
+                    $(x).find('.spanNumPersonesDeclinat').text(a - 1);
+
+                    a = parseInt($(x).find('.spanNumPersonesAcceptat').text());
                     $(x).find('.spanNumPersonesAcceptat').text(a + 1);
                 });
             });
@@ -274,7 +278,10 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                 var x = $(this);
                 PublicacioEvent.acceptarEvent(usuari.idUsuari, idPublicacio, 0, function(data) {
                     //location.reload();
-                    var a = parseInt($(x).find('.spanNumPersonesDeclinat').text());
+                    var a = parseInt($(x).find('.spanNumPersonesAcceptat').text());
+                    $(x).find('.spanNumPersonesAcceptat').text(a - 1);
+
+                    a = parseInt($(x).find('.spanNumPersonesDeclinat').text());
                     $(x).find('.spanNumPersonesDeclinat').text(a + 1);
                 });
             });
