@@ -63,6 +63,14 @@ ul .elementOpcions, .elementOpcionsSub {
     color: #fff;
     background-color: #D51C1C;
     border-color: #9f1515;
+    width: 95%;
+}
+
+@media (min-width: 768px)
+{
+    .btn-info {
+        text-align: left;
+    }
 }
 
 .btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
