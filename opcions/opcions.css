@@ -75,13 +75,13 @@ ul .elementOpcions, .elementOpcionsSub {
 
 .btn-info:active, .btn-info.active, .open > .dropdown-toggle.btn-info {
     color: #fff;
-    background-color: #C62121;
+    background-color: #9f1515;
     border-color: #9f1515;
 }
 
 
 .btn-info:active:hover, .btn-info.active:hover, .open > .dropdown-toggle.btn-info:hover, .btn-info:active:focus, .btn-info.active:focus, .open > .dropdown-toggle.btn-info:focus, .btn-info:active.focus, .btn-info.active.focus, .open > .dropdown-toggle.btn-info.focus {
     color: #fff;
-    background-color: #C62121;
+    background-color: #9f1515;
     border-color: #9f1515;
 }
