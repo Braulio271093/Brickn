@@ -613,7 +613,7 @@
      
      '"stringLenguages" : [' + 
 	'{ "cat" : "Llenguatges disponibles" },' + 
- 	'{ "es"  : "Lenguages disponibles" },' + 
+ 	'{ "es"  : "Lenguajes disponibles" },' + 
 	'{ "en"  : "Lenguages availables"}' + 
   '],' + 
      '"stringTextLenguages" : [' + 
