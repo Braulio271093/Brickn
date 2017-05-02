@@ -3,8 +3,8 @@ create database projecte;
 use projecte;
 
 create table usuari (
-	id int(6) unsigned primary key auto_increment,
-	nomUsuari VARCHAR(50) not null unique,
+    id int(6) unsigned primary key auto_increment,
+    nomUsuari VARCHAR(50) not null unique,
     pass VARCHAR(16) not null,
     clau VARCHAR(16) not null, 
     respostaPregunta VARCHAR(30) not NULL,
@@ -57,6 +57,7 @@ create table usuari_grup (
 create table grup_tema (
     idGrup INT(6) unsigned,
     idTema INT(6) unsigned,
+    PRIMARY KEY (idGrup, idTema), 
     FOREIGN KEY (idGrup) REFERENCES grup(id) ON DELETE CASCADE,
     FOREIGN KEY (idTema) REFERENCES tema(id) ON DELETE CASCADE
 );
