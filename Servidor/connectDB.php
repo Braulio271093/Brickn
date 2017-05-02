@@ -2,7 +2,7 @@
     //script per connectar-se a la base de dades del mysql;
     $servername = "localhost"; //direccio de ip del server
     $username = "root"; //usuari, no hauria de ser root...
-    $password = "ola333444555"; //contrasenya
+    $password = "mysql"; //contrasenya
     $dbname = "projecte"; //nom de la base de dades;
     
     // Crear conneccio

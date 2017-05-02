@@ -4,11 +4,24 @@
     $idUsuari = $_GET['idUsuari'];
 
     $sql = "SELECT event.id, coordX, coordY, icon FROM event
-            JOIN grup_publicacions ON grup_publicacions.id = event.id 
-            WHERE grup_publicacions.idUsuari = $idUsuari";
+            JOIN grup_publicacions ON event.id = grup_publicacions.id
+            JOIN grup ON grup_publicacions.idGrup = grup.id
+            JOIN usuari_grup ON grup.id = usuari_grup.idGrup 
+            WHERE usuari_grup.idUsuari = $idUsuari AND event.dateEnd > NOW()";
+
+    /*
+
+    SELECT event.id, coordX, coordY, icon FROM event
+    JOIN grup_publicacions ON event.id = grup_publicacions.id
+    JOIN grup ON grup_publicacions.idGrup = grup.id
+    JOIN usuari_grup ON grup.id = usuari_grup.idGrup 
+    WHERE usuari_grup.idUsuari = 1 AND event.dateEnd > NOW();
+
+
+    */
     
     $result = mysqli_query($conn, $sql);
-    $res = []; //publicacions
+    $res = []; 
     $i = 0;
 
 	if (mysqli_num_rows($result) > 0) {

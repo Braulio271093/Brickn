@@ -30,7 +30,6 @@ function create_marker(lat, lng, ico) {
  * Set els markers del mapa
  * @param idUsuari
  
-var marker = [];
 function setMarkers(idUsuari) {
     $.ajax ({
         type: "GET",
@@ -39,12 +38,11 @@ function setMarkers(idUsuari) {
         cache: false,
         success: function (data) {
             for (i = 0; i < data.length; i++) {
-               marker[i] = new google.maps.Marker({
+               var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(data[i].coordX, data[i].coordY),
                     map: map, 
                     icon: data[i].icon
                 });
-                marker[i].setIcon('../baseT-css/img/BeerIcon.ico');
                 alert(data[i].icon);
             }
         },

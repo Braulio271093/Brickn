@@ -48,10 +48,10 @@ class Grup {
      * @param privat; si el grup es privat;
      */
     toHtml(privat) {
-        var str = '<div class="grup" name="grupMostrar" data-id="' + this.idGrup + '">';
+        var str = '<div class="grup animated fadeIn" name="grupMostrar" data-id="' + this.idGrup + '">';
         str += '<div class="grupPhoto" style="position: relative">';
         if (this.notificacions > 0) {
-            str += '<span class="badge" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
+            str += '<span class="badge animated wobble" style="float: right; z-index: 1; position: absolute; margin-top: 5px; margin-left: 50px; background-color: #D51C1C;">' + this.notificacions + '</span>'
         }
         if (privat) str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup" style="border: 2px solid #D51C1C;;">';
         else        str += '<img src="' + urlServer + this.fotoGrup + '" class="img-circle imgGrup" style="border: 2px solid #088A08;">';

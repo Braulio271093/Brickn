@@ -502,4 +502,21 @@ class Usuari {
             },
         });
     }
+
+    getLocalitzacio() {
+        this.localitzacio = storage.getItem("localitzacio");
+        if (this.localitzacio == null || this.localitzacio == "undefined") {
+           $.ajax({
+                type: "POST",
+                url: urlServer + "/update/updateLocalitzacio.php?idUsuari=" + this.idUsuari + "&localitzacio=" + local,
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    if (data != 0) {
+                        storage.setItem("localitzacio", data);
+                    }
+                },
+            }); 
+        }
+    }
 }
