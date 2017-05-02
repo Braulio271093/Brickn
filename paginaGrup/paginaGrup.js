@@ -78,9 +78,11 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
        //para crear el evento
         $('#submitEvento').click(function() {
             //date format: YYYY-MM-dd HH:mm
-            var dataInicial = Utils.transfromDate($("#startDate").datetimepicker('getDate'));              
-            var dataFinal =  Utils.transfromDate($("#endDate").datetimepicker('getDate'));
-            if (dataInicial > dataFinal || dataInicial == dataFinal) {            
+            var dataInicial = $("#startDate").datetimepicker('getDate');
+            var dataFinal = $("#endDate").datetimepicker('getDate');
+            var dataInicialString = Utils.transfromDate(dataFinal);              
+            var dataFinalString =  Utils.transfromDate(dataFinal);
+            if (dataInicial < dataFinal || dataInicial == dataFinal) {            
                 var nombre = $("#inputNombre").val();
                 var descripcio = $("#inputDescripcion").val();
                 var idUsuari = usuari.idUsuari;
@@ -101,7 +103,7 @@ require(['Clases/Grup' , 'Clases/Publicacio', 'Clases/PublicacioEvent', 'Clases/
                 }
                 if (ico == 'undefined') ico = '0';
                 var url = urlServer + '/insert/afegirEvent.php?nombre=' + nombre + '&descripcion=' + descripcio ; 
-                    url += '&startDate='+ dataInicial + '&endDate=' + dataFinal + '&idUsuari=' + idUsuari + '&idGrup=' + idGrup
+                    url += '&startDate='+ dataInicialString + '&endDate=' + dataFinalString + '&idUsuari=' + idUsuari + '&idGrup=' + idGrup
                     url += '&lat=' + lat + '&long=' + long + "&icono="+ ico;
                 if (nombre != '' && descripcio != '') {
                     $('#modalEvento').modal('hide');

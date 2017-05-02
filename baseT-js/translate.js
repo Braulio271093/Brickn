@@ -29,6 +29,11 @@
  	'{ "es"  : "Guardar" },' + 
 	'{ "en"  : "Save"}' + 
  '],' + 
+'"stringDatesMalPosades" : [' + 
+ 	'{ "cat" : "Les dates estan mal posades." },' + 
+ 	'{ "es"  : "Las fechas estan mal." },' + 
+	'{ "en"  : "Bad date"}' + 
+ '],' + 
 '"stringIntroduirAntigaContrasenya" : [' + 
  	'{ "cat" : "Introdueix la teva contrasenya actual" },' + 
  	'{ "es"  : "Introduce tu contraseña actual" },' + 

@@ -29,7 +29,7 @@ function create_marker(lat, lng, ico) {
 /**
  * Set els markers del mapa
  * @param idUsuari
- 
+ */
 function setMarkers(idUsuari) {
     $.ajax ({
         type: "GET",
@@ -43,14 +43,13 @@ function setMarkers(idUsuari) {
                     map: map, 
                     icon: data[i].icon
                 });
-                alert(data[i].icon);
             }
         },
         error: function() {
             alert("ERROR");
         }
     });
-}*/
+}
 
 require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases/Publicacio', 'Clases/PublicacioEvent'], function () {
     $(document).ready(function () {
@@ -74,7 +73,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
             }
         });
         myMap();
-        //setMarkers(usuari.idUsuari);
+        setMarkers(usuari.idUsuari);
         
         usuari.getGrupsPublics(function(grups) { //afegir els grups publics;
             for (var i = 0; i < grups.length; i++) {
@@ -323,10 +322,11 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
                                 content: t,
                                 html: true,
                                 title: "Event",
-                                placement: 'top'
+                                placement: 'top',
+                                trigger: 'click'
                             })
                             newLocation(parseFloat(lat),parseFloat(long));
-                            create_marker(parseFloat(lat),parseFloat(long), data.icon); 
+                            //create_marker(parseFloat(lat),parseFloat(long), data.icon); 
                         },
                         error: function (xhr, status, error) {
                             Error.showError(__("{{errorServerOut}}"));
@@ -334,9 +334,7 @@ require(['Clases/Grup', 'Clases/Error', 'Clases/Usuari', 'Clases/Utils', 'Clases
 					});
 				}
             }
-        });
-        
-        
+        });      
        
 
         /**

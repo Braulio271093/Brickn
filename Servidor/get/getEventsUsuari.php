@@ -7,7 +7,7 @@
             JOIN grup_publicacions ON event.id = grup_publicacions.id
             JOIN grup ON grup_publicacions.idGrup = grup.id
             JOIN usuari_grup ON grup.id = usuari_grup.idGrup 
-            WHERE usuari_grup.idUsuari = $idUsuari AND event.dateEnd > NOW()";
+            WHERE usuari_grup.idUsuari = $idUsuari AND event.dateEnd >= CURDATE()";
 
     /*
 
