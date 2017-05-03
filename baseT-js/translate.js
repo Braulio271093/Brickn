@@ -34,6 +34,11 @@
  	'{ "es"  : "Las fechas estan mal." },' + 
 	'{ "en"  : "Bad date"}' + 
  '],' + 
+ '"stringNomUsuariRepetit" : [' + 
+ 	'{ "cat" : "El nom d\'usuari ja esta en ús." },' + 
+ 	'{ "es"  : "El nombre de usuario ya esta en uso." },' + 
+	'{ "en"  : "The username is already in use."}' + 
+ '],' + 
 '"stringIntroduirAntigaContrasenya" : [' + 
  	'{ "cat" : "Introdueix la teva contrasenya actual" },' + 
  	'{ "es"  : "Introduce tu contraseña actual" },' + 

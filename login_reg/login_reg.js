@@ -106,6 +106,10 @@ $(document).ready(function() {
                         $('.loadingImg').hide();
                         $('.errorLogin').text(__("stringUsuariCreat")); 
                     }
+                    else if (data == 2) {
+                        $('.loadingImg').hide();
+                        $('.errorLogin').text(__("stringNomUsuariRepetit"));
+                    }
                     else {
                         $('.loadingImg').hide();
                         $('.errorLogin').text(__("stringUsuariNoCreat"));
