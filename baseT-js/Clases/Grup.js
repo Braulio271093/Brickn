@@ -323,10 +323,10 @@ class Grup {
             dataType: 'json',
             cache: false,
             success: function (data) {
-                onSucces(data)
+                onSucces(data);
             },
             error: function (xhr, status, error) {
-                Error.showError(__("errorServerOut"));
+                console.log(error);
             }
         });
     }

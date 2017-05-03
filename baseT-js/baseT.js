@@ -6,7 +6,7 @@
  *  CONFIGURACIÓ
  *  Per canviar la configuracio de la base de dades anar al script connectDB.php;
  */
-var urlServer = "http://localhost/Brickn/Servidor" //url del servidor; http://pro1234brik.sytes.net"
+var urlServer = "http://bris.ddns.net" //url del servidor; http://pro1234brik.sytes.net"
 var debug = true;
 var storage = window.localStorage; //base de dades local;
 var idioma = storage.getItem("idioma");
