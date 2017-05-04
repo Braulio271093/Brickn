@@ -130,9 +130,9 @@
 	'{ "en"  : "Delete"}' + 
  '],' + 
 '"stringNomApp" : [' + 
- 	'{ "cat" : "Brskin Cat" },' + 
- 	'{ "es"  : "Brskin Es" },' + 
-	'{ "en"  : "Brskin En"}' + 
+ 	'{ "cat" : "Bris Cat" },' + 
+ 	'{ "es"  : "Bris Es" },' + 
+	'{ "en"  : "Bris En"}' + 
  '],' + 
 '"stringPerfil" : [' + 
  	'{ "cat" : "Perfil" },' + 
